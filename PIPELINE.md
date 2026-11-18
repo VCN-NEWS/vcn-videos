@@ -69,6 +69,9 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Regarder une planche d'images (1 toutes les 4 s) : chaque carte correspond à la phrase dite.
 - Synchro : > 95 % des mots affichés pendant que la voix parle.
 - Volume : voix nettement au-dessus de la musique (moyenne autour de -16 dB).
+- **Narration complète dans la vidéo finale (obligatoire)** : `audiocheck.voice_cut_in_video(video, voix, lead)` doit renvoyer None.
+  Cause trouvée le 18/11 : l'ancien mixage (loudnorm sans apad) coupait les ~3 dernières secondes de voix de TOUTES les vidéos
+  (A, B, C, D publiées avec la fin coupée). Corrigé dans finish.mix (apad avant loudnorm, sortie à la durée de la vidéo).
 - **Analyse de la voix AVANT chaque rendu (obligatoire, `engine/audiocheck.py`)** — je ne peux pas écouter, donc tout est mesuré :
   1. Fin coupée : Hedra (ElevenLabs v3) coupe souvent les derniers mots, même avec « [pause] ». Toujours terminer le texte envoyé à Hedra
      par une phrase sacrifiée séparée par une pause : « … [pause] Allez, ciao. » (choix du créateur).

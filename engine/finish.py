@@ -94,8 +94,8 @@ def mix(key, v, video_in, out):
     if os.path.exists(voice):
         wavfile.write(mpath, SR, (m * 0.16 * 32767).astype(np.int16))
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", video_in, "-i", voice, "-i", mpath, "-filter_complex",
-                        f"[1:a]adelay={int(v.lead*1000)}|{int(v.lead*1000)},loudnorm=I=-15:TP=-1.5[vo];[2:a]volume=1.0[mu];[vo][mu]amix=inputs=2:duration=longest:normalize=0[a]",
-                        "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-shortest", out], check=True)
+                        f"[1:a]adelay={int(v.lead*1000)}|{int(v.lead*1000)},apad=pad_dur=5,loudnorm=I=-15:TP=-1.5[vo];[2:a]volume=1.0,apad=pad_dur=5[mu];[vo][mu]amix=inputs=2:duration=longest:normalize=0[a]",
+                        "-map", "0:v", "-map", "[a]", "-c:v", "copy", "-c:a", "aac", "-b:a", "192k", "-t", str(v.total), out], check=True)
     else:
         wavfile.write(mpath, SR, (m * 0.6 * 32767).astype(np.int16))
         subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", video_in, "-i", mpath, "-map", "0:v", "-map", "1:a",

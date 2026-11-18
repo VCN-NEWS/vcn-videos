@@ -30,3 +30,18 @@ def tail_db(f, last=0.2):
 
 if __name__ == "__main__":
     print(tail_db(sys.argv[1]))
+
+
+def voice_cut_in_video(video, voice_mp3, lead):
+    """Renvoie le moment (s, dans la voix) où la voix disparaît de la vidéo finale, ou None si elle est entière.
+    OBLIGATOIRE après chaque mixage : un mixage raté peut couper les dernières secondes de narration."""
+    vid, voice = load(video), load(voice_mp3)
+    n = int(SR * 0.1)
+    db = lambda a, i: 20 * np.log10(np.sqrt(np.mean(a[i:i + n] ** 2)) + 1e-9)
+    for t in np.arange(0, len(voice) / SR - 0.1, 0.1):
+        i, j = int(SR * t), int(SR * (t + lead))
+        ev = db(voice, i)
+        vv = db(vid, j) if j + n < len(vid) else -99
+        if ev > -25 and vv < ev - 6:
+            return round(t, 1)
+    return None
