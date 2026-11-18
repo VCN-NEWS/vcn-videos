@@ -4,8 +4,11 @@
 2. **Vérification** : chaque chiffre recoupé sur 2 sources ; mention « non confirmé » si Rockstar n'a pas confirmé.
 3. **Script** : 150-190 mots en français, accroche en 1 phrase, une info par phrase, question finale + « abonne-toi ». Durée voix 60-70 s.
 4. **Voix** : Hedra `generate_speech`, modèle elevenlabs-v3, voix « Simon P. » `voice_f416ff19-9a7d-40f4-9a21-9b703c4d54ae`, langue fr (~15 crédits).
-   Télécharger le MP3 dans `engine/voix_<clé>.mp3`.
-5. **Montage** : ajouter le texte dans `engine/scripts.py` (TEXTS + DUR = durée audio en s) et une fonction `video_<clé>()` dans `engine/videos.py`
+   **Ton raconté, pas lu** (demande du créateur) : `model_specific_parameters = {"stability": 0.4}` (la valeur par défaut 1.0 donne un ton de lecture),
+   script écrit à l'oral (phrases courtes, « tu sais quoi ? », « et là… », apartés, suspense), et 2 à 4 balises d'expression ElevenLabs v3
+   placées avec parcimonie : [excited], [curious], [whispers], [laughs], [dramatic pause]. Le texte affiché en sous-titres ne contient pas les balises.
+   Télécharger le MP3 dans `engine/voix_<clé>.mp3` (le domaine Hedra est autorisé).
+5. **Montage** (série « Qui est… ? » : `engine/series.py` + `engine/photo.py`, médias de `bibliotheque/`) : ajouter le texte dans `engine/scripts.py` (TEXTS + DUR = durée audio en s) et une fonction `video_<clé>()` dans `engine/videos.py`
    (segments = (index de phrase, LABEL, headline, carte)). Cartes dispo dans `engine/v2.py` et `engine/render.py`.
    Puis : `cd engine && python3 videos.py render <clé> && python3 finish.py mix <clé> && python3 finish.py cover <clé>`
    (ajouter l'entrée correspondante dans `COVERS` de finish.py).

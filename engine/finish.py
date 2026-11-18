@@ -88,7 +88,7 @@ def music(total, hits, seed=1, root=45):
 
 def mix(key, v, video_in, out):
     hits = [a for a, b in v.seg_times]
-    m = music(v.total, hits, seed=ord(key))
+    m = music(v.total, hits, seed=sum(ord(c) for c in key))
     voice = f"{D}/voix_{key}.mp3"
     mpath = f"{D}/music_{key}.wav"
     if os.path.exists(voice):
