@@ -65,3 +65,10 @@
   Pour chaque vidéo : brouillon vidIQ (3 comptes, publishAt = son jour à 18 h 30), puis écrire `semaine.md` (date, sujet, titre, légende, hashtags, lien brut de la vidéo, postId, revision).
 - **Dimanche 20 h 30 (tâche « validation du dimanche »)** : présenter le programme de `semaine.md` au créateur, appliquer ses changements, et ne programmer (vidiq_social_post_publish) qu'après son « ok » explicite dans la session. Un silence n'est jamais un accord.
 - **En semaine (tâche quotidienne, mode alerte)** : seulement en cas de grosse actu GTA 6, préparer une vidéo bonus et demander l'accord du créateur ; sinon ne rien faire.
+
+## Clips de gameplay du créateur (à partir de la sortie, 19/11/2026)
+
+- Le créateur joue au mode histoire et envoie 3 à 5 clips par semaine (15-60 s), chacun avec une phrase d'explication.
+- Priorité à ces clips pour la série « Secrets de GTA 6 » : détails cachés, easter eggs, astuces, réactions du monde, lieux, comparaisons GTA 5, moments drôles. Histoire : sans spoiler, ou « ⚠️ spoiler » dans le titre.
+- Vérifier l'info avant d'écrire le script ; couper la radio du jeu (risque de réclamation de droits) et mettre la musique du moteur ; pas de violence graphique dans les 7 premières secondes (règle YouTube).
+- Jamais de clips d'autres créateurs sans leur accord écrit et un crédit.
