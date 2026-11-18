@@ -29,8 +29,8 @@ def tint():
     return TINT
 
 
-def bg(gt):
-    img = R.background(gt, R.camera, [(0, "night")])
+def bg(gt, theme="night"):
+    img = R.background(gt, R.camera, [(0, theme)])
     img.alpha_composite(tint())
     return img
 
@@ -594,7 +594,8 @@ def source_card(title, lines, p, warn="Non confirmé par Rockstar"):
 
 # ---------------- moteur ----------------
 class Video:
-    def __init__(self, key, text, audio_dur, segments, theme_col=PINK, lead=0.5, tail=2.6):
+    def __init__(self, key, text, audio_dur, segments, theme_col=PINK, lead=0.5, tail=2.6, theme="night"):
+        self.theme = theme  # "night", "sunset" ou "day" : varier d'une vidéo à l'autre
         self.key, self.text, self.audio_dur = key, text, audio_dur
         self.sent = split_sentences(text)
         self.segments = segments  # [(first_sentence_index, label, headline_img_or_None, draw_fn(fr, p, t, dur))]
@@ -623,14 +624,17 @@ class Video:
         self.seg_times = [(bounds[i], bounds[i + 1]) for i in range(len(segments))]
 
     def frame(self, t):
-        fr = bg(t)
+        fr = bg(t, self.theme)
         # segment courant
         for i, ((a, b), seg) in enumerate(zip(self.seg_times, self.segments)):
             if a <= t < b or (i == len(self.segments) - 1 and t >= a):
                 _, label, hl, fn = seg
                 lt, dur = t - a, b - a
+                if i == 0:
+                    lt += 0.7  # accroche déjà affichée dès la première image
+                    dur += 0.7
                 last = i == len(self.segments) - 1
-                tout = None if last else dur - 0.25
+                tout = None if last else dur - 0.12
                 if hl is not None:
                     place(fr, hl, W / 2, 330, lt, 0.0, tout, scale_from=0.7, rise=20)
                 fn(fr, lt, dur, tout)
@@ -661,9 +665,9 @@ class Video:
 def card_seg(builder, y=880, scale_from=0.88):
     """builder(p) -> image ; p = progression dans le segment (0..1 sur ~2.5 s)."""
     def fn(fr, lt, dur, tout):
-        p = clamp((lt - 0.15) / max(1.2, min(dur * 0.7, 3.0)))
+        p = clamp((lt - 0.1) / max(1.2, min(dur * 0.6, 3.0)))
         img = shadowed(builder(p))
-        place(fr, img, W / 2, y, lt, 0.05, tout, scale_from=scale_from)
+        place(fr, img, W / 2, y, lt, 0.0, tout, scale_from=scale_from)
     return fn
 
 
@@ -671,5 +675,5 @@ def static_seg(img, y=880, scale_from=0.85):
     sh = shadowed(img)
 
     def fn(fr, lt, dur, tout):
-        place(fr, sh, W / 2, y, lt, 0.05, tout, scale_from=scale_from)
+        place(fr, sh, W / 2, y, lt, 0.0, tout, scale_from=scale_from)
     return fn

@@ -17,3 +17,26 @@
    TikTok PUBLIC_TO_EVERYONE, commentaires ouverts, confirmation musique acceptée, isAiGenerated true.
 8. **Validation** : montrer le brouillon et attendre le « ok » du créateur avant `vidiq_social_post_publish`.
 9. Ajouter le sujet publié à `sujets.md`.
+
+## Exigences de qualité (à vérifier avant chaque brouillon)
+
+**Attrayant et viral**
+- L'accroche est visible dès la 1re image (titre choc + première carte) et la 1re phrase crée une surprise ou une question.
+- Un sujet = une promesse claire ; un chiffre ou un fait étonnant dans les 5 premières secondes.
+- Une info par phrase, une carte par info ; pas plus de 6-7 s sans changement visuel.
+- Fin sur une question simple qui pousse à commenter, puis « abonne-toi ».
+- Titre court avec écart de curiosité (sans mentir), 1-2 emojis, #shorts ; légende avec 6-10 hashtags (dont #GTA6 #GTAVI #VCN).
+- Couverture : 3 lignes max de texte géant + 1 carte.
+
+**Monétisable**
+- Durée finale > 60 s (TikTok Creator Rewards) — viser 62-75 s.
+- Script original avec un angle et une explication (pas une simple lecture d'article) — règle YouTube contre le contenu « inauthentique ».
+- Varier d'une vidéo à l'autre : thème de fond (`theme` = night / sunset / day), couleurs des titres, types de cartes, structure (liste, duel, explication, chronologie).
+- Aucun extrait, image, logo ni musique de Rockstar ou de tiers ; musique générée par le moteur uniquement.
+- Faits vérifiés sur 2 sources, « non confirmé » quand c'est le cas ; aucune info qui deviendra fausse avant l'heure de publication.
+- Mention « contenu IA » activée (TikTok isAiGenerated).
+
+**Contrôle technique**
+- Regarder une planche d'images (1 toutes les 4 s) : chaque carte correspond à la phrase dite.
+- Synchro : > 95 % des mots affichés pendant que la voix parle.
+- Volume : voix nettement au-dessus de la musique (moyenne autour de -16 dB).

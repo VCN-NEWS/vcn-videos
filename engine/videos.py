@@ -7,8 +7,8 @@ from scripts import TEXTS, DUR
 
 def card_seg_full(builder, y=880):
     def fn(fr, lt, dur, tout):
-        p = clamp((lt - 0.1) / max(1.0, dur * 0.85))
-        place(fr, shadowed(builder(p)), W / 2, y, lt, 0.05, tout, scale_from=0.9)
+        p = clamp((lt - 0.1) / max(1.0, dur * 0.6))  # listes : chaque ligne arrive avec la voix
+        place(fr, shadowed(builder(p)), W / 2, y, lt, 0.0, tout, scale_from=0.9)
     return fn
 
 
