@@ -138,6 +138,8 @@ def add_cover(video, cover_jpg, hold=0.35, fade=0.2):
 
 
 COVERS = {
+    "notes3": dict(photo="personnages/jason_and_lucia_01.jpg", lines=["99/100", "MAIS…"],
+                   sticker="3 GROS DÉFAUTS", focus=(0.35, 0.35), zoom=1.15),
     "lucia": dict(photo="personnages/lucia_caminos_14.jpg", lines=["QUI EST", "LUCIA ?"],
                   sticker="1RE HÉROÏNE DE GTA", focus=(0.22, 0.4)),
     "notes": dict(photo="personnages/jason_and_lucia_01.jpg", lines=["GTA 6", "À 99/100"],

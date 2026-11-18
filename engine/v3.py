@@ -5,6 +5,7 @@ Plans : (index_phrase, fraction_de_la_phrase, media, titre|None, puce|None)
   media = ("photo", rel, fx, fy, zoom)   recadrage 9:16 centré sur (fx, fy) ; zoom 1 = toute la hauteur
         | ("clip", rel, fx)
         | ("split", rel_haut, (fx, fy), rel_bas, (fx, fy), "NOM HAUT", "NOM BAS")
+        | ("card", rel_fond, fx, builder)   carte animée (builder(p), p 0→1) sur une photo assombrie
 """
 import os, subprocess
 import numpy as np
@@ -24,6 +25,16 @@ def _src(rel):
         im = ImageEnhance.Contrast(im).enhance(1.08)
         _IMG[rel] = im
     return _IMG[rel]
+
+
+_DARK = {}
+
+
+def _src_dark(rel):
+    if rel not in _DARK:
+        im = _src(rel).filter(ImageFilter.GaussianBlur(5))
+        _DARK[rel] = Image.blend(im, Image.new("RGB", im.size, (16, 6, 30)), 0.5)
+    return _DARK[rel]
 
 
 def _crop(im, fx, fy, zoom, out_w=W, out_h=H, kb=1.0):
@@ -109,6 +120,12 @@ class FullVideo(Video):
             fr = _clip_frames(m[1])
             k = min(len(fr) - 1, int(lt * FPS * 0.5))
             return _crop(fr[k], m[2], 0.5, 1.0, kb=kb).convert("RGBA")
+        if m[0] == "card":
+            _, rel, fx, builder = m
+            out = _crop(_src_dark(rel), fx, 0.5, 1.0, kb=kb).convert("RGBA")
+            p = clamp((lt - 0.05) / max(1.0, min(dur * 0.6, 2.5)))
+            place(out, shadowed(builder(p)), W / 2, 930, lt, 0.0, None, scale_from=0.85)
+            return out
         # écran partagé
         _, r1, (x1, y1), r2, (x2, y2), n1, n2 = m
         out = Image.new("RGBA", (W, H))

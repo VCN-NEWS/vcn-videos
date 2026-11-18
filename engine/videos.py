@@ -180,6 +180,48 @@ def video_notes():
 
 VIDEOS["notes"] = video_notes
 
+
+# ---------------- format v3 (plein écran) ----------------
+DUR["notes3"] = 61.283  # voix_notes3.mp3 = voix_notes.mp3 sans les blancs, x1.1
+
+
+def video_notes3():
+    from v3 import FullVideo
+    L, P = "lieus/", "personnages/"
+    G1, G2 = (255, 230, 120), (255, 150, 60)
+    shots = [
+        (0, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: score_badge("6.5", "L’ancienne note fantôme", col=(150, 140, 170))), "DE 6,5 À 99 ?!", None),
+        (1, 0.0, ("photo", P + "lucia_caminos_04.jpg", 0.33, 0.4, 1.1), None, "LE PIÈGE"),
+        (2, 0.0, ("card", L + "vice_city_17.jpg", 0.5, crossed_badge), "LE PIÈGE S’EST REFERMÉ", None),
+        (3, 0.0, ("photo", L + "vice_city_11.jpg", 0.5, 0.5, 1.0), "LES TESTS SONT TOMBÉS", None),
+        (4, 0.0, ("card", L + "vice_city_11.jpg", 0.5, record_badge), "99 SUR 100", None),
+        (5, 0.0, ("photo", P + "jason_and_lucia_13.jpg", 0.46, 0.4, 1.0), "99 !", None),
+        (6, 0.0, ("photo", P + "jason_and_lucia_01.jpg", 0.35, 0.4, 1.0), None, "RECORD ABSOLU"),
+        (7, 0.0, ("card", L + "vice_city_08.jpg", 0.5, duel99_card), "UN SEUL AUTRE JEU", None),
+        (9, 0.0, ("photo", L + "vice_city_24.jpg", 0.5, 0.5, 1.0), None, "EN 1998 !"),
+        (11, 0.0, ("card", L + "vice_city_03.jpg", 0.5, lambda p: bars_card([("GTA 5", 7, BLUE, "97"), ("GTA 4 · ancien record", 8, (255, 160, 90), "98"), ("GTA 6", 9, GOLD, "99")], p, title="Metascore (sur 100)", maxv=9)), "L’ANCIEN ROI DÉTRÔNÉ", None),
+        (13, 0.0, ("photo", L + "vice_city_05.jpg", 0.5, 0.5, 1.0), "LA CLAQUE EN FRANCE", None),
+        (14, 0.0, ("card", L + "vice_city_10.jpg", 0.5, lambda p: big_stat_card("19/20", "jeuxvideo.com")), None, None),
+        (15, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: big_stat_card("9,5/10", "ActuGaming")), None, None),
+        (16, 0.0, ("photo", P + "lucia_caminos_11.jpg", 0.76, 0.4, 1.1), "MAIS ATTENDS…", None),
+        (17, 0.0, ("photo", P + "jason_and_lucia_12.jpg", 0.62, 0.4, 1.0), None, "MÊME UN 99…"),
+        (18, 0.0, ("card", L + "vice_city_22.jpg", 0.5, lambda p: big_stat_card("3", "défauts pointés par les tests")), "3 DÉFAUTS", None),
+        (19, 0.0, ("card", L + "vice_city_17.jpg", 0.5, lambda p: defect_card(1, "Missions scriptées", "Les missions principales, trop guidées", p)), "DÉFAUT N°1", None),
+        (20, 0.0, ("card", L + "port_gellhorn_06.jpg", 0.5, lambda p: defect_card(2, "Un début lent", "Il faut tenir tout le 1er chapitre", p, col=(255, 160, 90))), "DÉFAUT N°2", None),
+        (21, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: defect_card(3, "30 images/s", "Sur toutes les consoles", p, col=(255, 205, 90), note="Constaté par les tests")), "LE PLUS GROS", None),
+        (21, 0.6, ("photo", P + "jason_and_lucia_09.jpg", 0.5, 0.4, 1.0), None, "30 IMAGES/S"),
+        (22, 0.0, ("card", L + "vice_city_08.jpg", 0.5, lambda p: big_stat_card("30 FPS", "même sur la PS5 Pro")), "MÊME SUR PS5 PRO", None),
+        (23, 0.0, ("photo", P + "lucia_caminos_14.jpg", 0.22, 0.38, 1.2), "ALORS, CE 99…", None),
+        (24, 0.0, ("split", P + "jason_and_lucia_13.jpg", (0.46, 0.35), L + "vice_city_17.jpg", (0.5, 0.5), "MÉRITÉ", "EFFET GTA"), None, None),
+        (25, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: comment_card("Ta note sur 100 ?", p, typed="98, à cause des 30 fps")), "TA NOTE ?", None),
+        (26, 0.0, ("photo", L + "vice_city_08.jpg", 0.5, 0.5, 1.0), "ABONNE-TOI !", None),
+    ]
+    labels = {0: "LE PIÈGE", 4: "LA NOTE", 7: "LE RECORD", 10: "EN FRANCE", 13: "MAIS…", 16: "LES DÉFAUTS", 22: "TON AVIS"}
+    return FullVideo("notes3", TEXTS["notes"], DUR["notes3"], shots, GOLD, labels=labels)
+
+
+VIDEOS["notes3"] = video_notes3
+
 if __name__ == "__main__":
     mode = sys.argv[1]
     keys = sys.argv[2].split(",")
