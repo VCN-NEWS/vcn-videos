@@ -140,6 +140,8 @@ def add_cover(video, cover_jpg, hold=0.35, fade=0.2):
 COVERS = {
     "lucia": dict(photo="personnages/lucia_caminos_14.jpg", lines=["QUI EST", "LUCIA ?"],
                   sticker="1RE HÉROÏNE DE GTA", focus=(0.22, 0.4)),
+    "notes": dict(photo="personnages/jason_and_lucia_01.jpg", lines=["GTA 6", "À 99/100"],
+                  sticker="MAIS 3 DÉFAUTS", focus=(0.5, 0.35)),
 }
 
 if __name__ == "__main__":
@@ -147,5 +149,8 @@ if __name__ == "__main__":
     p = make_cover(k, **COVERS[k])
     print(p)
     if len(sys.argv) > 2 and sys.argv[2] == "apply":
-        add_cover(os.path.join(D, "..", "videos", f"VCN_{k}.mp4"), p)
+        v = os.path.join(D, "..", "videos", f"VCN_{k}.mp4")
+        if not os.path.exists(v):
+            v = os.path.join(D, "..", "videos", f"GTA6_{k}.mp4")  # vidéo d'actu
+        add_cover(v, p)
         print("incrustée")

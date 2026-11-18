@@ -1,5 +1,5 @@
 import sys, os
-from PIL import Image
+from PIL import Image, ImageDraw
 import v2
 from v2 import *
 from scripts import TEXTS, DUR
@@ -87,6 +87,98 @@ def video_D():
 
 
 VIDEOS = {"A": video_A, "B": video_B, "C": video_C, "D": video_D}
+
+
+# ---------- vidéo « notes » : GTA 6 à 99 sur Metacritic ----------
+def crossed_badge(p):
+    """6.5 barré en rouge, remplacé par 99."""
+    im = score_badge("6.5", "L’ancienne note fantôme", col=(150, 140, 170))
+    d = ImageDraw.Draw(im)
+    a = ease_out_cubic(clamp(p * 2.2 - 0.4))
+    if a > 0:
+        x0, y0, x1, y1 = 120, 70, 440, 370
+        d.line([(x0, y0), (x0 + (x1 - x0) * a, y0 + (y1 - y0) * a)], fill=RED + (255,), width=26)
+    return im
+
+
+def record_badge(p):
+    im = score_badge("99", "Metascore · jour des tests", col=(255, 205, 90))
+    a = ease_out_back(clamp(p * 2 - 0.6))
+    if a > 0:
+        c = chip("RECORD DU SITE", col=GREEN, size=40, h=84)
+        c = c.resize((max(1, int(c.width * a)), max(1, int(c.height * a))), Image.BILINEAR)
+        big = Image.new("RGBA", (im.width, im.height + 60), (0, 0, 0, 0))
+        big.alpha_composite(im, (0, 0))
+        big.alpha_composite(c, ((big.width - c.width) // 2, big.height - c.height))
+        return big
+    return im
+
+
+def duel99_card(p):
+    w, h = 900, 560
+    im = card(w, h)
+    d = ImageDraw.Draw(im)
+    cols = [("Zelda", "Ocarina of Time", "Nintendo 64 · 1998", (110, 200, 255)), ("GTA 6", "Grand Theft Auto VI", "PS5 · Xbox · 2026", PINK)]
+    for i, (n, sub, plat, col) in enumerate(cols):
+        a = ease_out_back(clamp(p * 3 - i * 0.8))
+        cx = 225 + i * 450
+        s = int(220 * a)
+        if s > 4:
+            d.rounded_rectangle([cx - s / 2, 70, cx + s / 2, 70 + s], 34, fill=col + (255,))
+            draw_center(d, cx, 70 + s * 0.17, "99", font("InterDisplay-Black", max(10, int(130 * a))), (20, 12, 30))
+        if a > 0.5:
+            draw_center(d, cx, 320, n, font("InterDisplay-Black", 58), WHITE)
+            draw_center(d, cx, 395, sub, font("Inter-SemiBold", 32), MUTED)
+            draw_center(d, cx, 445, plat, font("Inter-Bold", 30), col + (255,))
+    draw_center(d, w / 2, 140, "=", font("InterDisplay-Black", 110), (255, 255, 255, int(255 * clamp(p * 3 - 1.4))))
+    return im
+
+
+def defect_card(n, title, sub, p, col=RED, note=None):
+    w, h = 900, 500 if note else 420
+    im = card(w, h)
+    d = ImageDraw.Draw(im)
+    a = ease_out_back(clamp(p * 2.5))
+    r = int(80 * a)
+    if r > 2:
+        d.ellipse([w / 2 - r, 120 - r, w / 2 + r, 120 + r], fill=col + (255,))
+        draw_center(d, w / 2, 120 - 62 * a, str(n), font("InterDisplay-Black", max(10, int(110 * a))), (20, 12, 30))
+    b = clamp(p * 3 - 0.8)
+    draw_center(d, w / 2, 230, title, font("InterDisplay-Black", 60), (255, 255, 255, int(255 * b)))
+    draw_center(d, w / 2, 315, sub, font("Inter-SemiBold", 38), (220, 210, 255, int(255 * b)))
+    if note:
+        c = clamp(p * 3 - 1.6)
+        f = font("Inter-Bold", 32)
+        tw = d.textbbox((0, 0), note, font=f)[2]
+        d.rounded_rectangle([w / 2 - tw / 2 - 30, 400, w / 2 + tw / 2 + 30, 458], 29, fill=(255, 205, 90, int(50 * c)), outline=(255, 205, 90, int(255 * c)), width=3)
+        draw_center(d, w / 2, 411, note, f, (255, 205, 90, int(255 * c)))
+    return im
+
+
+def video_notes():
+    G1, G2 = (255, 230, 120), (255, 150, 60)
+    segs = [
+        (0, "LE PIÈGE", H_("DE 6,5 À 99 ?!", G1, G2), card_seg(lambda p: score_badge("6.5", "L’ancienne note fantôme", col=(150, 140, 170)))),
+        (2, "LE PIÈGE", H_("LE PIÈGE S’EST REFERMÉ", (255, 140, 150), (255, 60, 90)), card_seg(crossed_badge)),
+        (3, "LES TESTS", H_("LES TESTS SONT TOMBÉS", (190, 160, 255), (255, 92, 170)), static_seg(calendar_card(18, "Mercredi midi"))),
+        (4, "LA NOTE", H_("99 SUR 100", G1, G2), card_seg(record_badge)),
+        (7, "LE RECORD", H_("UN SEUL AUTRE JEU", (140, 210, 255), (90, 130, 255)), card_seg(duel99_card)),
+        (11, "LA SÉRIE", H_("L’ANCIEN ROI DÉTRÔNÉ", G1, G2),
+         card_seg_full(lambda p: bars_card([("GTA 5", 7, BLUE, "97"), ("GTA 4 · ancien record", 8, (255, 160, 90), "98"), ("GTA 6", 9, GOLD, "99")], p, title="Metascore (sur 100)", maxv=9))),
+        (13, "EN FRANCE", H_("LA CLAQUE EN FRANCE", (150, 255, 170), (60, 200, 140)), card_seg(lambda p: big_stat_card("19/20", "jeuxvideo.com"))),
+        (15, "EN FRANCE", None, card_seg(lambda p: big_stat_card("9,5/10", "ActuGaming"))),
+        (16, "MAIS…", H_("MAIS ATTENDS…", (255, 140, 150), (255, 60, 90)), card_seg(lambda p: big_stat_card("3", "défauts pointés par les tests"))),
+        (19, "DÉFAUT N°1", H_("DÉFAUT N°1", (255, 140, 150), (255, 60, 90)), card_seg(lambda p: defect_card(1, "Missions scriptées", "Les missions principales, trop guidées", p))),
+        (20, "DÉFAUT N°2", H_("DÉFAUT N°2", (255, 140, 150), (255, 60, 90)), card_seg(lambda p: defect_card(2, "Un début lent", "Il faut tenir tout le 1er chapitre", p, col=(255, 160, 90)))),
+        (21, "DÉFAUT N°3", H_("LE PLUS GROS", (255, 140, 150), (255, 60, 90)), card_seg(lambda p: defect_card(3, "30 images/s", "Sur toutes les consoles", p, col=(255, 205, 90), note="Constaté par les tests"))),
+        (22, "DÉFAUT N°3", H_("MÊME SUR PS5 PRO", (255, 140, 150), (255, 60, 90)), card_seg(lambda p: big_stat_card("30 FPS", "même sur la PS5 Pro"))),
+        (23, "TON AVIS", H_("MÉRITÉ ?", G1, G2), card_seg(lambda p: score_badge("99", "Mérité… ou effet GTA ?", col=(255, 205, 90)))),
+        (25, "TON AVIS", None, card_seg(lambda p: comment_card("Ta note sur 100 ?", p, typed="98, à cause des 30 fps"))),
+    ]
+    return Video("notes", TEXTS["notes"], DUR["notes"], segs, GOLD, tail=2.2, theme="sunset")
+
+
+VIDEOS["notes"] = video_notes
 
 if __name__ == "__main__":
     mode = sys.argv[1]

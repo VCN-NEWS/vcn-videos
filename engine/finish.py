@@ -107,6 +107,7 @@ COVERS = {
     "B": (["210 GO", "SUR TA", "PS5 ?!"], lambda: storage_card(1.0), (255, 230, 120), (255, 140, 60)),
     "C": (["5 BOUTIQUES", "FERMÉES", "POUR TOI"], lambda: map_pins_card(1.0), (255, 150, 110), (255, 60, 140)),
     "D": (["ILS JOUENT", "AVANT TOI", "AUJOURD’HUI"], lambda: timeline_card(5), (190, 160, 255), (255, 92, 170)),
+    "notes": (["GTA 6", "À 99 !", "MAIS…"], lambda: videos.record_badge(1.0), (255, 230, 120), (255, 150, 60)),
 }
 
 
