@@ -4,7 +4,6 @@ Règle : un jour sans grosse actu GTA 6, publier d'abord une vidéo **prête** c
 S'il n'y en a plus, produire le **prochain épisode à faire** de la série « Qui est… ? » (dans l'ordre), puis le déplacer dans « Publiées ».
 
 ## Prêtes à publier
-- `videos/VCN_lucia_v3.mp4` — « Qui est Lucia Caminos ? » (53 s, format v3, voix validée par le créateur). Créditer « Images : Rockstar Games ».
 
 ## Épisodes à faire (dans l'ordre)
 1. Jason Duval (clip `clips/jason_duval.mp4` + photos `personnages/jason_duval_*`)
@@ -23,3 +22,4 @@ S'il n'y en a plus, produire le **prochain épisode à faire** de la série « Q
 14. Vice City — la nuit
 
 ## Publiées
+- 19/11 12 h 30 : « Qui est Lucia Caminos ? » (VCN_lucia_v3.mp4)
