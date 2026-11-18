@@ -1,0 +1,968 @@
+[
+ {
+  "fichier": "personnages/boobie_ike_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Boobie Ike",
+  "description": "Boobie Ike assis dans un fauteuil, bureau sombre, chemise africaine",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/boobie_ike_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Boobie Ike",
+  "description": "Boobie Ike devant le club Jack of Hearts, téléphone en main",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/boobie_ike_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Boobie Ike",
+  "description": "Boobie Ike gros plan, chaîne en or, lumière rose de club",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/boobie_ike_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Boobie Ike",
+  "description": "Boobie Ike dans son club avec danseuses",
+  "a_eviter": true
+ },
+ {
+  "fichier": "personnages/brian_heder_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Brian Heder",
+  "description": "Brian Heder au volant d'un pick-up, lunettes vertes",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/brian_heder_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Brian Heder",
+  "description": "Brian Heder sur un ponton au bord de l'eau, soirée",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/brian_heder_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Brian Heder",
+  "description": "Brian Heder montre un document, discussion tendue",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/brian_heder_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Brian Heder",
+  "description": "Brian Heder bras dessus bras dessous avec Jason et une femme",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/cal_hampton_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Cal Hampton",
+  "description": "Cal Hampton au mini-golf, chemise hawaïenne, crocodile géant",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/cal_hampton_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Cal Hampton",
+  "description": "Cal Hampton au billard dans un bar",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/cal_hampton_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Cal Hampton",
+  "description": "Cal Hampton allongé sur une bouée flamant rose dans une piscine",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/cal_hampton_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Cal Hampton",
+  "description": "Cal Hampton et Jason marchent de nuit avec des sacs",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/drequan_priest_01.jpg",
+  "categorie": "personnage",
+  "sujet": "DreQuan Priest",
+  "description": "DreQuan Priest en club entouré de danseuses",
+  "a_eviter": true
+ },
+ {
+  "fichier": "personnages/drequan_priest_02.jpg",
+  "categorie": "personnage",
+  "sujet": "DreQuan Priest",
+  "description": "DreQuan Priest au bord d'une piscine, enseigne Dreams",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/drequan_priest_03.jpg",
+  "categorie": "personnage",
+  "sujet": "DreQuan Priest",
+  "description": "DreQuan Priest bras croisés, lumières violettes de club",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/drequan_priest_04.jpg",
+  "categorie": "personnage",
+  "sujet": "DreQuan Priest",
+  "description": "DreQuan Priest en studio d'enregistrement",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason à côté d'une moto sportive verte, palmiers",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason au volant, casquette, lumière du soleil",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason pêche sur un bateau, mer turquoise",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason de nuit devant un motel néon, téléphone en main",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_05.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason vise avec un fusil, ville de nuit",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_06.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason au comptoir d'un bar avec des amis",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_07.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason derrière un grillage, gyrophares de police",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_08.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason arme au poing près d'un camion",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_09.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason nettoie un pistolet sur une table",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_10.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason capuche et arme, lumière verte",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_11.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason en moto fuit la police de nuit",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_12.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason tire au pistolet dans un hangar",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_13.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason et des motards casqués dans un garage néon",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_14.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason près d'un pick-up dans les marais",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_15.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason torse nu soulève une barre de musculation",
+  "a_eviter": true
+ },
+ {
+  "fichier": "personnages/jason_duval_16.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason tire au fusil, étincelles",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_17.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason fusil sur une voiture, hélicoptère dans le ciel",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_18.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason dans une supérette, pare-brise brisé",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_duval_19.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason Duval",
+  "description": "Jason conduit de nuit avec un passager",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia face caméra, skyline de Vice City (affiche)",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia masqués dans une salle des coffres",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Lucia et Jason en décapotable, sourires, centre-ville",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia braquent une supérette",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_05.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia entrent dans une salle, gros bras",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_06.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason au volant, Lucia passagère, arme",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_07.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Lucia et Jason dos à dos, éclairage bleu",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_08.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia s'éloignent d'un incendie",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_09.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia en moto poursuivis par la police",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_10.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Lucia de dos dans une soirée sur un toit, ville de nuit",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_11.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia en voiture, armes",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_12.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia armés dans un couloir sombre",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_13.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia s'enlacent au coucher du soleil, hélicoptère",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_14.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Lucia et Jason, néons violets, ambiance club",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_15.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia braquage avec bandanas",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_16.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Silhouettes sous un arbre au coucher du soleil",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_17.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Lucia et Jason armés devant une voiture",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_18.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Soirée bondée dans un bar, ambiance fête",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_19.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Lucia tire depuis une voiture en fuite",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/jason_and_lucia_20.jpg",
+  "categorie": "personnage",
+  "sujet": "Jason and Lucia",
+  "description": "Jason et Lucia dans une décapotable, néons",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia gants de boxe, regard déterminé",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia au bord d'une piscine, lunettes, cocktail",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia devant un bar à alcool, veste en cuir",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia arme pointée dans l'ombre",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_05.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia menottée en tenue de prison",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_06.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia danse en boîte, néons",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_07.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia vise depuis une voiture, lumières vertes",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_08.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia avec un sac devant un bureau de change",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_09.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia en salle de sport, gants",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_10.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia en voiture de nuit, néons violets",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_11.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia arme à la main sous la pluie, bleu",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_12.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia vise par la fenêtre d'une voiture",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_13.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia gros plan, pistolet, coucher de soleil",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/lucia_caminos_14.jpg",
+  "categorie": "personnage",
+  "sujet": "Lucia Caminos",
+  "description": "Lucia pistolet, gyrophares de police",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/raul_bautista_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Raul Bautista",
+  "description": "Raul Bautista au téléphone, lunettes",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/raul_bautista_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Raul Bautista",
+  "description": "Raul Bautista au volant d'une voiture de luxe",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/raul_bautista_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Raul Bautista",
+  "description": "Raul Bautista sur un yacht, bras croisés",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/raul_bautista_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Raul Bautista",
+  "description": "Raul Bautista en costume blanc, soirée néon",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/real_dimez_01.jpg",
+  "categorie": "personnage",
+  "sujet": "Real Dimez",
+  "description": "Real Dimez dans un intérieur rouge, tenue léopard",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/real_dimez_02.jpg",
+  "categorie": "personnage",
+  "sujet": "Real Dimez",
+  "description": "Real Dimez tournage de clip, danseurs sur voiture",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/real_dimez_03.jpg",
+  "categorie": "personnage",
+  "sujet": "Real Dimez",
+  "description": "Real Dimez en voiture, manteau violet",
+  "a_eviter": false
+ },
+ {
+  "fichier": "personnages/real_dimez_04.jpg",
+  "categorie": "personnage",
+  "sujet": "Real Dimez",
+  "description": "Real Dimez au micro en studio",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/ambrosia_01.jpg",
+  "categorie": "lieu",
+  "sujet": "Ambrosia",
+  "description": "Ambrosia, gang de motards sur la route",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/ambrosia_02.jpg",
+  "categorie": "lieu",
+  "sujet": "Ambrosia",
+  "description": "Ambrosia vue aérienne nocturne, raffinerie",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/ambrosia_03.jpg",
+  "categorie": "lieu",
+  "sujet": "Ambrosia",
+  "description": "Couple de motards, homme barbu armé",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/ambrosia_04.jpg",
+  "categorie": "lieu",
+  "sujet": "Ambrosia",
+  "description": "Ambrosia coucher de soleil, pylônes, incendie",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/ambrosia_05.jpg",
+  "categorie": "lieu",
+  "sujet": "Ambrosia",
+  "description": "Conducteur dans une voiture américaine",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/ambrosia_06.jpg",
+  "categorie": "lieu",
+  "sujet": "Ambrosia",
+  "description": "Fête dans la boue, canettes",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_01.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Grassrivers, campement avec alligator",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_02.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Grassrivers, village sur pilotis au bord de l'eau",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_03.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Hydroglisseur vu du ciel dans les marais",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_04.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Marais avec véhicules et hélicoptère",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_05.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Marais avec la skyline de Vice City au loin",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_06.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Homme barbu avec alligator, cabane",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_07.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Homme avec serpent, feu de camp",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/grassrivers_08.jpg",
+  "categorie": "lieu",
+  "sujet": "Grassrivers",
+  "description": "Chasse à l'alligator de nuit, lampe",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/leonida_keys_01.jpg",
+  "categorie": "lieu",
+  "sujet": "Leonida Keys",
+  "description": "Leonida Keys vue aérienne, îles et hydravion",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/leonida_keys_02.jpg",
+  "categorie": "lieu",
+  "sujet": "Leonida Keys",
+  "description": "Leonida Keys rue animée, iguane, scooter",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/leonida_keys_03.jpg",
+  "categorie": "lieu",
+  "sujet": "Leonida Keys",
+  "description": "Bar The Rusty Anchor au bord de la mer",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/leonida_keys_04.jpg",
+  "categorie": "lieu",
+  "sujet": "Leonida Keys",
+  "description": "Plongée sous-marine, tortue",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/leonida_keys_05.jpg",
+  "categorie": "lieu",
+  "sujet": "Leonida Keys",
+  "description": "Fête en bateaux, jet-skis",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/leonida_keys_06.jpg",
+  "categorie": "lieu",
+  "sujet": "Leonida Keys",
+  "description": "Iguane vert sur un rocher, îlot",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/leonida_keys_07.jpg",
+  "categorie": "lieu",
+  "sujet": "Leonida Keys",
+  "description": "Grotte sous-marine, poissons",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/mount_kalaga_national_park_01.jpg",
+  "categorie": "lieu",
+  "sujet": "Mount Kalaga National Park",
+  "description": "Motocross dans une carrière",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/mount_kalaga_national_park_02.jpg",
+  "categorie": "lieu",
+  "sujet": "Mount Kalaga National Park",
+  "description": "Hélicoptère au-dessus des collines",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/mount_kalaga_national_park_03.jpg",
+  "categorie": "lieu",
+  "sujet": "Mount Kalaga National Park",
+  "description": "Randonneurs en forêt",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/mount_kalaga_national_park_04.jpg",
+  "categorie": "lieu",
+  "sujet": "Mount Kalaga National Park",
+  "description": "Canyon rouge et route de montagne",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/mount_kalaga_national_park_05.jpg",
+  "categorie": "lieu",
+  "sujet": "Mount Kalaga National Park",
+  "description": "Cerfs au bord d'une rivière",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/mount_kalaga_national_park_06.jpg",
+  "categorie": "lieu",
+  "sujet": "Mount Kalaga National Park",
+  "description": "Kayak sous un pont de fer",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/port_gellhorn_01.jpg",
+  "categorie": "lieu",
+  "sujet": "Port Gellhorn",
+  "description": "Motel Starlet de nuit, palmiers",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/port_gellhorn_02.jpg",
+  "categorie": "lieu",
+  "sujet": "Port Gellhorn",
+  "description": "Deux hommes dans une serre à cannabis",
+  "a_eviter": true
+ },
+ {
+  "fichier": "lieus/port_gellhorn_03.jpg",
+  "categorie": "lieu",
+  "sujet": "Port Gellhorn",
+  "description": "Échange louche entre deux voitures",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/port_gellhorn_04.jpg",
+  "categorie": "lieu",
+  "sujet": "Port Gellhorn",
+  "description": "Cabaret Delights de nuit, parking",
+  "a_eviter": true
+ },
+ {
+  "fichier": "lieus/port_gellhorn_05.jpg",
+  "categorie": "lieu",
+  "sujet": "Port Gellhorn",
+  "description": "Fête de rue nocturne, couple",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/port_gellhorn_06.jpg",
+  "categorie": "lieu",
+  "sujet": "Port Gellhorn",
+  "description": "Port Gellhorn vue aérienne au coucher du soleil",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/port_gellhorn_07.jpg",
+  "categorie": "lieu",
+  "sujet": "Port Gellhorn",
+  "description": "Danseuse à la barre au cabaret Delights",
+  "a_eviter": true
+ },
+ {
+  "fichier": "lieus/vice_city_01.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Lettres géantes VICE CITY, avion, coucher de soleil",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_02.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Couple sur un toit avec piscine, vue sur la ville",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_03.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Vice City vue aérienne de jour, quartiers",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_04.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Deux rappeurs posent face caméra",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_05.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Plage de Vice Beach, poste de sauveteur",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_06.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Police et fêtards autour d'une voiture, néons",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_07.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Danseuses en boîte, billets",
+  "a_eviter": true
+ },
+ {
+  "fichier": "lieus/vice_city_08.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Vice City de nuit, grande roue",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_09.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Rue colorée, fresques, voiture américaine",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_10.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Tours en verre au bord de l'eau, jour",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_11.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Gratte-ciel au crépuscule, hélicoptère",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_12.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Homme à dreadlocks avec une arme",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_13.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Club en plein air, foule, néons verts",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_14.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Deux hommes en voiture, pistolet",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_15.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Marina et skyline, bateaux",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_16.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Homme masque le visage avec sa main, bagues",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_17.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Poursuite policière de nuit sur un pont, yacht",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_18.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Femme en bikini dans une pluie de billets",
+  "a_eviter": true
+ },
+ {
+  "fichier": "lieus/vice_city_19.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Pitbull et son maître, chaîne en or",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_20.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Salon de tatouage, ambiance bleue",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_21.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Groupe de gangsters tatoués",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_22.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Station-service néon de nuit",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_23.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Loge de danseuses",
+  "a_eviter": true
+ },
+ {
+  "fichier": "lieus/vice_city_24.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Homme sur une muscle car customisée, palmiers",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_25.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Soirée VIP en club, champagne",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_26.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Hôtel avec piscine vue du ciel",
+  "a_eviter": false
+ },
+ {
+  "fichier": "lieus/vice_city_27.jpg",
+  "categorie": "lieu",
+  "sujet": "Vice City",
+  "description": "Skyline de Vice City de nuit",
+  "a_eviter": false
+ }
+]
