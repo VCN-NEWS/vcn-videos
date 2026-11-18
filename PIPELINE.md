@@ -99,6 +99,20 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - **Contrôles bloquants avant tout brouillon** (sinon on corrige, on n'envoie pas) : `audiocheck.voice_cut_in_video(...)` = None (narration entière),
   aucune phrase répétée, aucune phrase sacrifiée audible, fin de voix sur un silence, synchro > 95 %, volume ≈ -16 dB.
 
+## Mélange de contenus (validé par le créateur le 18/11/2026)
+
+- 4 types en alternance : **actus**, **secrets & astuces**, **portraits « Qui est… ? »**, **lieux** (dossier `bibliotheque/lieus/` : Vice City jour/nuit, Leonida Keys, Grassrivers, Port Gellhorn, Mount Kalaga, Ambrosia).
+- Semaine type de 14 : ~4 portraits, ~4 lieux, ~3 actus, ~3 secrets ; jamais deux du même type à la suite ; les plus fortes à 18 h 30 ; une grosse actu passe devant tout.
+- Même direction artistique pour tout (format v3, couvertures : visage pour un perso, carte postale pour un lieu/une actu). Toujours viral, attrayant, une image qui donne envie de cliquer.
+- Vidéo de lieu : angle « X choses à faire / à voir » ou « le secret de… », un plan par photo de la zone, pastilles d'info, question finale (« tu iras où en premier ? »).
+
+## Secrets & astuces : sources
+
+- On récupère les **informations** (pas les vidéos) : chaînes YouTube GTA (vidiq_youtube_search, vidiq_video_transcript à 5 crédits — budget vidIQ 150/mois), Rockstar Newswire et support officiel, guides presse (jeuxvideo.com, Millenium, IGN), Reddit r/GTA6.
+- Chaque secret est vérifié sur au moins 2 sources (ou montré dans un clip du créateur), et la découverte est créditée dans la légende (« Découverte : @chaîne »).
+- On refait la vidéo entièrement avec notre direction artistique : images officielles, clips du créateur, cartes, voix VCN.
+- **Jamais** d'images, d'extraits ni de miniatures d'autres créateurs, même modifiés : réclamations de droits, contenu « réutilisé » non monétisable sur YouTube, risque d'avertissement.
+
 ## Clips de gameplay du créateur (à partir de la sortie, 19/11/2026)
 
 - Le créateur joue au mode histoire et envoie 3 à 5 clips par semaine (15-60 s), chacun avec une phrase d'explication.
