@@ -12,6 +12,14 @@
    (segments = (index de phrase, LABEL, headline, carte)). Cartes dispo dans `engine/v2.py` et `engine/render.py`.
    Puis : `cd engine && python3 videos.py render <clé> && python3 finish.py mix <clé> && python3 finish.py cover <clé>`
    (ajouter l'entrée correspondante dans `COVERS` de finish.py).
+5b. **Couverture de profil (OBLIGATOIRE, toutes les vidéos)** : TikTok et Instagram affichent la 1re image de la vidéo
+   sur la grille du profil. Ajouter une entrée dans `COVERS` de `engine/cover.py` puis
+   `cd engine && python3 cover.py <clé> apply` (incruste la couverture sur les 0,35 premières secondes, durée et son inchangés ;
+   pour une vidéo d'actu, adapter le chemin dans `__main__` à `videos/GTA6_<clé>.mp4`).
+   Règles : grande photo officielle avec un visage expressif ou un lieu spectaculaire (cadrage `focus` sur le visage),
+   2 lignes de titre géant au dégradé GTA, 1 pastille jaune d'accroche (3-4 mots), logo VCN en haut ;
+   tout le texte dans la zone 3:4 de la grille (y 240 → 1680). Vérifier l'image 0 de la vidéo finale et la grille recadrée 3:4.
+   Pour YouTube, téléverser aussi `covers/cover_<clé>.jpg` (`vidiq_upload_image`) et le passer en `thumbnailImageId`.
 6. **Hébergement** : copier `GTA6_<clé>.mp4` dans `videos/`, commit + push. Lien brut :
    `https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/<fichier>.mp4`
 7. **Brouillon** : vidIQ `vidiq_video_upload` (url brute) puis `vidiq_social_post_draft_create` vers
@@ -29,7 +37,7 @@
 - Une info par phrase, une carte par info ; pas plus de 6-7 s sans changement visuel.
 - Fin sur une question simple qui pousse à commenter, puis « abonne-toi ».
 - Titre court avec écart de curiosité (sans mentir), 1-2 emojis, #shorts ; légende avec 6-10 hashtags (dont #GTA6 #GTAVI #VCN).
-- Couverture : 3 lignes max de texte géant + 1 carte.
+- Couverture de profil (étape 5b) : l'image 0 de la vidéo est une vraie miniature — photo forte + 2 lignes de titre géant + pastille d'accroche. Jamais un fond vide.
 
 **Monétisable**
 - Durée finale > 60 s (TikTok Creator Rewards) — viser 62-75 s.
