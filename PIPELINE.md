@@ -71,9 +71,9 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Volume : voix nettement au-dessus de la musique (moyenne autour de -16 dB).
 - **Analyse de la voix AVANT chaque rendu (obligatoire, `engine/audiocheck.py`)** — je ne peux pas écouter, donc tout est mesuré :
   1. Fin coupée : Hedra (ElevenLabs v3) coupe souvent les derniers mots, même avec « [pause] ». Toujours terminer le texte envoyé à Hedra
-     par la signature audible « Allez, ciao ! » (demandée par le créateur), puis une phrase sacrifiée séparée par une pause : « Allez, ciao ! [pause] Voilà, voilà. ».
-     La phrase sacrifiée ne doit JAMAIS s'entendre dans la vidéo. Puis couper le MP3 au début du DERNIER blanc (silencedetect)
-     et vérifier que le dernier segment parlé retiré dure moins de 1 s (c'est bien « Voilà, voilà ») et que `tail_db` < -40 dB.
+     par une phrase sacrifiée séparée par une pause : « … [pause] Allez, ciao. » (choix du créateur).
+     La phrase sacrifiée est coupée au montage et ne doit JAMAIS s'entendre dans la vidéo. Puis couper le MP3 au début du DERNIER blanc (silencedetect)
+     et vérifier que le dernier segment parlé retiré dure moins de 1 s (c'est bien « Allez, ciao ») et que `tail_db` < -40 dB.
   2. Raccord (régénération d'une fin) : localiser le point de coupe avec `best_match(début_du_nouveau_clip, original)` (similarité > 0,55 =
      même phrase ; ~0,4 = sans rapport), couper l'original dans le blanc juste AVANT cette position, puis revérifier qu'aucune phrase
      n'est répétée (`best_match` < 0,5 sur les 6 s avant le raccord).
