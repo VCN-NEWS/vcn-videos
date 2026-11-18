@@ -90,7 +90,7 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
   On ne réduit JAMAIS la qualité pour économiser des crédits : toujours une voix off complète, durée 60-70 s, format v3.
 - **Dimanche 14 h 12 (tâche « production de la semaine »)** : produire les 14 vidéos du lundi au dimanche suivants (12 h 30 et 18 h 30).
   Contenu qui reste vrai toute la semaine : épisodes « Qui est… ? » (ordre de reserve.md), explications, astuces, secrets, guides, et les clips de gameplay du créateur.
-  Pas d'info qui peut devenir fausse avant sa date de publication. Budget : ~17 crédits Hedra par vidéo (~240/semaine) ; prévenir le créateur si le solde passe sous 300.
+  Pas d'info qui peut devenir fausse avant sa date de publication. Budget : ~20 crédits Hedra par vidéo (~280/semaine) ; prévenir le créateur si le solde passe sous 300.
   Pour chaque vidéo : brouillon vidIQ (3 comptes, publishAt = son créneau), puis écrire `semaine.md` (date, heure, sujet, titre, légende, hashtags, lien brut, postId, revision, contrôles audio).
 - **Dimanche 20 h 30 (tâche « validation du dimanche »)** : présenter `semaine.md` au créateur avec les vidéos ET les 10 dernières secondes de chacune à écouter, appliquer ses changements,
   et ne programmer (vidiq_social_post_publish) qu'après son « ok » explicite dans la session. Un silence n'est jamais un accord.
