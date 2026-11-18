@@ -2,7 +2,7 @@
 
 1. **Veille** : recherche web + vidIQ (tendances GTA 6). Éviter les sujets déjà listés dans `sujets.md`.
 2. **Vérification** : chaque chiffre recoupé sur 2 sources ; mention « non confirmé » si Rockstar n'a pas confirmé.
-3. **Script** : 150-190 mots en français, accroche en 1 phrase, une info par phrase, question finale + « abonne-toi ». Durée voix 60-70 s.
+3. **Script** : 190-220 mots en français (la voix est accélérée de 10 % et ses blancs retirés au montage v3 : il faut ~70-78 s de voix brute pour 60-70 s de vidéo), accroche en 1 phrase, une info par phrase, question finale + « abonne-toi ».
 4. **Voix** : Hedra `generate_speech`, modèle elevenlabs-v3, voix « Simon P. » `voice_f416ff19-9a7d-40f4-9a21-9b703c4d54ae`, langue fr (~15 crédits).
    **Ton raconté, pas lu** (demande du créateur) : `model_specific_parameters = {"stability": 0.4}` (la valeur par défaut 1.0 donne un ton de lecture),
    script écrit à l'oral (phrases courtes, « tu sais quoi ? », « et là… », apartés, suspense), et 2 à 4 balises d'expression ElevenLabs v3
