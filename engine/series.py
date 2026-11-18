@@ -30,7 +30,7 @@ VOICE = {
     .replace("Et le meilleur ?", "[excited] Et le meilleur ?")
     .replace("Alors, Lucia ou Jason", "[laughs] Alors, Lucia ou Jason"),
 }
-DUR = {"lucia": 59.794}  # durée réelle de la voix (s), à remplir quand le MP3 est là
+DUR = {"lucia": 61.283}  # durée réelle de la voix (s), à remplir quand le MP3 est là
 
 
 def H_(t, c1=(255, 150, 110), c2=(255, 70, 140)):
@@ -59,7 +59,7 @@ VIDEOS = {"lucia": video_lucia}
 
 
 # ---------------- format v3 (plein écran, plans de ~2 s) ----------------
-DUR["lucia3"] = 51.174  # voix_lucia3.mp3 = voix_lucia.mp3 sans les blancs et accélérée x1.1
+DUR["lucia3"] = 52.454  # voix_lucia3.mp3 = voix_lucia.mp3 sans les blancs et accélérée x1.1
 
 
 def video_lucia3():
