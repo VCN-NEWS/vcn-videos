@@ -244,7 +244,13 @@ def align_dp(sentences, total, sil, lead=0.0):
 
 
 def word_times(sentence, st, en):
-    words = sentence.split()
+    words = []
+    for w in sentence.split():
+        # ponctuation isolée (« : », « ? », « ! » à la française) collée au mot précédent
+        if words and all(c in ":;?!…»" for c in w):
+            words[-1] += "\u00a0" + w
+        else:
+            words.append(w)
     lens = np.array([len(w) + 3 for w in words], float)
     cum = np.cumsum(np.concatenate([[0], lens])) / lens.sum()
     return [(w, st + cum[i] * (en - st), st + cum[i + 1] * (en - st)) for i, w in enumerate(words)]
