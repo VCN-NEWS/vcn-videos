@@ -34,6 +34,19 @@
 8. **Validation** : montrer le brouillon et attendre le « ok » du créateur avant `vidiq_social_post_publish`.
 9. Ajouter le sujet publié à `sujets.md`.
 
+## Format standard : v3 « plein écran » (validé par le créateur le 18/11/2026)
+
+Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples : `video_lucia3` (engine/series.py, série) et `video_notes3` (engine/videos.py, actu).
+- Images officielles de `bibliotheque/` en plein cadre (dossiers `personnages/`, `lieus/`, `clips/`), un plan toutes les ~2 s ; cadrer `fx` sur les visages (planche avec repères verticaux pour estimer).
+- Actu chiffrée : médias `("card", photo_de_fond, fx, builder)` = carte animée sur photo assombrie. Duel/choix final : `("split", ...)`.
+- Coupes « punch » (zoom + flash + son), titres qui claquent, pastilles jaunes d'info, écran partagé pour la question finale.
+- Voix dès la 1re image : traiter le MP3 Hedra avec
+  `ffmpeg -i voix_<clé>.mp3 -af "silenceremove=stop_periods=-1:stop_duration=0.25:stop_threshold=-35dB:stop_silence=0.22,atempo=1.1" voix_<clé>3.mp3`
+  et mettre sa durée dans DUR.
+- Accroche de moins de 8 mots, promesse + révélations numérotées, relance vers 50 %, question finale qui pousse aux commentaires.
+- Durée : phase de croissance = 45-65 s (la rétention compte plus que le seuil des 60 s tant que la monétisation TikTok n'est pas accessible).
+- Puis couverture (étape 5b) : `cover.add_cover(video, covers/cover_<clé>.jpg)`.
+
 ## Exigences de qualité (à vérifier avant chaque brouillon)
 
 **Attrayant et viral**
