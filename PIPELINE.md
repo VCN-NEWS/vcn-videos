@@ -44,7 +44,7 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
   `ffmpeg -i voix_<clé>.mp3 -af "silenceremove=stop_periods=-1:stop_duration=0.25:stop_threshold=-35dB:stop_silence=0.22,atempo=1.1" voix_<clé>3.mp3`
   et mettre sa durée dans DUR.
 - Accroche de moins de 8 mots, promesse + révélations numérotées, relance vers 50 %, question finale qui pousse aux commentaires.
-- Durée : phase de croissance = 45-65 s (la rétention compte plus que le seuil des 60 s tant que la monétisation TikTok n'est pas accessible).
+- Durée : 55-70 s (décision du créateur : pas de vidéos raccourcies).
 - Puis couverture (étape 5b) : `cover.add_cover(video, covers/cover_<clé>.jpg)`.
 
 ## Exigences de qualité (à vérifier avant chaque brouillon)
@@ -83,14 +83,21 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
   3. Mots avalés : comparer la durée parlée de chaque phrase courte à sa durée attendue (caractères / débit du fichier) ; > 25 % trop court = régénérer.
   4. Envoyer au créateur la fin de la vidéo (10 dernières secondes) à écouter avant validation : il est le seul à pouvoir entendre. Sinon, régénérer seulement la dernière phrase (~2 crédits, avec accord) et la recoller au blanc qui la précède.
 
-## Programme hebdomadaire (décidé par le créateur le 18/11/2026)
+## Programme (décidé par le créateur le 18/11/2026, 2 vidéos par jour à partir du 19/11)
 
-- **Dimanche après-midi (tâche « production de la semaine »)** : produire les 7 vidéos du lundi au dimanche suivants, une par jour à 18 h 30 (Europe/Paris).
-  Contenu qui reste vrai toute la semaine : épisodes « Qui est… ? » (ordre de reserve.md), explications, astuces, secrets et guides GTA 6.
-  Pas d'info qui peut devenir fausse avant sa date de publication.
-  Pour chaque vidéo : brouillon vidIQ (3 comptes, publishAt = son jour à 18 h 30), puis écrire `semaine.md` (date, sujet, titre, légende, hashtags, lien brut de la vidéo, postId, revision).
-- **Dimanche 20 h 30 (tâche « validation du dimanche »)** : présenter le programme de `semaine.md` au créateur, appliquer ses changements, et ne programmer (vidiq_social_post_publish) qu'après son « ok » explicite dans la session. Un silence n'est jamais un accord.
-- **En semaine (tâche quotidienne, mode alerte)** : seulement en cas de grosse actu GTA 6, préparer une vidéo bonus et demander l'accord du créateur ; sinon ne rien faire.
+- **Cadence : 2 vidéos par jour, à 12 h 30 et 18 h 30 (Europe/Paris)**, sur les 3 comptes.
+- **Priorité absolue du créateur : des vidéos très attrayantes et virales, sans aucune coupure de son ni de narration.**
+  On ne réduit JAMAIS la qualité pour économiser des crédits : toujours une voix off complète, durée 55-70 s, format v3.
+- **Dimanche 14 h 12 (tâche « production de la semaine »)** : produire les 14 vidéos du lundi au dimanche suivants (12 h 30 et 18 h 30).
+  Contenu qui reste vrai toute la semaine : épisodes « Qui est… ? » (ordre de reserve.md), explications, astuces, secrets, guides, et les clips de gameplay du créateur.
+  Pas d'info qui peut devenir fausse avant sa date de publication. Budget : ~17 crédits Hedra par vidéo (~240/semaine) ; prévenir le créateur si le solde passe sous 300.
+  Pour chaque vidéo : brouillon vidIQ (3 comptes, publishAt = son créneau), puis écrire `semaine.md` (date, heure, sujet, titre, légende, hashtags, lien brut, postId, revision, contrôles audio).
+- **Dimanche 20 h 30 (tâche « validation du dimanche »)** : présenter `semaine.md` au créateur avec les vidéos ET les 10 dernières secondes de chacune à écouter, appliquer ses changements,
+  et ne programmer (vidiq_social_post_publish) qu'après son « ok » explicite dans la session. Un silence n'est jamais un accord.
+- **Tâche quotidienne (13 h 47)** : jusqu'au samedi 21/11 inclus, préparer les 2 vidéos du LENDEMAIN (12 h 30 et 18 h 30, sauf créneau déjà pris).
+  À partir du dimanche 22/11 : mode alerte — seulement en cas de grosse actu GTA 6, une vidéo bonus à 15 h 30 le lendemain, avec l'accord du créateur ; sinon ne rien faire.
+- **Contrôles bloquants avant tout brouillon** (sinon on corrige, on n'envoie pas) : `audiocheck.voice_cut_in_video(...)` = None (narration entière),
+  aucune phrase répétée, aucune phrase sacrifiée audible, fin de voix sur un silence, synchro > 95 %, volume ≈ -16 dB.
 
 ## Clips de gameplay du créateur (à partir de la sortie, 19/11/2026)
 
