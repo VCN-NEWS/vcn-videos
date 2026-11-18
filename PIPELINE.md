@@ -2,7 +2,8 @@
 
 1. **Veille** : recherche web + vidIQ (tendances GTA 6). Éviter les sujets déjà listés dans `sujets.md`.
 2. **Vérification** : chaque chiffre recoupé sur 2 sources ; mention « non confirmé » si Rockstar n'a pas confirmé.
-3. **Script** : 190-220 mots en français (la voix est accélérée de 10 % et ses blancs retirés au montage v3 : il faut ~70-78 s de voix brute pour 60-70 s de vidéo), accroche en 1 phrase, une info par phrase, question finale + « abonne-toi ».
+3. **Script** : 250-280 mots en français (la voix est accélérée de 10 % et ses blancs retirés au montage v3, soit ~85 % de sa durée brute : il faut ≥ 84 s de voix brute pour ≥ 72 s de vidéo), accroche en 1 phrase, une info par phrase, question finale + « abonne-toi ».
+   **DURÉE MINIMALE : 1 min 10 s (70 s) de vidéo finale, exigée par le créateur pour la monétisation** — viser 72-80 s. Si la voix traitée est trop courte, ajouter du contenu (phrase supplémentaire régénérée), jamais du silence ni un écran figé.
 4. **Voix** : Hedra `generate_speech`, modèle elevenlabs-v3, voix « Simon P. » `voice_f416ff19-9a7d-40f4-9a21-9b703c4d54ae`, langue fr (~15 crédits).
    **Ton raconté, pas lu** (demande du créateur) : `model_specific_parameters = {"stability": 0.4}` (la valeur par défaut 1.0 donne un ton de lecture),
    script écrit à l'oral (phrases courtes, « tu sais quoi ? », « et là… », apartés, suspense), et 2 à 4 balises d'expression ElevenLabs v3
@@ -44,7 +45,7 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
   `ffmpeg -i voix_<clé>.mp3 -af "silenceremove=stop_periods=-1:stop_duration=0.25:stop_threshold=-35dB:stop_silence=0.22,atempo=1.1" voix_<clé>3.mp3`
   et mettre sa durée dans DUR.
 - Accroche de moins de 8 mots, promesse + révélations numérotées, relance vers 50 %, question finale qui pousse aux commentaires.
-- Durée : 60-70 s (décision du créateur : pas de vidéos raccourcies).
+- Durée : au moins 70 s, viser 72-80 s (décision du créateur, monétisation).
 - Puis couverture (étape 5b) : `cover.add_cover(video, covers/cover_<clé>.jpg)`.
 
 ## Exigences de qualité (à vérifier avant chaque brouillon)
@@ -58,7 +59,7 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Couverture de profil (étape 5b) : l'image 0 de la vidéo est une vraie miniature — photo forte + 2 lignes de titre géant + pastille d'accroche. Jamais un fond vide.
 
 **Monétisable**
-- Durée finale 60-70 s (au-dessus de 60 s pour TikTok Creator Rewards plus tard).
+- Durée finale ≥ 70 s (1 min 10), viser 72-80 s — contrôle BLOQUANT.
 - Script original avec un angle et une explication (pas une simple lecture d'article) — règle YouTube contre le contenu « inauthentique ».
 - Varier d'une vidéo à l'autre : thème de fond (`theme` = night / sunset / day), couleurs des titres, types de cartes, structure (liste, duel, explication, chronologie).
 - Aucun extrait, image, logo ni musique de Rockstar ou de tiers ; musique générée par le moteur uniquement.
@@ -87,17 +88,17 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 
 - **Cadence : 2 vidéos par jour, à 12 h 30 et 18 h 30 (Europe/Paris)**, sur les 3 comptes.
 - **Priorité absolue du créateur : des vidéos très attrayantes et virales, sans aucune coupure de son ni de narration.**
-  On ne réduit JAMAIS la qualité pour économiser des crédits : toujours une voix off complète, durée 60-70 s, format v3.
+  On ne réduit JAMAIS la qualité pour économiser des crédits : toujours une voix off complète, durée ≥ 70 s (viser 72-80 s), format v3.
 - **Dimanche 14 h 12 (tâche « production de la semaine »)** : produire les 14 vidéos du lundi au dimanche suivants (12 h 30 et 18 h 30).
   Contenu qui reste vrai toute la semaine : épisodes « Qui est… ? » (ordre de reserve.md), explications, astuces, secrets, guides, et les clips de gameplay du créateur.
-  Pas d'info qui peut devenir fausse avant sa date de publication. Budget : ~20 crédits Hedra par vidéo (~280/semaine) ; prévenir le créateur si le solde passe sous 300.
+  Pas d'info qui peut devenir fausse avant sa date de publication. Budget : ~23 crédits Hedra par vidéo (~320/semaine) ; prévenir le créateur si le solde passe sous 300.
   Pour chaque vidéo : brouillon vidIQ (3 comptes, publishAt = son créneau), puis écrire `semaine.md` (date, heure, sujet, titre, légende, hashtags, lien brut, postId, revision, contrôles audio).
 - **Dimanche 20 h 30 (tâche « validation du dimanche »)** : présenter `semaine.md` au créateur avec les vidéos ET les 10 dernières secondes de chacune à écouter, appliquer ses changements,
   et ne programmer (vidiq_social_post_publish) qu'après son « ok » explicite dans la session. Un silence n'est jamais un accord.
 - **Tâche quotidienne (13 h 47)** : jusqu'au samedi 21/11 inclus, préparer les 2 vidéos du LENDEMAIN (12 h 30 et 18 h 30, sauf créneau déjà pris).
   À partir du dimanche 22/11 : mode alerte — seulement en cas de grosse actu GTA 6, une vidéo bonus à 15 h 30 le lendemain, avec l'accord du créateur ; sinon ne rien faire.
 - **Contrôles bloquants avant tout brouillon** (sinon on corrige, on n'envoie pas) : `audiocheck.voice_cut_in_video(...)` = None (narration entière),
-  aucune phrase répétée, aucune phrase sacrifiée audible, fin de voix sur un silence, synchro > 95 %, volume ≈ -16 dB.
+  aucune phrase répétée, aucune phrase sacrifiée audible, fin de voix sur un silence, synchro > 95 %, volume ≈ -16 dB, durée ≥ 70 s.
 
 ## Mélange de contenus (validé par le créateur le 18/11/2026)
 
