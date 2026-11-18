@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageChops
 
 W, H, FPS = 1080, 1920, 30
-D = "/home/claude/proto"
+D = os.path.dirname(os.path.abspath(__file__))
 FD = "/usr/share/fonts/opentype/inter/"
 
 

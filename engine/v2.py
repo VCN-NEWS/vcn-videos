@@ -7,7 +7,7 @@ from render import (W, H, FPS, font, clamp, ease_out_cubic, ease_out_back, ease_
                     text_size, draw_center, gradient_text, headline, chip, calendar_card, clock_card, timeline_card,
                     big_stat_card, xbox_card, ps_card, donut_card, preload_card, WHITE, MUTED, PINK, VIOLET, GOLD, ACCENT)
 
-D = "/home/claude/proto"
+D = os.path.dirname(os.path.abspath(__file__))
 GREEN = (120, 230, 150)
 RED = (255, 90, 110)
 BLUE = (110, 200, 255)
