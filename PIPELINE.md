@@ -70,7 +70,9 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Synchro : > 95 % des mots affichés pendant que la voix parle.
 - Volume : voix nettement au-dessus de la musique (moyenne autour de -16 dB).
 - Fin de voix : Hedra coupe parfois le dernier mot. Toujours finir le texte envoyé à Hedra par « … [pause] » (les sous-titres gardent la phrase sans ce suffixe),
-  puis vérifier que les 0,2 dernières secondes du MP3 sont sous -35 dB. Sinon, régénérer seulement la dernière phrase (~2 crédits, avec accord) et la recoller au blanc qui la précède.
+  puis vérifier que les 0,2 dernières secondes du MP3 sont sous -35 dB.
+- Mots avalés : comparer, pour les 3 dernières phrases et pour chaque phrase courte, la durée parlée réelle (silencedetect) à la durée attendue
+  (nombre de caractères / débit moyen du fichier). Une phrase plus de 25 % trop courte = mots manquants (ex. « Donne ta note » devenu « Don… ») : régénérer la phrase. Sinon, régénérer seulement la dernière phrase (~2 crédits, avec accord) et la recoller au blanc qui la précède.
 
 ## Programme hebdomadaire (décidé par le créateur le 18/11/2026)
 
