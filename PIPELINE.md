@@ -43,3 +43,12 @@
 - Regarder une planche d'images (1 toutes les 4 s) : chaque carte correspond à la phrase dite.
 - Synchro : > 95 % des mots affichés pendant que la voix parle.
 - Volume : voix nettement au-dessus de la musique (moyenne autour de -16 dB).
+
+## Programme hebdomadaire (décidé par le créateur le 18/11/2026)
+
+- **Dimanche après-midi (tâche « production de la semaine »)** : produire les 7 vidéos du lundi au dimanche suivants, une par jour à 18 h 30 (Europe/Paris).
+  Contenu qui reste vrai toute la semaine : épisodes « Qui est… ? » (ordre de reserve.md), explications, astuces, secrets et guides GTA 6.
+  Pas d'info qui peut devenir fausse avant sa date de publication.
+  Pour chaque vidéo : brouillon vidIQ (3 comptes, publishAt = son jour à 18 h 30), puis écrire `semaine.md` (date, sujet, titre, légende, hashtags, lien brut de la vidéo, postId, revision).
+- **Dimanche 20 h 30 (tâche « validation du dimanche »)** : présenter le programme de `semaine.md` au créateur, appliquer ses changements, et ne programmer (vidiq_social_post_publish) qu'après son « ok » explicite dans la session. Un silence n'est jamais un accord.
+- **En semaine (tâche quotidienne, mode alerte)** : seulement en cas de grosse actu GTA 6, préparer une vidéo bonus et demander l'accord du créateur ; sinon ne rien faire.
