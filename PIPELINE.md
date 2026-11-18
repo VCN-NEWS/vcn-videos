@@ -69,10 +69,15 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Regarder une planche d'images (1 toutes les 4 s) : chaque carte correspond à la phrase dite.
 - Synchro : > 95 % des mots affichés pendant que la voix parle.
 - Volume : voix nettement au-dessus de la musique (moyenne autour de -16 dB).
-- Fin de voix : Hedra coupe parfois le dernier mot. Toujours finir le texte envoyé à Hedra par « … [pause] » (les sous-titres gardent la phrase sans ce suffixe),
-  puis vérifier que les 0,2 dernières secondes du MP3 sont sous -35 dB.
-- Mots avalés : comparer, pour les 3 dernières phrases et pour chaque phrase courte, la durée parlée réelle (silencedetect) à la durée attendue
-  (nombre de caractères / débit moyen du fichier). Une phrase plus de 25 % trop courte = mots manquants (ex. « Donne ta note » devenu « Don… ») : régénérer la phrase. Sinon, régénérer seulement la dernière phrase (~2 crédits, avec accord) et la recoller au blanc qui la précède.
+- **Analyse de la voix AVANT chaque rendu (obligatoire, `engine/audiocheck.py`)** — je ne peux pas écouter, donc tout est mesuré :
+  1. Fin coupée : Hedra (ElevenLabs v3) coupe souvent les derniers mots, même avec « [pause] ». Toujours terminer le texte envoyé à Hedra
+     par une phrase sacrifiée séparée par une pause : « … [pause] Voilà, voilà. ». Puis couper le MP3 au début du DERNIER blanc (silencedetect)
+     et vérifier que le dernier segment parlé retiré dure moins de 1 s (c'est bien « Voilà, voilà ») et que `tail_db` < -40 dB.
+  2. Raccord (régénération d'une fin) : localiser le point de coupe avec `best_match(début_du_nouveau_clip, original)` (similarité > 0,55 =
+     même phrase ; ~0,4 = sans rapport), couper l'original dans le blanc juste AVANT cette position, puis revérifier qu'aucune phrase
+     n'est répétée (`best_match` < 0,5 sur les 6 s avant le raccord).
+  3. Mots avalés : comparer la durée parlée de chaque phrase courte à sa durée attendue (caractères / débit du fichier) ; > 25 % trop court = régénérer.
+  4. Envoyer au créateur la fin de la vidéo (10 dernières secondes) à écouter avant validation : il est le seul à pouvoir entendre. Sinon, régénérer seulement la dernière phrase (~2 crédits, avec accord) et la recoller au blanc qui la précède.
 
 ## Programme hebdomadaire (décidé par le créateur le 18/11/2026)
 
