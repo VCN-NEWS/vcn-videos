@@ -182,7 +182,7 @@ VIDEOS["notes"] = video_notes
 
 
 # ---------------- format v3 (plein écran) ----------------
-DUR["notes3"] = 61.780  # voix_notes3.mp3 = voix_notes.mp3 sans les blancs, x1.1
+DUR["notes3"] = 61.884  # voix_notes3.mp3 = voix_notes.mp3 sans les blancs, x1.1
 
 
 def video_notes3():
