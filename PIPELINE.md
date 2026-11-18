@@ -16,7 +16,12 @@
    sur la grille du profil. Ajouter une entrée dans `COVERS` de `engine/cover.py` puis
    `cd engine && python3 cover.py <clé> apply` (incruste la couverture sur les 0,35 premières secondes, durée et son inchangés ;
    pour une vidéo d'actu, adapter le chemin dans `__main__` à `videos/GTA6_<clé>.mp4`).
-   Règles : grande photo officielle avec un visage expressif ou un lieu spectaculaire (cadrage `focus` sur le visage),
+   Style validé par le créateur (couverture de Lucia = référence, `covers/cover_lucia.jpg`) :
+   - **Personnage** : TOUJOURS un gros plan du visage (regard caméra ou expression intense), le visage remplit le haut de l'image ;
+     choisir dans `bibliotheque/` la photo où le visage est le plus grand et net, régler `focus`/`zoom` sur le visage.
+   - **Lieu** : le même style en plan « carte postale » : le point le plus spectaculaire du lieu (monument, plage, skyline, néons)
+     en grand dans le haut de l'image, couleurs vives.
+   Règles : grande photo officielle,
    2 lignes de titre géant au dégradé GTA, 1 pastille jaune d'accroche (3-4 mots), logo VCN en haut ;
    tout le texte dans la zone 3:4 de la grille (y 240 → 1680). Vérifier l'image 0 de la vidéo finale et la grille recadrée 3:4.
    Pour YouTube, téléverser aussi `covers/cover_<clé>.jpg` (`vidiq_upload_image`) et le passer en `thumbnailImageId`.
