@@ -57,6 +57,46 @@ def video_lucia():
 
 VIDEOS = {"lucia": video_lucia}
 
+
+# ---------------- format v3 (plein écran, plans de ~2 s) ----------------
+DUR["lucia3"] = 51.174  # voix_lucia3.mp3 = voix_lucia.mp3 sans les blancs et accélérée x1.1
+
+
+def video_lucia3():
+    from v3 import FullVideo
+    P = "personnages/"
+    shots = [
+        (0, 0.0, ("photo", P + "lucia_caminos_14.jpg", 0.22, 0.38, 1.25), "QUI EST LUCIA ?", None),
+        (0, 0.55, ("photo", P + "lucia_caminos_13.jpg", 0.22, 0.3, 1.2), None, "1RE HÉROÏNE DE GTA"),
+        (1, 0.0, ("photo", P + "lucia_caminos_05.jpg", 0.6, 0.35, 1.0), "SORTIE DE PRISON", None),
+        (2, 0.0, ("clip", "clips/lucia_caminos.mp4", 0.56), None, "LUCIA CAMINOS"),
+        (3, 0.0, ("photo", P + "lucia_caminos_10.jpg", 0.53, 0.4, 1.15), "1RE DÉVOILÉE", None),
+        (3, 0.55, ("photo", P + "jason_and_lucia_01.jpg", 0.35, 0.4, 1.0), None, "AVANT JASON"),
+        (4, 0.0, ("photo", P + "lucia_caminos_04.jpg", 0.33, 0.4, 1.1), None, "PÉNITENCIER DE LEONIDA"),
+        (5, 0.0, ("photo", P + "lucia_caminos_11.jpg", 0.75, 0.4, 1.1), None, None),
+        (6, 0.0, ("photo", P + "lucia_caminos_01.jpg", 0.66, 0.35, 1.15), "UNE BAGARREUSE", None),
+        (7, 0.0, ("photo", P + "lucia_caminos_09.jpg", 0.5, 0.35, 1.1), None, None),
+        (8, 0.0, ("photo", P + "lucia_caminos_02.jpg", 0.52, 0.35, 1.1), "SON RÊVE ?", None),
+        (9, 0.0, ("photo", P + "lucia_caminos_06.jpg", 0.58, 0.35, 1.1), "LA BELLE VIE", None),
+        (10, 0.0, ("photo", P + "lucia_caminos_07.jpg", 0.40, 0.35, 1.1), None, None),
+        (11, 0.0, ("photo", P + "lucia_caminos_13.jpg", 0.22, 0.3, 1.45), "ELLE VA LA PRENDRE", None),
+        (12, 0.0, ("photo", P + "jason_and_lucia_11.jpg", 0.62, 0.4, 1.0), None, "JASON DUVAL"),
+        (13, 0.0, ("photo", P + "jason_and_lucia_13.jpg", 0.5, 0.4, 1.0), "BONNIE & CLYDE", None),
+        (14, 0.0, ("photo", P + "jason_and_lucia_09.jpg", 0.5, 0.4, 1.0), "TOUT CONTRE EUX", None),
+        (14, 0.5, ("photo", P + "jason_and_lucia_19.jpg", 0.56, 0.4, 1.0), None, None),
+        (15, 0.0, ("photo", P + "jason_and_lucia_08.jpg", 0.3, 0.5, 1.0), None, None),
+        (16, 0.0, ("photo", P + "jason_and_lucia_02.jpg", 0.46, 0.4, 1.0), "LE MEILLEUR ?", None),
+        (17, 0.0, ("photo", P + "jason_and_lucia_15.jpg", 0.31, 0.4, 1.0), "CHANGE DE PERSO", None),
+        (17, 0.5, ("photo", P + "jason_and_lucia_15.jpg", 0.62, 0.4, 1.0), "EN PLEIN BRAQUAGE", None),
+        (18, 0.0, ("split", P + "lucia_caminos_13.jpg", (0.22, 0.32), P + "jason_and_lucia_01.jpg", (0.43, 0.3), "LUCIA", "JASON"), None, None),
+        (19, 0.0, ("photo", P + "jason_and_lucia_16.jpg", 0.36, 0.5, 1.0), "ABONNE-TOI !", None),
+    ]
+    labels = {0: "QUI EST-ELLE ?", 2: "SON PASSÉ", 10: "SON RÊVE", 14: "SON DUO", 19: "EN JEU", 22: "TON AVIS"}
+    return FullVideo("lucia3", TEXTS["lucia"], DUR["lucia3"], shots, PINK, labels=labels)
+
+
+VIDEOS["lucia3"] = video_lucia3
+
 if __name__ == "__main__":
     mode, k = sys.argv[1], sys.argv[2]
     v = VIDEOS[k]()
