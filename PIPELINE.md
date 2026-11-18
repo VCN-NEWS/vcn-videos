@@ -69,6 +69,8 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Regarder une planche d'images (1 toutes les 4 s) : chaque carte correspond à la phrase dite.
 - Synchro : > 95 % des mots affichés pendant que la voix parle.
 - Volume : voix nettement au-dessus de la musique (moyenne autour de -16 dB).
+- Fin de voix : Hedra coupe parfois le dernier mot. Toujours finir le texte envoyé à Hedra par « … [pause] » (les sous-titres gardent la phrase sans ce suffixe),
+  puis vérifier que les 0,2 dernières secondes du MP3 sont sous -35 dB. Sinon, régénérer seulement la dernière phrase (~2 crédits, avec accord) et la recoller au blanc qui la précède.
 
 ## Programme hebdomadaire (décidé par le créateur le 18/11/2026)
 
