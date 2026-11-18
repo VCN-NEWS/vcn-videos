@@ -44,7 +44,7 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
   `ffmpeg -i voix_<clé>.mp3 -af "silenceremove=stop_periods=-1:stop_duration=0.25:stop_threshold=-35dB:stop_silence=0.22,atempo=1.1" voix_<clé>3.mp3`
   et mettre sa durée dans DUR.
 - Accroche de moins de 8 mots, promesse + révélations numérotées, relance vers 50 %, question finale qui pousse aux commentaires.
-- Durée : 55-70 s (décision du créateur : pas de vidéos raccourcies).
+- Durée : 60-70 s (décision du créateur : pas de vidéos raccourcies).
 - Puis couverture (étape 5b) : `cover.add_cover(video, covers/cover_<clé>.jpg)`.
 
 ## Exigences de qualité (à vérifier avant chaque brouillon)
@@ -58,7 +58,7 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Couverture de profil (étape 5b) : l'image 0 de la vidéo est une vraie miniature — photo forte + 2 lignes de titre géant + pastille d'accroche. Jamais un fond vide.
 
 **Monétisable**
-- Durée finale > 60 s (TikTok Creator Rewards) — viser 62-75 s.
+- Durée finale 60-70 s (au-dessus de 60 s pour TikTok Creator Rewards plus tard).
 - Script original avec un angle et une explication (pas une simple lecture d'article) — règle YouTube contre le contenu « inauthentique ».
 - Varier d'une vidéo à l'autre : thème de fond (`theme` = night / sunset / day), couleurs des titres, types de cartes, structure (liste, duel, explication, chronologie).
 - Aucun extrait, image, logo ni musique de Rockstar ou de tiers ; musique générée par le moteur uniquement.
@@ -87,7 +87,7 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 
 - **Cadence : 2 vidéos par jour, à 12 h 30 et 18 h 30 (Europe/Paris)**, sur les 3 comptes.
 - **Priorité absolue du créateur : des vidéos très attrayantes et virales, sans aucune coupure de son ni de narration.**
-  On ne réduit JAMAIS la qualité pour économiser des crédits : toujours une voix off complète, durée 55-70 s, format v3.
+  On ne réduit JAMAIS la qualité pour économiser des crédits : toujours une voix off complète, durée 60-70 s, format v3.
 - **Dimanche 14 h 12 (tâche « production de la semaine »)** : produire les 14 vidéos du lundi au dimanche suivants (12 h 30 et 18 h 30).
   Contenu qui reste vrai toute la semaine : épisodes « Qui est… ? » (ordre de reserve.md), explications, astuces, secrets, guides, et les clips de gameplay du créateur.
   Pas d'info qui peut devenir fausse avant sa date de publication. Budget : ~17 crédits Hedra par vidéo (~240/semaine) ; prévenir le créateur si le solde passe sous 300.
