@@ -6,20 +6,20 @@ S'il n'y en a plus, produire le **prochain épisode à faire** de la série « Q
 ## Prêtes à publier
 
 ## Épisodes à faire (dans l'ordre)
-1. Jason Duval (clip `clips/jason_duval.mp4` + photos `personnages/jason_duval_*`)
-2. Vice City — de jour (lieux/vice_city_*)
-3. Raul Bautista
-4. Leonida Keys
-5. Boobie Ike
-6. Grassrivers
-7. Real Dimez
-8. Port Gellhorn (éviter les images marquées a_eviter)
-9. Dre'Quan Priest
-10. Mount Kalaga National Park
-11. Cal Hampton
-12. Ambrosia
-13. Brian Heder
-14. Vice City — la nuit
+1. Vice City — de jour (lieux/vice_city_*)
+2. Raul Bautista
+3. Leonida Keys
+4. Boobie Ike
+5. Grassrivers
+6. Real Dimez
+7. Port Gellhorn (éviter les images marquées a_eviter)
+8. Dre'Quan Priest
+9. Mount Kalaga National Park
+10. Cal Hampton
+11. Ambrosia
+12. Brian Heder
+13. Vice City — la nuit
 
 ## Publiées
 - 19/11 12 h 30 : « Qui est Lucia Caminos ? » (VCN_lucia_v3.mp4)
+- 20/11 12 h 30 : « Qui est Jason Duval ? » (VCN_jason_v3.mp4)
