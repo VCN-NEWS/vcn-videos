@@ -1,0 +1,9 @@
+# Fichiers intermédiaires de rendu (régénérables)
+engine/pv_*3_*.jpg
+engine/silent_*3.mp4
+engine/music_*3.wav
+engine/voix_*_cut.mp3
+engine/voix_*_fin.mp3
+engine/GTA6_*3.mp4
+engine/VCN_*3.mp4
+engine/__pycache__/
