@@ -222,6 +222,70 @@ def video_notes3():
 
 VIDEOS["notes3"] = video_notes3
 
+
+# ---------------- 20/11 18 h 30 : record de streaming (format v3) ----------------
+DUR["stream3"] = 84.323  # voix_stream3.mp3 = voix_stream.mp3 coupée avant « Allez, ciao », sans les blancs, x1.1
+
+
+def live_counter(p, value, unit, sub, col=(255, 70, 90)):
+    """Compteur de spectateurs « EN DIRECT » qui grimpe jusqu'à value."""
+    w, h = 900, 520
+    im = card(w, h)
+    d = ImageDraw.Draw(im)
+    blink = 255 if int(p * 10) % 2 == 0 or p >= 1 else 120
+    d.rounded_rectangle([w / 2 - 150, 40, w / 2 + 150, 110], 35, fill=col + (255,))
+    d.ellipse([w / 2 - 120, 60, w / 2 - 90, 90], fill=(255, 255, 255, blink))
+    d.text((w / 2 - 70, 50), "EN DIRECT", font=font("InterDisplay-Black", 44), fill=WHITE)
+    v = value * ease_out_cubic(clamp(p * 1.4))
+    txt = (f"{v:.1f}".replace(".", ",")) if value < 100 else f"{int(v)}"
+    t = gradient_text(txt + " " + unit, font("InterDisplay-Black", 170), (255, 160, 110), (255, 70, 140))
+    im.alpha_composite(t, ((w - t.width) // 2, 140))
+    draw_center(d, w / 2, 420, sub, font("Inter-SemiBold", 42), MUTED)
+    return im
+
+
+def video_stream3():
+    from v3 import FullVideo
+    L, P = "lieus/", "personnages/"
+    TW = (170, 120, 255)
+    shots = [
+        (0, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: live_counter(p, 7.9, "M", "spectateurs en même temps")), "RECORD HISTORIQUE", None),
+        (1, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: score_badge("99", "Pas la note…", col=(150, 140, 170))), "PAS SA NOTE…", None),
+        (2, 0.0, ("photo", P + "jason_and_lucia_01.jpg", 0.35, 0.4, 1.0), "ENCORE PLUS FOU", None),
+        (3, 0.0, ("photo", P + "jason_and_lucia_14.jpg", 0.5, 0.4, 1.0), None, "4 CHIFFRES"),
+        (4, 0.0, ("card", L + "vice_city_08.jpg", 0.5, lambda p: live_counter(p, 7.9, "M", "Twitch + YouTube + Kick + autres")), "N°1 : 7,9 MILLIONS", None),
+        (5, 0.0, ("photo", L + "vice_city_13.jpg", 0.5, 0.5, 1.0), None, "EN LIVE, EN MÊME TEMPS"),
+        (5, 0.55, ("photo", P + "jason_and_lucia_18.jpg", 0.5, 0.5, 1.0), None, "TOUTES PLATEFORMES"),
+        (6, 0.0, ("card", L + "vice_city_03.jpg", 0.5, lambda p: big_stat_card("x 3,7", "la population de Paris")), "4 FOIS PARIS !", None),
+        (7, 0.0, ("photo", L + "vice_city_01.jpg", 0.5, 0.5, 1.0), "JAMAIS VU", None),
+        (8, 0.0, ("photo", P + "jason_and_lucia_02.jpg", 0.5, 0.4, 1.0), "N°2 : L'ANCIEN RECORD", None),
+        (9, 0.0, ("card", L + "vice_city_17.jpg", 0.5, lambda p: bars_card([("Valorant · 2020", 1.74, BLUE, "1,7 M"), ("GTA 6 · 2026", 7.91, GOLD, "7,9 M")], p, title="Record de lancement (spectateurs)", maxv=7.91)), "VALORANT : 1,7 M", None),
+        (10, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: big_stat_card("x 4,5", "l'ancien record")), "4,5 FOIS MIEUX !", None),
+        (11, 0.0, ("photo", P + "lucia_caminos_14.jpg", 0.22, 0.38, 1.2), None, "TU AS BIEN ENTENDU"),
+        (12, 0.0, ("card", L + "vice_city_25.jpg", 0.5, lambda p: live_counter(p, 3.3, "M", "rien que sur Twitch", col=(145, 70, 255))), "N°3 : TWITCH", None),
+        (13, 0.0, ("photo", P + "jason_and_lucia_14.jpg", 0.3, 0.4, 1.2), "RECORD DE TWITCH", None),
+        (14, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: bars_card([("GTA 6", 3.3, TW, "3,3 M"), ("League of Legends", 3.11, BLUE, "3,1 M"), ("Fortnite", 3.04, (120, 230, 150), "3,0 M")], p, title="Record Twitch d'un jeu (spectateurs)", maxv=3.3)), "LOL ET FORTNITE BATTUS", None),
+        (15, 0.0, ("photo", L + "vice_city_02.jpg", 0.5, 0.45, 1.0), "ET LE JEU SOLO ?", None),
+        (16, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: big_stat_card("30 MIN", "pour battre Hogwarts Legacy")), "TOMBÉ EN 30 MIN", None),
+        (17, 0.0, ("photo", P + "jason_and_lucia_09.jpg", 0.5, 0.4, 1.0), None, "CHRONO !"),
+        (18, 0.0, ("photo", P + "jason_and_lucia_12.jpg", 0.62, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (19, 0.0, ("card", L + "vice_city_10.jpg", 0.5, lambda p: big_stat_card("1 MD $", "un milliard de dollars")), "N°4 : 1 MILLIARD", None),
+        (20, 0.0, ("photo", P + "jason_and_lucia_02.jpg", 0.3, 0.45, 1.3), None, "ESTIMATION"),
+        (20, 0.45, ("card", L + "vice_city_26.jpg", 0.5, lambda p: big_stat_card("11 M", "précommandes (estimation)")), "11 MILLIONS", None),
+        (21, 0.0, ("photo", P + "jason_and_lucia_04.jpg", 0.5, 0.4, 1.0), "AVANT LA SORTIE !", None),
+        (22, 0.0, ("photo", P + "jason_and_lucia_15.jpg", 0.4, 0.4, 1.1), None, "PERSONNE N'A JOUÉ"),
+        (23, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: bars_card([("GTA 5 · 2013", 3, BLUE, "3 jours"), ("GTA 6 · 2026", 0.3, GOLD, "avant la sortie")], p, title="Temps pour atteindre 1 milliard $", maxv=3)), "GTA 5 : 3 JOURS", None),
+        (24, 0.0, ("card", L + "vice_city_22.jpg", 0.5, lambda p: source_card("Estimations", ["Ventes : Sensor Tower", "Streaming : Streams Charts"], p)), "ATTENTION", None),
+        (25, 0.0, ("photo", L + "vice_city_08.jpg", 0.5, 0.5, 1.0), None, "ÇA PEUT ENCORE GRIMPER"),
+        (26, 0.0, ("split", L + "vice_city_13.jpg", (0.5, 0.5), P + "jason_and_lucia_20.jpg", (0.5, 0.45), "LIVE", "MANETTE"), None, None),
+        (28, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: comment_card("Live ou manette ?", p, typed="Manette en main à minuit")), "ABONNE-TOI !", None),
+    ]
+    labels = {0: "LE RECORD", 4: "N°1", 9: "N°2", 13: "N°3", 19: "N°4", 26: "LES SOURCES", 28: "TON AVIS"}
+    return FullVideo("stream3", TEXTS["stream"], DUR["stream3"], shots, VIOLET, labels=labels)
+
+
+VIDEOS["stream3"] = video_stream3
+
 if __name__ == "__main__":
     mode = sys.argv[1]
     keys = sys.argv[2].split(",")

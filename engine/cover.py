@@ -144,6 +144,10 @@ COVERS = {
                   sticker="1RE HÉROÏNE DE GTA", focus=(0.22, 0.4)),
     "notes": dict(photo="personnages/jason_and_lucia_01.jpg", lines=["GTA 6", "À 99/100"],
                   sticker="MAIS 3 DÉFAUTS", focus=(0.5, 0.35)),
+    "jason3": dict(photo="personnages/jason_duval_02.jpg", lines=["QUI EST", "JASON ?"],
+                   sticker="SON PASSÉ CACHÉ", focus=(0.32, 0.36), zoom=1.3),
+    "stream3": dict(photo="lieus/vice_city_11.jpg", lines=["RECORD", "HISTORIQUE"],
+                    sticker="7,9 MILLIONS EN LIVE", focus=(0.62, 0.45), zoom=1.0),
 }
 
 if __name__ == "__main__":
