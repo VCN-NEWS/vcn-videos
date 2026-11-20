@@ -23,3 +23,4 @@ S'il n'y en a plus, produire le **prochain épisode à faire** de la série « Q
 ## Publiées
 - 19/11 12 h 30 : « Qui est Lucia Caminos ? » (VCN_lucia_v3.mp4)
 - 20/11 12 h 30 : « Qui est Jason Duval ? » (VCN_jason_v3.mp4)
+- 21/11 : pas d'épisode de la série (secrets à 12 h 30, actu ventes à 18 h 30) ; prochain épisode toujours « Vice City — de jour »

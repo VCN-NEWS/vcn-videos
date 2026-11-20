@@ -8,3 +8,5 @@
 - 19/11 12 h 30 : Qui est Lucia Caminos ? (série, format v3)
 - 20/11 12 h 30 : Qui est Jason Duval ? (série, format v3)
 - 20/11 18 h 30 : record de streaming au lancement (7,9 M en live, Twitch 3,3 M, ~1 Md$ de précommandes estimé) (format v3)
+- 21/11 12 h 30 : 4 secrets cachés (bateau de Michael / GPS Los Santos, Trinity Apartments-Dexter, œuf de la tour radio, photo San Andreas 2021 → maison de Belville et complotiste « J et L ») (format v3)
+- 21/11 18 h 30 : ventes du 1er jour (24,6 M copies, 2,36 Md$ Sensor Tower, GTA 5 x2-x3, Avengers Endgame, 75 % PS5, Wells Fargo 65 M) (format v3)
