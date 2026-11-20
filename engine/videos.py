@@ -286,6 +286,256 @@ def video_stream3():
 
 VIDEOS["stream3"] = video_stream3
 
+
+# ---------------- 21/11 : cartes communes ----------------
+def stat_card(value, sub, p=1.0, c1=(255, 160, 110), c2=(255, 70, 140), sub2=None):
+    """big_stat_card dont le chiffre se réduit pour tenir dans la carte."""
+    w, h = 860, 560 if sub2 else 500
+    im = card(w, h)
+    tmp = ImageDraw.Draw(Image.new("L", (1, 1)))
+    size = 220
+    while size > 90:
+        f = font("InterDisplay-Black", size)
+        if text_size(tmp, value, f)[0] <= w - 100:
+            break
+        size -= 8
+    a = ease_out_back(clamp(p * 2.5))
+    t = gradient_text(value, f, c1, c2)
+    if a > 0.02:
+        t2 = t.resize((max(1, int(t.width * a)), max(1, int(t.height * a))), Image.BILINEAR)
+        im.alpha_composite(t2, ((w - t2.width) // 2, 20 + (t.height - t2.height) // 2 + (220 - size) // 2))
+    d = ImageDraw.Draw(im)
+    b = clamp(p * 3 - 0.6)
+    draw_center(d, w / 2, 370, sub, font("Inter-SemiBold", 44), (200, 190, 230, int(255 * b)))
+    if sub2:
+        draw_center(d, w / 2, 440, sub2, font("Inter-Bold", 36), (255, 205, 90, int(255 * b)))
+    return im
+
+
+def counter_card(p, value, unit, sub, col=(255, 70, 90), dec=1, head="JOUR 1"):
+    w, h = 900, 520
+    im = card(w, h)
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([w / 2 - 130, 40, w / 2 + 130, 110], 35, fill=col + (255,))
+    draw_center(d, w / 2, 52, head, font("InterDisplay-Black", 44), WHITE)
+    v = value * ease_out_cubic(clamp(p * 1.4))
+    txt = f"{v:.{dec}f}".replace(".", ",") + " " + unit
+    tmp = ImageDraw.Draw(Image.new("L", (1, 1)))
+    size = 170
+    while size > 90 and text_size(tmp, txt, font("InterDisplay-Black", size))[0] > w - 100:
+        size -= 8
+    t = gradient_text(txt, font("InterDisplay-Black", size), (255, 160, 110), (255, 70, 140))
+    im.alpha_composite(t, ((w - t.width) // 2, 140 + (170 - size) // 2))
+    draw_center(d, w / 2, 420, sub, font("Inter-SemiBold", 42), MUTED)
+    return im
+
+
+def crossed_stat(value, sub, p):
+    im = stat_card(value, sub, 1.0, c1=(170, 160, 190), c2=(120, 110, 150))
+    d = ImageDraw.Draw(im)
+    a = ease_out_cubic(clamp(p * 2.2 - 0.3))
+    if a > 0:
+        x0, y0, x1, y1 = 110, 300, 750, 70
+        d.line([(x0, y0), (x0 + (x1 - x0) * a, y0 + (y1 - y0) * a)], fill=RED + (255,), width=28)
+    return im
+
+
+def gps_card(p, stage):
+    """Écran de GPS de bateau : « LEONIDA » barré (stage 0) puis « LOS SANTOS » (stage 1)."""
+    w, h = 860, 600
+    im = card(w, h)
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([60, 60, w - 60, h - 150], 30, fill=(10, 40, 50, 255), outline=(90, 230, 210, 255), width=5)
+    for k in range(1, 6):  # grille de carte
+        x = 60 + k * (w - 120) / 6
+        d.line([(x, 60), (x, h - 150)], fill=(90, 230, 210, 60), width=2)
+    for k in range(1, 4):
+        y = 60 + k * (h - 210) / 4
+        d.line([(60, y), (w - 60, y)], fill=(90, 230, 210, 60), width=2)
+    d.text((90, 80), "GPS · NAVIGATION", font=font("Inter-Bold", 30), fill=(90, 230, 210, 255))
+    cy = 60 + (h - 210) / 2 + 10
+    if stage == 0:
+        draw_center(d, w / 2, cy - 40, "LEONIDA ?", font("InterDisplay-Black", 100), (180, 200, 210, 255))
+        a = ease_out_cubic(clamp(p * 2.4 - 0.6))
+        if a > 0:
+            d.line([(150, cy + 60), (150 + (w - 300) * a, cy - 50 - 0 * a)], fill=RED + (255,), width=22)
+        sub = "Il n’affiche pas Leonida…"
+    else:
+        a = ease_out_back(clamp(p * 2.5))
+        t = gradient_text("LOS SANTOS", font("InterDisplay-Black", 110), (150, 255, 220), (90, 200, 255))
+        if a > 0.02:
+            t2 = t.resize((max(1, int(t.width * a)), max(1, int(t.height * a))), Image.BILINEAR)
+            im.alpha_composite(t2, ((w - t2.width) // 2, int(cy - t2.height / 2)))
+        sub = "La ville de GTA 5"
+    draw_center(d, w / 2, h - 110, sub, font("Inter-SemiBold", 44), MUTED)
+    return im
+
+
+def polaroid_card(p, ufo):
+    """Polaroïd « photo mystère » : maison + palmiers, puis un OVNI qui apparaît (dessin VCN)."""
+    w, h = 760, 860
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], 18, fill=(248, 244, 236, 255))
+    from v3 import _src, _crop
+    ph = _crop(_src("lieus/port_gellhorn_06.jpg"), 0.42, 0.6, 1.6, 680, 620).convert("RGBA")
+    if ufo:
+        a = ease_out_cubic(clamp(p * 2.0))
+        u = Image.new("RGBA", ph.size, (0, 0, 0, 0))
+        ud = ImageDraw.Draw(u)
+        cx, cy = 430, int(150 + 40 * (1 - a))
+        al = int(255 * a)
+        ud.polygon([(cx - 60, cy + 30), (cx + 60, cy + 30), (cx + 150, cy + 260), (cx - 150, cy + 260)], fill=(180, 255, 200, int(70 * a)))
+        ud.ellipse([cx - 120, cy - 10, cx + 120, cy + 40], fill=(70, 75, 90, al))
+        ud.ellipse([cx - 55, cy - 50, cx + 55, cy + 20], fill=(170, 230, 255, al))
+        for k in range(-2, 3):
+            ud.ellipse([cx + k * 42 - 8, cy + 10, cx + k * 42 + 8, cy + 26], fill=(255, 230, 120, al))
+        u = u.filter(ImageFilter.GaussianBlur(0.8))
+        ph.alpha_composite(u)
+    im.alpha_composite(ph, (40, 40))
+    draw_center(d, w / 2, 700, "Photo mystère · 2021", font("Inter-Bold", 44), (40, 30, 60, 255))
+    draw_center(d, w / 2, 765, "GTA San Andreas Definitive Edition", font("Inter-SemiBold", 32), (90, 80, 110, 255))
+    return im.rotate(-3, resample=Image.BICUBIC, expand=True)
+
+
+def notes_card(p, lines, title="SES NOTES"):
+    """Bloc-notes jaune du complotiste : lignes qui s'écrivent une par une."""
+    w = 860
+    h = 170 + 92 * len(lines)
+    im = Image.new("RGBA", (w, h), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.rounded_rectangle([0, 0, w - 1, h - 1], 14, fill=(255, 238, 150, 255))
+    d.rectangle([0, 0, w, 90], fill=(240, 90, 90, 255))
+    draw_center(d, w / 2, 22, title, font("InterDisplay-Black", 48), (255, 255, 255, 255))
+    for i, (txt, col) in enumerate(lines):
+        y = 130 + i * 92
+        d.line([(40, y + 66), (w - 40, y + 66)], fill=(120, 150, 220, 120), width=2)
+        a = clamp(p * (len(lines) + 0.5) - i)
+        n = int(len(txt) * a)
+        d.text((50, y), txt[:n], font=font("Inter-Bold", 46), fill=col + (255,))
+    return im.rotate(2, resample=Image.BICUBIC, expand=True)
+
+
+# ---------------- 21/11 12 h 30 : 4 secrets cachés (format v3, type « secrets ») ----------------
+DUR["secrets3"] = 92.865  # voix_secrets3.mp3 = voix_secrets.mp3 coupée avant « Allez, ciao », sans les blancs, x1.1
+
+
+def video_secrets3():
+    from v3 import FullVideo
+    L, P = "lieus/", "personnages/"
+    NOTE = (40, 30, 70)
+    NL = [("✗ Fuir Leonida", NOTE), ("✗ Billet pour Los Santos", NOTE), ("Passants identiques ?!", NOTE), ("Gens à travers les murs", NOTE), ("J et L…", (220, 40, 60))]
+    shots = [
+        (0, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: stat_card("4", "secrets cachés dans GTA 6", p, sub2="Trouvés en 48 h")), "4 SECRETS CACHÉS", None),
+        (1, 0.0, ("photo", P + "jason_and_lucia_01.jpg", 0.45, 0.4, 1.05), None, "SORTI IL Y A 2 JOURS"),
+        (2, 0.0, ("photo", L + "vice_city_09.jpg", 0.42, 0.5, 1.0), "DÉJÀ TROUVÉS", None),
+        (3, 0.0, ("photo", P + "lucia_caminos_14.jpg", 0.22, 0.38, 1.2), "LE DERNIER EST FOU", None),
+        (4, 0.0, ("photo", L + "vice_city_15.jpg", 0.62, 0.5, 1.0), "N°1 : LE BATEAU", None),
+        (5, 0.0, ("photo", P + "jason_duval_03.jpg", 0.25, 0.4, 1.05), None, "DEVANT CHEZ JASON"),
+        (6, 0.0, ("card", L + "leonida_keys_01.jpg", 0.5, lambda p: gps_card(0.0, 0)), "REGARDE SON GPS", None),
+        (7, 0.0, ("card", L + "leonida_keys_01.jpg", 0.5, lambda p: gps_card(p, 0)), None, None),
+        (8, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: gps_card(p, 1)), "LOS SANTOS !", None),
+        (9, 0.0, ("photo", L + "vice_city_17.jpg", 0.42, 0.6, 1.1), "CLIN D’ŒIL À GTA 5", "LE BATEAU DE MICHAEL ?"),
+        (10, 0.0, ("photo", L + "vice_city_08.jpg", 0.5, 0.5, 1.0), "N°2 : DEXTER", None),
+        (11, 0.0, ("photo", L + "vice_city_10.jpg", 0.36, 0.45, 1.0), "TRINITY APARTMENTS", "VICE BEACH"),
+        (12, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: source_card("Série Dexter", ["Trinity : le tueur", "de la saison 4"], p, warn=None)), "RÉFÉRENCE À DEXTER", None),
+        (13, 0.0, ("card", L + "vice_city_11.jpg", 0.3, lambda p: chips_card(["Corde", "Ruban adhésif", "Gants", "Seringue"], p, "Sur le toit de l’immeuble")), "SUR LE TOIT", None),
+        (15, 0.0, ("photo", L + "vice_city_15.jpg", 0.85, 0.6, 1.1), "VOLE SON BATEAU", "SLICE OF LIFE"),
+        (16, 0.0, ("photo", L + "mount_kalaga_national_park_02.jpg", 0.55, 0.45, 1.0), "N°3 : L’ŒUF DE PÂQUES", None),
+        (17, 0.0, ("card", L + "vice_city_22.jpg", 0.55, lambda p: stat_card("7 MIN", "d’escalade", p, sub2="Tout en haut d’une tour radio")), "UNE TOUR GÉANTE", None),
+        (18, 0.0, ("photo", L + "ambrosia_04.jpg", 0.46, 0.4, 1.3), None, "UN NID D’OISEAU"),
+        (19, 0.0, ("photo", L + "vice_city_11.jpg", 0.3, 0.5, 1.0), None, "TU LE LANCES…"),
+        (20, 0.0, ("photo", L + "vice_city_26.jpg", 0.5, 0.5, 1.0), "CINÉMATIQUE SECRÈTE", None),
+        (21, 0.0, ("photo", L + "vice_city_24.jpg", 0.6, 0.5, 1.0), "SPLASH !", None),
+        (22, 0.0, ("photo", L + "vice_city_01.jpg", 0.45, 0.5, 1.0), "CLIN D’ŒIL À VICE CITY", "L’ŒUF CACHÉ DE 2002"),
+        (23, 0.0, ("photo", P + "jason_and_lucia_12.jpg", 0.62, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (24, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: stat_card("5 ANS", "de mystère", p)), "N°4 : LA PHOTO CACHÉE", None),
+        (25, 0.0, ("card", L + "ambrosia_02.jpg", 0.5, lambda p: source_card("GTA San Andreas", ["Definitive Edition · 2021", "Une photo accrochée au mur…"], p, warn=None)), "EN 2021…", None),
+        (25, 0.55, ("photo", L + "vice_city_08.jpg", 0.3, 0.5, 1.0), None, "UNE PHOTO MYSTÉRIEUSE"),
+        (26, 0.0, ("card", L + "ambrosia_02.jpg", 0.5, lambda p: polaroid_card(p, False)), "UNE MAISON…", None),
+        (27, 0.0, ("card", L + "ambrosia_02.jpg", 0.5, lambda p: polaroid_card(p, True)), "UN OVNI !", None),
+        (28, 0.0, ("photo", L + "port_gellhorn_06.jpg", 0.42, 0.55, 1.0), "ELLE EXISTE !", "BELVILLE, LEONIDA"),
+        (29, 0.0, ("card", L + "vice_city_22.jpg", 0.5, lambda p: notes_card(0.0, NL)), "LA PLANQUE", "UN COMPLOTISTE"),
+        (30, 0.0, ("card", L + "vice_city_22.jpg", 0.5, lambda p: notes_card(p * 0.2, NL)), "FUIR LEONIDA", None),
+        (31, 0.0, ("photo", L + "vice_city_01.jpg", 0.42, 0.25, 1.4), "BILLET IMPOSSIBLE", None),
+        (32, 0.0, ("photo", L + "vice_city_09.jpg", 0.7, 0.5, 1.0), "PASSANTS IDENTIQUES", None),
+        (32, 0.55, ("card", L + "vice_city_22.jpg", 0.5, lambda p: notes_card(0.4 + p * 0.4, NL)), "À TRAVERS LES MURS", None),
+        (33, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: stat_card("J + L", "écrit dans ses notes", p)), "J ET L", None),
+        (34, 0.0, ("photo", P + "jason_and_lucia_01.jpg", 0.45, 0.4, 1.0), "JASON ET LUCIA ?!", None),
+        (35, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: source_card("Découvertes de joueurs", ["xGarbett · DETONATED", "GTA VI Mapping"], p)), "ATTENTION", None),
+        (36, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: comment_card("Tu testes lequel en 1er ?", p, typed="L’œuf, direct !")), "LEQUEL EN 1ER ?", None),
+        (37, 0.0, ("photo", P + "jason_and_lucia_13.jpg", 0.46, 0.4, 1.0), "ABONNE-TOI !", None),
+    ]
+    lab_at = {0: "4 SECRETS", 4: "N°1 · LE BATEAU", 10: "N°2 · DEXTER", 16: "N°3 · L’ŒUF", 24: "N°4 · LA PHOTO", 35: "TON AVIS"}
+    labels = {}
+    for i, sh in enumerate(shots):
+        if sh[0] in lab_at and sh[1] == 0.0:
+            labels[i] = lab_at[sh[0]]
+    return FullVideo("secrets3", TEXTS["secrets"], DUR["secrets3"], shots, (120, 230, 150), labels=labels)
+
+
+VIDEOS["secrets3"] = video_secrets3
+
+
+# ---------------- 21/11 18 h 30 : ventes du 1er jour (format v3, actu) ----------------
+DUR["ventes3"] = 101.068  # voix_ventes3.mp3 = voix_ventes.mp3 coupée avant « Allez, ciao », sans les blancs, x1.1
+
+
+def video_ventes3():
+    from v3 import FullVideo
+    L, P = "lieus/", "personnages/"
+    G6 = GOLD
+    shots = [
+        (0, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: counter_card(p, 2.36, "MD $", "de ventes en un seul jour", dec=2)), "MIEUX QU’AVENGERS ?!", None),
+        (1, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: stat_card("1 MD $", "de précommandes", p, sub2="Ce qu’on te disait hier")), "HIER…", None),
+        (2, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: crossed_stat("1 MD $", "de précommandes", p)), "OUBLIE ÇA", None),
+        (3, 0.0, ("photo", P + "jason_and_lucia_01.jpg", 0.45, 0.4, 1.05), "LE VRAI BILAN", None),
+        (3, 0.5, ("photo", L + "vice_city_10.jpg", 0.36, 0.45, 1.0), None, "PREMIER JOUR"),
+        (4, 0.0, ("photo", P + "jason_and_lucia_14.jpg", 0.5, 0.4, 1.0), None, "5 CHIFFRES"),
+        (5, 0.0, ("card", L + "vice_city_08.jpg", 0.5, lambda p: counter_card(p, 24.6, "M", "copies vendues")), "N°1 : 24,6 MILLIONS", None),
+        (6, 0.0, ("photo", L + "vice_city_13.jpg", 0.5, 0.5, 1.0), None, "EN UN SEUL JOUR"),
+        (6, 0.5, ("photo", P + "jason_and_lucia_03.jpg", 0.5, 0.45, 1.0), None, "PRÉCOMMANDES COMPRISES"),
+        (7, 0.0, ("card", L + "vice_city_03.jpg", 0.5, lambda p: stat_card("1 SUR 3", "comme si 1 Français sur 3", p, sub2="l’avait acheté")), "1 FRANÇAIS SUR 3 !", None),
+        (8, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: counter_card(p, 2.36, "MD $", "de chiffre d’affaires", dec=2)), "N°2 : 2,36 MILLIARDS", None),
+        (9, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: stat_card("24 H", "chrono", p)), "EN 24 HEURES", None),
+        (10, 0.0, ("photo", P + "lucia_caminos_14.jpg", 0.22, 0.38, 1.2), None, "OUI, MILLIARDS"),
+        (11, 0.0, ("photo", L + "vice_city_03.jpg", 0.5, 0.5, 1.0), "N°3 : GTA 5", "LA REVANCHE"),
+        (12, 0.0, ("card", L + "vice_city_17.jpg", 0.5, lambda p: stat_card("11,2 M", "copies le 1er jour", p, c1=(140, 210, 255), c2=(90, 130, 255), sub2="GTA 5 · 2013")), "GTA 5 EN 2013", None),
+        (12, 0.55, ("card", L + "vice_city_17.jpg", 0.5, lambda p: stat_card("815 M $", "le 1er jour", p, c1=(140, 210, 255), c2=(90, 130, 255), sub2="GTA 5 · 2013")), None, None),
+        (13, 0.0, ("card", L + "vice_city_10.jpg", 0.5, lambda p: bars_card([("GTA 5 · 2013", 11.2, BLUE, "11,2 M"), ("GTA 6 · 2026", 24.6, G6, "24,6 M")], p, title="Copies vendues le 1er jour", maxv=24.6)), "PLUS DU DOUBLE", None),
+        (14, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: bars_card([("GTA 5 · 2013", 0.815, BLUE, "815 M $"), ("GTA 6 · 2026", 2.36, G6, "2,36 Md $")], p, title="Argent gagné le 1er jour", maxv=2.36)), "PRESQUE x 3", None),
+        (15, 0.0, ("photo", L + "vice_city_01.jpg", 0.45, 0.5, 1.0), "N°4 : LE CINÉMA", None),
+        (16, 0.0, ("photo", L + "vice_city_13.jpg", 0.35, 0.5, 1.1), None, "RECORD DU CINÉMA"),
+        (16, 0.42, ("card", L + "vice_city_08.jpg", 0.5, lambda p: stat_card("1,22 MD $", "tout un week-end", p, c1=(140, 210, 255), c2=(90, 130, 255), sub2="Avengers Endgame · 2019")), "AVENGERS ENDGAME", None),
+        (17, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: bars_card([("Endgame · 1 week-end", 1.22, BLUE, "1,22 Md $"), ("GTA 6 · 1 jour", 2.36, G6, "2,36 Md $")], p, title="Plus gros démarrages (monde)", maxv=2.36)), "PRESQUE LE DOUBLE", None),
+        (18, 0.0, ("photo", P + "jason_and_lucia_09.jpg", 0.5, 0.4, 1.0), None, "EN UN SEUL JOUR"),
+        (19, 0.0, ("photo", L + "vice_city_11.jpg", 0.62, 0.45, 1.0), "RECORD HISTORIQUE", None),
+        (20, 0.0, ("photo", P + "jason_and_lucia_20.jpg", 0.62, 0.4, 1.0), "N°5 : LA CONSOLE", None),
+        (21, 0.0, ("card", L + "vice_city_25.jpg", 0.5, lambda p: stat_card("3 SUR 4", "des copies sur PS5", p)), "LA PS5 ÉCRASE TOUT", None),
+        (22, 0.0, ("card", L + "vice_city_08.jpg", 0.5, lambda p: bars_card([("PS5", 18.44, BLUE, "18,4 M"), ("Xbox Series", 6.15, GREEN, "6,15 M")], p, title="Copies le 1er jour (estimation)", maxv=18.44)), "PS5 VS XBOX", None),
+        (22, 0.62, ("photo", P + "jason_and_lucia_11.jpg", 0.55, 0.45, 1.0), None, "6,15 M SUR XBOX"),
+        (23, 0.0, ("photo", P + "jason_and_lucia_06.jpg", 0.62, 0.45, 1.0), "ET SUR PC ?", None),
+        (24, 0.0, ("card", L + "vice_city_22.jpg", 0.5, lambda p: stat_card("0", "copie sur PC", p)), "ZÉRO", None),
+        (25, 0.0, ("photo", L + "vice_city_22.jpg", 0.55, 0.5, 1.0), None, "PAS DE VERSION PC"),
+        (26, 0.0, ("photo", P + "jason_and_lucia_12.jpg", 0.62, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (27, 0.0, ("card", L + "vice_city_10.jpg", 0.5, lambda p: stat_card("65 M", "copies d’ici fin mars", p, sub2="Prévision Wells Fargo")), "65 MILLIONS ?", None),
+        (28, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: bars_card([("Prévision d’avant", 35, BLUE, "35 M"), ("Nouvelle prévision", 65, G6, "65 M")], p, title="Wells Fargo · d’ici fin mars", maxv=65)), "PRÉVISION DOUBLÉE", None),
+        (29, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: source_card("Version PC", ["Début 2027 ?", "Selon Wells Fargo"], p, warn="Non annoncée par Rockstar")), "PC : PAS ANNONCÉ", None),
+        (30, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: source_card("Estimations", ["Ventes : Sensor Tower", "Prévision : Wells Fargo"], p, warn="Aucun chiffre officiel")), "ATTENTION", None),
+        (31, 0.0, ("photo", L + "vice_city_10.jpg", 0.62, 0.45, 1.0), None, "TAKE-TWO SE TAIT"),
+        (32, 0.0, ("split", P + "jason_and_lucia_20.jpg", (0.5, 0.45), L + "vice_city_08.jpg", (0.5, 0.5), "24 MILLIONS", "VERSION PC"), None, None),
+        (34, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: comment_card("Console ou PC ?", p, typed="Déjà 10 h de jeu !")), "ABONNE-TOI !", None),
+    ]
+    lab_at = {0: "LE BILAN", 5: "N°1", 8: "N°2", 11: "N°3", 15: "N°4", 20: "N°5", 26: "ET APRÈS ?", 30: "LES SOURCES", 32: "TON AVIS"}
+    labels = {}
+    for i, sh in enumerate(shots):
+        if sh[0] in lab_at and sh[1] == 0.0:
+            labels[i] = lab_at[sh[0]]
+    return FullVideo("ventes3", TEXTS["ventes"], DUR["ventes3"], shots, GOLD, labels=labels)
+
+
+VIDEOS["ventes3"] = video_ventes3
+
 if __name__ == "__main__":
     mode = sys.argv[1]
     keys = sys.argv[2].split(",")

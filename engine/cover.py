@@ -148,11 +148,20 @@ COVERS = {
                    sticker="SON PASSÉ CACHÉ", focus=(0.32, 0.36), zoom=1.3),
     "stream3": dict(photo="lieus/vice_city_11.jpg", lines=["RECORD", "HISTORIQUE"],
                     sticker="7,9 MILLIONS EN LIVE", focus=(0.62, 0.45), zoom=1.0),
+    "secrets3": dict(photo="lieus/vice_city_08.jpg", lines=["4 SECRETS", "CACHÉS"],
+                     sticker="TROUVÉS EN 48 H", focus=(0.55, 0.45), zoom=1.0, card="polaroid_ovni"),
+    "ventes3": dict(photo="lieus/vice_city_27.jpg", lines=["2,36 MD $", "EN 1 JOUR"],
+                    sticker="MIEUX QU’AVENGERS", focus=(0.5, 0.5), zoom=1.0),
 }
 
 if __name__ == "__main__":
     k = sys.argv[1]
-    p = make_cover(k, **COVERS[k])
+    cfg = dict(COVERS[k])
+    if cfg.get("card") == "polaroid_ovni":  # polaroïd « photo mystère » avec OVNI (dessin VCN), voir videos.polaroid_card
+        import videos
+        c = videos.polaroid_card(1.0, True)
+        cfg["card"] = c.resize((int(c.width * 0.66), int(c.height * 0.66)), Image.LANCZOS)
+    p = make_cover(k, **cfg)
     print(p)
     if len(sys.argv) > 2 and sys.argv[2] == "apply":
         v = os.path.join(D, "..", "videos", f"VCN_{k}.mp4")
