@@ -52,7 +52,11 @@ def _crop(im, fx, fy, zoom, out_w=W, out_h=H, kb=1.0):
 
 def _clip_frames(rel):
     if rel not in _CLIP:
-        w, h = 1920, 1080
+        # garde le format d'origine (certains clips sont carrés 1920×1920 : ne pas les écraser en 16:9)
+        dims = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v", "-show_entries", "stream=width,height",
+                               "-of", "csv=p=0", os.path.join(LIB, rel)], capture_output=True, text=True).stdout.split(",")
+        w = 1920
+        h = int(round(1920 * int(dims[1]) / int(dims[0]) / 2) * 2)
         raw = subprocess.run(["ffmpeg", "-v", "error", "-i", os.path.join(LIB, rel), "-vf", f"scale={w}:{h}",
                               "-f", "rawvideo", "-pix_fmt", "rgb24", "-"], capture_output=True).stdout
         n = len(raw) // (w * h * 3)

@@ -536,6 +536,133 @@ def video_ventes3():
 
 VIDEOS["ventes3"] = video_ventes3
 
+# ---------------- 22/11 12 h 30 : Qui est Raul Bautista ? (format v3, portrait) ----------------
+DUR["raul3"] = 92.082  # voix_raul3.mp3 = voix_raul.mp3 coupée avant « Allez, ciao » (108,1 s), sans les blancs, x1.1
+
+
+def video_raul3():
+    from v3 import FullVideo
+    L, P = "lieus/", "personnages/"
+    R = P + "raul_bautista_"
+    shots = [
+        (0, 0.0, ("photo", R + "01.jpg", 0.55, 0.3, 1.3), "QUI EST RAUL ?", None),
+        (1, 0.0, ("photo", P + "jason_and_lucia_01.jpg", 0.45, 0.4, 1.05), "JASON ET LUCIA…", None),
+        (2, 0.0, ("photo", P + "jason_and_lucia_02.jpg", 0.5, 0.45, 1.0), None, "LES GROS COUPS ?"),
+        (2, 0.5, ("photo", R + "02.jpg", 0.44, 0.3, 1.1), "C’EST LUI", None),
+        (3, 0.0, ("clip", "clips/raul_bautista.mp4", 0.58), "RAUL BAUTISTA", None),
+        (4, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: stat_card("4", "choses à savoir sur lui", p)), "4 CHOSES À SAVOIR", None),
+        (5, 0.0, ("photo", R + "02.jpg", 0.44, 0.3, 1.0), "N°1 : UN PRO", "BRAQUEUR DE BANQUES"),
+        (6, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: source_card("Rockstar Games", ["Sa description officielle", "en trois mots…"], p, warn=None)), "SELON ROCKSTAR", None),
+        (7, 0.0, ("card", L + "vice_city_08.jpg", 0.5, lambda p: chips_card(["Assurance", "Charme", "Ruse"], p, "Raul en 3 mots")), "EN 3 MOTS", None),
+        (8, 0.0, ("photo", R + "03.jpg", 0.58, 0.25, 1.1), "BRAQUEUR CHEVRONNÉ", None),
+        (8, 0.55, ("photo", R + "01.jpg", 0.55, 0.3, 1.0), None, "EN QUÊTE DE TALENTS"),
+        (9, 0.0, ("photo", P + "jason_and_lucia_04.jpg", 0.4, 0.4, 1.0), "PRÊTS À TOUT RISQUER", None),
+        (10, 0.0, ("photo", P + "jason_and_lucia_02.jpg", 0.55, 0.45, 1.15), None, "LE PLUS GROS BUTIN"),
+        (11, 0.0, ("photo", R + "04.jpg", 0.5, 0.3, 1.1), "N°2 : LE MENTOR", None),
+        (12, 0.0, ("photo", P + "jason_and_lucia_03.jpg", 0.55, 0.35, 1.0), None, "JEUNES ET SANS EXPÉRIENCE"),
+        (13, 0.0, ("photo", P + "jason_and_lucia_02.jpg", 0.45, 0.4, 1.0), "GROS BRAQUAGES", None),
+        (13, 0.5, ("photo", R + "02.jpg", 0.5, 0.35, 1.0), None, "IL LEUR OUVRE LA PORTE"),
+        (14, 0.0, ("card", L + "vice_city_10.jpg", 0.5, lambda p: stat_card("CHAP. 3", "ta 1re rencontre avec Raul", p)), "CHAPITRE 3", None),
+        (15, 0.0, ("card", L + "vice_city_15.jpg", 0.5, lambda p: chips_card(["First Impressions"], p, "Le nom de ta 1re mission avec lui")), "SA MISSION", None),
+        (16, 0.0, ("photo", R + "03.jpg", 0.58, 0.22, 1.3), "1RES IMPRESSIONS", None),
+        (17, 0.0, ("photo", P + "jason_and_lucia_08.jpg", 0.45, 0.5, 1.0), "N°3 : LE FEU", None),
+        (18, 0.0, ("card", L + "vice_city_22.jpg", 0.5, lambda p: source_card("Rockstar Games", ["Son imprudence fait monter", "les enchères à chaque coup"], p, warn=None)), "SON IMPRUDENCE", None),
+        (18, 0.55, ("photo", R + "02.jpg", 0.44, 0.25, 1.25), None, "À CHAQUE COUP"),
+        (19, 0.0, ("photo", P + "jason_and_lucia_06.jpg", 0.5, 0.4, 1.0), "IL FAUDRA CHOISIR", None),
+        (20, 0.0, ("split", R + "04.jpg", (0.5, 0.3), P + "jason_and_lucia_07.jpg", (0.5, 0.35), "DOUBLER LA MISE", "TOUT ARRÊTER"), None, None),
+        (22, 0.0, ("photo", R + "01.jpg", 0.55, 0.3, 1.15), "SA PHRASE CULTE", None),
+        (23, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: source_card("Raul Bautista", ["« La vie est pleine", "de surprises, mon ami. »"], p, warn=None)), "« MON AMI… »", None),
+        (24, 0.0, ("photo", R + "03.jpg", 0.58, 0.2, 1.4), "MAIS ATTENDS…", None),
+        (25, 0.0, ("photo", R + "01.jpg", 0.4, 0.3, 1.0), "N°4 : SA VOIX", None),
+        (26, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: stat_card("MANNY PEREZ", "la voix de Raul", p, sub2="Acteur dominicain · crédits du jeu")), "MANNY PEREZ", None),
+        (27, 0.0, ("photo", P + "lucia_caminos_14.jpg", 0.22, 0.38, 1.2), "ET LUCIA ?", None),
+        (28, 0.0, ("card", L + "vice_city_08.jpg", 0.5, lambda p: stat_card("MANNI PEREZ", "la voix de Lucia", p, c1=(190, 160, 255), c2=(255, 92, 170), sub2="Crédits du jeu")), "MANNI PEREZ", None),
+        (29, 0.0, ("split", R + "01.jpg", (0.55, 0.3), P + "lucia_caminos_14.jpg", (0.22, 0.35), "MANNY", "MANNI"), None, None),
+        (30, 0.0, ("photo", P + "jason_and_lucia_01.jpg", 0.5, 0.35, 1.0), "2 PEREZ !", None),
+        (31, 0.0, ("photo", L + "vice_city_01.jpg", 0.45, 0.5, 1.0), "BONUS POUR LES FANS", None),
+        (32, 0.0, ("photo", R + "04.jpg", 0.5, 0.35, 1.0), "COSTUME BLANC", None),
+        (32, 0.55, ("clip", "clips/raul_bautista.mp4", 0.58), None, "CHEMISE VIOLETTE"),
+        (33, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: source_card("Lance Vance", ["GTA Vice City · 2002", "Costume blanc, chemise violette"], p, warn=None)), "COMME LANCE VANCE", None),
+        (34, 0.0, ("photo", L + "vice_city_17.jpg", 0.42, 0.5, 1.0), "ET LANCE…", None),
+        (35, 0.0, ("card", L + "vice_city_17.jpg", 0.5, lambda p: source_card("GTA Vice City · 2002", ["Lance Vance trahit", "Tommy Vercetti"], p, warn=None)), "A TRAHI TOMMY", None),
+        (36, 0.0, ("photo", R + "04.jpg", 0.5, 0.25, 1.4), "RAUL AUSSI ?", "THÉORIE DE FANS"),
+        (37, 0.0, ("card", L + "vice_city_11.jpg", 0.5, lambda p: source_card("Théorie de joueurs", ["Raul, futur traître ?", "Indice : la jaquette du jeu"], p)), "ATTENTION", None),
+        (38, 0.0, ("split", R + "03.jpg", (0.58, 0.25), R + "04.jpg", (0.5, 0.3), "MENTOR", "TRAÎTRE"), None, None),
+        (40, 0.0, ("card", L + "vice_city_27.jpg", 0.5, lambda p: comment_card("Mentor ou traître ?", p, typed="Traître, c’est sûr !")), "ABONNE-TOI !", None),
+    ]
+    lab_at = {0: "QUI EST-IL ?", 5: "N°1 · LE PRO", 11: "N°2 · LE MENTOR", 17: "N°3 · LE FEU", 25: "N°4 · SA VOIX", 31: "BONUS", 38: "TON AVIS"}
+    labels = {}
+    for i, sh in enumerate(shots):
+        if sh[0] in lab_at and sh[1] == 0.0:
+            labels[i] = lab_at[sh[0]]
+    return FullVideo("raul3", TEXTS["raul"], DUR["raul3"], shots, VIOLET, labels=labels)
+
+
+VIDEOS["raul3"] = video_raul3
+
+
+# ---------------- 22/11 18 h 30 : Vice City de jour, 5 lieux à voir (format v3, lieu) ----------------
+DUR["vicecity3"] = 87.040  # voix_vicecity3.mp3 = voix_vicecity.mp3 coupée avant « Allez, ciao » (100,4 s), sans les blancs, x1.1
+
+
+def video_vicecity3():
+    from v3 import FullVideo
+    L, P = "lieus/", "personnages/"
+    V = L + "vice_city_"
+    SKY = dict(c1=(150, 240, 255), c2=(90, 160, 255))
+    shots = [
+        (0, 0.0, ("photo", V + "10.jpg", 0.4, 0.5, 1.0), "VICE CITY", None),
+        (1, 0.0, ("card", V + "03.jpg", 0.5, lambda p: stat_card("x 2", "la taille de Los Santos", p, sub2="Selon Rockstar North")), "2X LOS SANTOS !", None),
+        (2, 0.0, ("photo", V + "11.jpg", 0.62, 0.45, 1.0), None, "SIGNÉ ROCKSTAR NORTH"),
+        (3, 0.0, ("card", V + "15.jpg", 0.5, lambda p: stat_card("5", "lieux à voir de jour", p, **SKY)), "5 LIEUX À VOIR", None),
+        (3, 0.55, ("photo", V + "03.jpg", 0.5, 0.5, 1.0), None, "EN PLEIN JOUR"),
+        (4, 0.0, ("photo", V + "05.jpg", 0.5, 0.5, 1.0), "N°1 : OCEAN BEACH", None),
+        (5, 0.0, ("photo", V + "02.jpg", 0.35, 0.4, 1.0), None, "LE CŒUR DE LA VILLE"),
+        (6, 0.0, ("photo", V + "02.jpg", 0.25, 0.35, 1.2), "ART DÉCO PASTEL", None),
+        (6, 0.5, ("photo", V + "02.jpg", 0.12, 0.3, 1.3), None, "SABLE BLANC"),
+        (7, 0.0, ("photo", V + "26.jpg", 0.5, 0.5, 1.0), "SOUTH BEACH, MIAMI", None),
+        (8, 0.0, ("photo", V + "24.jpg", 0.6, 0.5, 1.0), None, "CE NOM, TU LE CONNAIS"),
+        (9, 0.0, ("card", V + "01.jpg", 0.5, lambda p: stat_card("2002", "Ocean Beach existait déjà", p, sub2="dans GTA Vice City")), "DÉJÀ EN 2002 !", None),
+        (10, 0.0, ("photo", V + "06.jpg", 0.15, 0.32, 1.4), "N°2 : L’OCEAN VIEW", None),
+        (11, 0.0, ("card", V + "27.jpg", 0.5, lambda p: source_card("GTA Vice City · 2002", ["Ocean View Hotel :", "1re planque de Tommy Vercetti"], p, warn=None)), "1ER HÔTEL DE TOMMY", None),
+        (12, 0.0, ("photo", V + "06.jpg", 0.2, 0.35, 1.0), "LE NÉON ROSE", None),
+        (13, 0.0, ("photo", V + "02.jpg", 0.6, 0.4, 1.0), "SUR LE TOIT", "UN APPLE MARTINI"),
+        (14, 0.0, ("card", V + "02.jpg", 0.5, lambda p: stat_card("TROPHÉE", "« In The Beginning… »", p, sub2="Un verre au rooftop de l’Ocean View")), "TROPHÉE DÉBLOQUÉ", None),
+        (15, 0.0, ("photo", V + "02.jpg", 0.72, 0.4, 1.3), "LE PLUS CLASSE", None),
+        (16, 0.0, ("photo", V + "09.jpg", 0.5, 0.5, 1.0), "N°3 : STOCKYARD", None),
+        (17, 0.0, ("photo", V + "09.jpg", 0.12, 0.4, 1.0), "LES FRESQUES", None),
+        (17, 0.5, ("photo", V + "09.jpg", 0.85, 0.4, 1.0), None, "INSPIRÉ DE WYNWOOD"),
+        (18, 0.0, ("card", V + "09.jpg", 0.5, lambda p: stat_card("50+", "vrais street-artistes", p, sub2="ont peint les murs du jeu")), "50 VRAIS ARTISTES", None),
+        (18, 0.55, ("photo", V + "09.jpg", 0.45, 0.4, 1.35), None, "DE VRAIES ŒUVRES"),
+        (19, 0.0, ("photo", V + "09.jpg", 0.7, 0.5, 1.5), "EN PLEIN VICE CITY", None),
+        (20, 0.0, ("photo", V + "08.jpg", 0.58, 0.5, 1.6), "N°4 : SAHARA ARENA", None),
+        (21, 0.0, ("card", V + "08.jpg", 0.5, lambda p: source_card("Inspirée de…", ["Kaseya Center, Miami", "La salle du Miami Heat"], p, warn=None)), "LA SALLE DU HEAT", None),
+        (22, 0.0, ("photo", V + "11.jpg", 0.3, 0.5, 1.0), "MAIS ATTENDS…", None),
+        (23, 0.0, ("photo", V + "15.jpg", 0.5, 0.5, 1.0), "N°5 : LE PORT", None),
+        (24, 0.0, ("card", V + "15.jpg", 0.5, lambda p: stat_card("N°1", "mondial des croisières", p, sub2="Selon Rockstar", **SKY)), "N°1 DES CROISIÈRES", None),
+        (25, 0.0, ("photo", V + "15.jpg", 0.72, 0.6, 1.2), "PAQUEBOTS GÉANTS", None),
+        (25, 0.4, ("photo", V + "10.jpg", 0.4, 0.45, 1.0), None, "DOWNTOWN"),
+        (25, 0.7, ("photo", V + "10.jpg", 0.75, 0.4, 1.0), None, "INSPIRÉ DE BRICKELL"),
+        (26, 0.0, ("photo", P + "jason_and_lucia_03.jpg", 0.5, 0.4, 1.0), "SANS TE FATIGUER ?", None),
+        (27, 0.0, ("card", V + "24.jpg", 0.5, lambda p: chips_card(["Paradise Taxi", "RydeMe"], p, "Voyage rapide")), "TAXI OU VTC", None),
+        (27, 0.55, ("photo", P + "jason_and_lucia_06.jpg", 0.5, 0.4, 1.0), None, "SUR TON TÉLÉPHONE"),
+        (28, 0.0, ("photo", V + "24.jpg", 0.6, 0.5, 1.2), "COMME UN VRAI VTC", None),
+        (29, 0.0, ("card", V + "11.jpg", 0.5, lambda p: source_card("Lieux de Miami", ["Comparaisons de la presse", "et des joueurs"], p)), "PETIT RAPPEL", None),
+        (30, 0.0, ("photo", V + "03.jpg", 0.5, 0.5, 1.0), None, "PRESSE ET JOUEURS"),
+        (31, 0.0, ("split", V + "05.jpg", (0.3, 0.5), V + "09.jpg", (0.5, 0.5), "LA PLAGE", "LES FRESQUES"), None, None),
+        (32, 0.0, ("card", V + "10.jpg", 0.5, lambda p: comment_card("Tu vas où en 1er ?", p, typed="Ocean Beach direct !")), "ABONNE-TOI !", None),
+    ]
+    lab_at = {0: "VICE CITY", 4: "N°1 · LA PLAGE", 10: "N°2 · OCEAN VIEW", 16: "N°3 · STOCKYARD", 20: "N°4 · L’ARÉNA", 23: "N°5 · LE PORT", 26: "BONUS", 31: "TON AVIS"}
+    labels = {}
+    for i, sh in enumerate(shots):
+        if sh[0] in lab_at and sh[1] == 0.0:
+            labels[i] = lab_at[sh[0]]
+    return FullVideo("vicecity3", TEXTS["vicecity"], DUR["vicecity3"], shots, BLUE, labels=labels)
+
+
+VIDEOS["vicecity3"] = video_vicecity3
+
+
 if __name__ == "__main__":
     mode = sys.argv[1]
     keys = sys.argv[2].split(",")
@@ -549,3 +676,4 @@ if __name__ == "__main__":
             v.render(f"{D}/silent_{k}.mp4")
         elif mode == "info":
             print(k, round(v.total, 2), [(round(a, 1), round(b, 1)) for a, b in v.seg_times], "audio" if v.has_audio else "estim")
+

@@ -152,6 +152,10 @@ COVERS = {
                      sticker="TROUVÉS EN 48 H", focus=(0.55, 0.45), zoom=1.0, card="polaroid_ovni"),
     "ventes3": dict(photo="lieus/vice_city_27.jpg", lines=["2,36 MD $", "EN 1 JOUR"],
                     sticker="MIEUX QU’AVENGERS", focus=(0.5, 0.5), zoom=1.0),
+    "raul3": dict(photo="personnages/raul_bautista_01.jpg", lines=["QUI EST", "RAUL ?"],
+                  sticker="MENTOR OU TRAÎTRE ?", focus=(0.55, 0.3), zoom=1.12),
+    "vicecity3": dict(photo="lieus/vice_city_15.jpg", lines=["VICE CITY", "EN 5 LIEUX"],
+                      sticker="2X LOS SANTOS !", focus=(0.45, 0.4), zoom=1.0),
 }
 
 if __name__ == "__main__":

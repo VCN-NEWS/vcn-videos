@@ -34,6 +34,8 @@ def repeats(voice, win=2.0, step=1.0, guard=3.0, thr=0.82):
     for s in np.arange(0, len(voice) / ac.SR - win, step):
         i = int(s * 100)
         A = Fn[i:i + L]
+        if len(A) < L:  # dernière fenêtre incomplète
+            continue
         best = -1
         for j in range(0, len(Fn) - L, 5):
             if abs(j - i) < guard * 100:

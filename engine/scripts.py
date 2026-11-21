@@ -32,3 +32,22 @@ VOICE["ventes"] = (TEXTS["ventes"]
     .replace("65 millions", "soixante-cinq millions").replace("début 2027", "début deux mille vingt-sept")
     .replace("des 24 millions", "des vingt-quatre millions")
     + " [pause] Allez, ciao.")
+
+# ---------- 22/11 : Qui est Raul Bautista ? (12 h 30) et Vice City de jour, 5 lieux (18 h 30) ----------
+TEXTS["raul"] = "Ce braqueur va changer ta partie. Tout le monde parle de Jason et Lucia… mais le cerveau des gros coups, c'est lui. Raul Bautista. Je te donne quatre choses à savoir sur lui. Un : c'est un pro du braquage. Rockstar le décrit en trois mots. Assurance, charme, et ruse. Un braqueur de banques chevronné, toujours en quête de talents. Des gens prêts à prendre les risques… qui rapportent le plus gros. Deux : c'est le mentor du duo. Jason et Lucia sont jeunes, et sans expérience. Alors Rockstar a créé Raul pour leur ouvrir la porte des grands braquages. Tu le rencontres au chapitre trois. Et sa mission a un nom parfait : First Impressions. Premières impressions. Trois : il joue avec le feu. Rockstar le dit cash : son imprudence fait monter les enchères à chaque coup. Tôt ou tard, son équipe devra choisir. Doubler la mise… ou retirer ses jetons de la table. Et sa phrase culte ? La vie est pleine de surprises, mon ami. Mais attends, le plus fou arrive. Quatre : sa voix. Dans les crédits du jeu, c'est l'acteur dominicain Manny Perez. Et Lucia ? Elle est jouée par Manni Perez. Presque le même nom ! Deux Perez dans le même casting. Petit bonus pour les fans. Sur la jaquette, Raul porte un costume blanc et une chemise violette. Exactement comme Lance Vance, dans GTA Vice City. Et Lance… avait trahi Tommy. Certains joueurs pensent que Raul fera pareil. Attention : c'est une théorie, rien de confirmé par Rockstar. Alors, Raul : vrai mentor… ou futur traître ? Dis-le en commentaire, et abonne-toi pour découvrir tous les persos de GTA 6."
+VOICE["raul"] = (TEXTS["raul"]
+    .replace("Tout le monde parle", "[curious] Tout le monde parle")
+    .replace("Deux Perez dans", "[laughs] Deux Perez dans")
+    .replace("Certains joueurs pensent", "[whispers] Certains joueurs pensent")
+    + " [pause] Allez, ciao.")
+
+TEXTS["vicecity"] = "Vice City cache un secret de taille. Elle fait deux fois Los Santos ! C'est Rockstar North qui le dit. Alors voici cinq endroits à voir, en plein jour. Un : Ocean Beach. Le cœur de la ville. Des hôtels Art déco aux couleurs pastel, du sable blanc à perte de vue… c'est le South Beach de Miami. Et ce nom, tu le connais. Ocean Beach existait déjà dans GTA Vice City, en 2002. Deux : l'Ocean View. En 2002, c'était le tout premier hôtel de Tommy Vercetti. Et il est de retour, avec son néon rose. Monte sur le toit, commande un Apple Martini au bar… et tu débloques un trophée. Le trophée le plus classe du jeu. Trois : Stockyard. Le quartier des fresques, inspiré de Wynwood, à Miami. Et là, écoute bien : plus de cinquante vrais street-artistes ont dessiné les murs du jeu. De vraies œuvres, en plein Vice City. Quatre : la Sahara Arena. C'est la salle du Miami Heat, recréée dans le jeu. Mais attends, le plus impressionnant, c'est le dernier. Cinq : le port. Rockstar l'appelle la capitale mondiale des croisières. Des paquebots géants, en plein centre-ville, face aux gratte-ciel de Downtown, inspirés du quartier de Brickell. Et pour tout visiter sans te fatiguer ? Appelle un Paradise Taxi, ou commande un RydeMe sur ton téléphone. Comme un vrai VTC. Petit rappel : Rockstar n'a jamais confirmé quels lieux de Miami ont servi de modèle. Ce sont les comparaisons de la presse et des joueurs. Alors, à Vice City, tu vas où en premier ? Dis-le en commentaire, et abonne-toi pour découvrir tous les lieux de GTA 6."
+VOICE["vicecity"] = (TEXTS["vicecity"]
+    .replace("Elle fait deux fois", "[curious] Elle fait deux fois")
+    .replace("Le trophée le plus classe", "[laughs] Le trophée le plus classe")
+    .replace("Des paquebots géants", "[excited] Des paquebots géants")
+    .replace("en 2002", "en deux mille deux").replace("En 2002", "En deux mille deux")
+    .replace("Downtown", "Downtown")
+    + " [pause] Allez, ciao.")
+DUR["raul3"] = 92.082  # voix_raul3.mp3 = voix_raul.mp3 coupée avant « Allez, ciao » (108,1 s), sans les blancs, x1.1
+DUR["vicecity3"] = 87.040  # voix_vicecity3.mp3 = voix_vicecity.mp3 coupée avant « Allez, ciao » (100,4 s), sans les blancs, x1.1
