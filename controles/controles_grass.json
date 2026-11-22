@@ -1,0 +1,33 @@
+{
+ "duree_s": 86.03,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -55.2,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.63,
+  "a": 57.0,
+  "b": 16.2
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.32,
+  "absente": true
+ },
+ "synchro_pct": 100.0,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.7,
+ "volume_ok": true,
+ "debit_median_syll_s": 5.61,
+ "phrases_trop_rapides": [
+  [
+   6,
+   "Voici quatre choses à y faire.",
+   1.36
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_grass_v3.mp4",
+ "fin": "videos/fins/VCN_grass_v3_fin.mp4",
+ "couverture": "covers/cover_grass3.jpg"
+}
