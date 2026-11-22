@@ -39,7 +39,7 @@ for m in meta:
                 "planche d'images vérifiée ✅"]) if c else "non faits"),
             ]
     if c.get("phrases_trop_rapides"):
-        det.append("- **Débit** (indicatif, < 25 % plus court que prévu) : " + "; ".join(f"« {p[1]} » x{p[2]}" for p in c["phrases_trop_rapides"]))
+        det.append("- **Débit rapide signalé** (comptage de syllabes : rien de manquant) : " + "; ".join(f"« {p[1]} » x{p[2]}" for p in c["phrases_trop_rapides"]))
     det += ["- **Légende (TikTok, Instagram, description YouTube)** :", "", "```", m["legende"], "", " ".join(m["hashtags"]), "```", "",
             "- **Tags YouTube** : " + ", ".join(m["tags"]), ""]
 out += ["", "Réglages de tous les brouillons (PIPELINE.md) : YouTube public, catégorie 20, miniature = la couverture ; TikTok PUBLIC_TO_EVERYONE,",
