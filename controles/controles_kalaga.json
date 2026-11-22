@@ -1,0 +1,38 @@
+{
+ "duree_s": 95.43,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -64.4,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.63,
+  "a": 71.0,
+  "b": 8.5
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.35,
+  "absente": true
+ },
+ "synchro_pct": 99.2,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.6,
+ "volume_ok": true,
+ "debit_median_syll_s": 4.71,
+ "phrases_trop_rapides": [
+  [
+   5,
+   "Voici quatre choses à y faire.",
+   1.31
+  ],
+  [
+   21,
+   "Mais il n'apparaît sur ta carte qu'une f",
+   1.44
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_kalaga_v3.mp4",
+ "fin": "videos/fins/VCN_kalaga_v3_fin.mp4",
+ "couverture": "covers/cover_kalaga3.jpg"
+}

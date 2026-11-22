@@ -1,0 +1,38 @@
+{
+ "duree_s": 88.53,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -63.2,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.61,
+  "a": 20.0,
+  "b": 6.5
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.5,
+  "absente": true
+ },
+ "synchro_pct": 100.0,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.6,
+ "volume_ok": true,
+ "debit_median_syll_s": 5.09,
+ "phrases_trop_rapides": [
+  [
+   5,
+   "C'est un vide-grenier.",
+   1.47
+  ],
+  [
+   11,
+   "Coupe l'alarme au panneau, à gauche en e",
+   1.27
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_eggs_v3.mp4",
+ "fin": "videos/fins/VCN_eggs_v3_fin.mp4",
+ "couverture": "covers/cover_eggs3.jpg"
+}
