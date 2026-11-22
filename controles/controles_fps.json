@@ -1,0 +1,43 @@
+{
+ "duree_s": 94.75,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -64.2,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.65,
+  "a": 21.0,
+  "b": 40.9
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.47,
+  "absente": true
+ },
+ "synchro_pct": 100.0,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.8,
+ "volume_ok": true,
+ "debit_median_syll_s": 4.79,
+ "phrases_trop_rapides": [
+  [
+   4,
+   "Pas de mode performance.",
+   1.59
+  ],
+  [
+   7,
+   "Voici ce qu'il faut savoir.",
+   1.27
+  ],
+  [
+   21,
+   "Digital Foundry conseille même de jouer ",
+   1.28
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_fps_v3.mp4",
+ "fin": "videos/fins/VCN_fps_v3_fin.mp4",
+ "couverture": "covers/cover_fps3.jpg"
+}
