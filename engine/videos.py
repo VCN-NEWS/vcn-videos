@@ -1231,7 +1231,7 @@ def video_kalaga3():
         (5, 0.0, _cd(MK + "06.jpg", lambda p: stat_card("4", "choses à faire là-haut", p, **LIME)), "4 CHOSES À FAIRE", None),
         (6, 0.0, _ph(MK + "05.jpg", 0.6, 0.5, 1.0), "N°1 : LA CHASSE", None),
         (7, 0.0, _cd(MK + "05.jpg", lambda p: chips_card(["Jumelles", "Focus"], p, "Bret Vogel t’apprend à pister")), "AVEC BRET VOGEL", None),
-        (7, 0.55, _ph(MK + "05.jpg", 0.35, 0.5, 1.2), None, "PISTE LE CERF"),
+        (7, 0.55, _ph(MK + "05.jpg", 0.62, 0.45, 1.2), None, "PISTE LE CERF"),
         (8, 0.0, _cd(MK + "05.jpg", lambda p: chips_card(["Veteran Hunted"], p, "La mission · chapitre 2")), "VETERAN HUNTED", None),
         (9, 0.0, _cd(MK + "05.jpg", lambda p: stat_card("500 $", "+ un fusil unique", p, **LIME)), "500 $ + UN FUSIL", None),
         (10, 0.0, _cd(MK + "05.jpg", lambda p: stat_card("TROPHÉE", "« Fair Game »", p, sub2="Un animal unique pour Bret")), "FAIR GAME", None),
