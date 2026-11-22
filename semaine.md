@@ -21,6 +21,12 @@ chaque vidéo est un brouillon vidIQ (YouTube + TikTok + Instagram, publishAt = 
 | Dimanche 29/11 12 h 30 | Lieu | Mount Kalaga : 4 choses à faire (méditation du sommet) | 95.43 s | ✅ tout OK |
 | Dimanche 29/11 18 h 30 | Portrait « Qui est… ? » | Qui est Cal Hampton ? | 88.14 s | ✅ tout OK |
 
+## Validation du dimanche 22/11 (20 h 30)
+
+- Les 14 vidéos ont été recontrôlées (controles.py + recalcul de la coupe de voix + extraits « fin ») : tout OK. « 5 nouveautés » : 1,06 s retirée (> 1 s), identifiée comme « Allez, ciao » (similarité 0,96 avec les autres).
+- L'heure YouTube s'affiche null dans draft_get/list pour les 14 ; publishAt YouTube ré-entré sur les 14 (nouvelles révisions ci-dessous). Vérifié sur les vidéos du 20-21/11 : YouTube respecte l'heure même si vidIQ l'affiche null (upload privé, public au créneau).
+- Programme, légendes, vidéos et fins envoyés au créateur ; en attente de son « ok ». Rien n'est programmé.
+
 ## À savoir avant de valider
 
 - **Hedra** : 563 crédits au départ, 359 dépensés (14 voix, 24 à 27 crédits chacune), **solde 204 crédits, sous le seuil de 300**. Une semaine complète coûte ~360 crédits : il faudra recharger avant la prochaine production du dimanche.
@@ -40,7 +46,7 @@ commentaires ouverts, confirmation musique acceptée, isAiGenerated true ; Insta
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_boobie_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_boobie_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_boobie3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_boobie.jpg
-- **postId** : `665fb32d-3e8d-468c-8c61-e3d42417b094` · **revision** : `a232f862-d99d3f5a-f54ae543`
+- **postId** : `665fb32d-3e8d-468c-8c61-e3d42417b094` · **revision** : `208507ab-7b124e11-8e2d93ad`
 - **uploadId vidéo** : `935486a7-25e0-4a47-a160-db4354b826a2` · **miniature YouTube (imageId)** : `9a9ca7c8-772f-4795-a62f-a724fbe24e2f`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 86.77 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.69) ✅, phrase sacrifiée absente (similarité 0.33) ✅, fin sur un silence (-64.7 dB) ✅, synchro 98.8 % ✅, volume -15.8 dB ✅, planche d'images vérifiée ✅
@@ -68,7 +74,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_astuces_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_astuces_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_astuces3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_astuces.jpg
-- **postId** : `91ad9512-414d-495a-a149-8d20c741810f` · **revision** : `4853ba3e-79494d3e-96a254c6`
+- **postId** : `91ad9512-414d-495a-a149-8d20c741810f` · **revision** : `6b2e6d2c-9e787aeb-e7aced9a`
 - **uploadId vidéo** : `9e772ee7-d737-4fcb-9e6e-503883dffa89` · **miniature YouTube (imageId)** : `02c761dc-5359-4670-9939-751fea917919`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 83.87 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.61) ✅, phrase sacrifiée absente (similarité 0.3) ✅, fin sur un silence (-62.2 dB) ✅, synchro 100.0 % ✅, volume -15.5 dB ✅, planche d'images vérifiée ✅
@@ -95,7 +101,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_keys_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_keys_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_keys3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_keys.jpg
-- **postId** : `333dc587-d036-475a-b007-3a5835304f42` · **revision** : `b06b840e-d8d15782-f752c531`
+- **postId** : `333dc587-d036-475a-b007-3a5835304f42` · **revision** : `7de4a1a1-8688e48c-d08517b8`
 - **uploadId vidéo** : `078231cd-6952-4593-9df6-6d703162c87d` · **miniature YouTube (imageId)** : `d73ee75b-1d47-4217-93bf-725c371b9c1f`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 89.67 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.6) ✅, phrase sacrifiée absente (similarité 0.39) ✅, fin sur un silence (-60.9 dB) ✅, synchro 99.6 % ✅, volume -15.7 dB ✅, planche d'images vérifiée ✅
@@ -123,7 +129,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_duree_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_duree_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_duree3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_duree.jpg
-- **postId** : `736428d8-59a5-4fbc-b63e-dc414e94fb24` · **revision** : `1dd81cd0-23718547-d992f3ba`
+- **postId** : `736428d8-59a5-4fbc-b63e-dc414e94fb24` · **revision** : `667dd920-bdd36445-f3ffb4f4`
 - **uploadId vidéo** : `04df1bc7-3847-4141-857b-e86d2b381e65` · **miniature YouTube (imageId)** : `6c158994-1cf9-40ac-828f-9a5ec717762e`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 87.2 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.67) ✅, phrase sacrifiée absente (similarité 0.38) ✅, fin sur un silence (-53.1 dB) ✅, synchro 98.8 % ✅, volume -15.7 dB ✅, planche d'images vérifiée ✅
@@ -151,7 +157,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_dimez_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_dimez_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_dimez3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_dimez.jpg
-- **postId** : `a74b193b-2435-40b5-9709-a2ed1f78cd3f` · **revision** : `48c8fa1e-56408023-9913a8d6`
+- **postId** : `a74b193b-2435-40b5-9709-a2ed1f78cd3f` · **revision** : `3f6c0fe9-7a96fd66-9d71224a`
 - **uploadId vidéo** : `87de6a79-9973-405a-a161-a20aff928156` · **miniature YouTube (imageId)** : `65a6bfed-5369-4a39-a30a-50bb9b643dd0`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 89.71 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.61) ✅, phrase sacrifiée absente (similarité 0.32) ✅, fin sur un silence (-59.3 dB) ✅, synchro 100.0 % ✅, volume -15.6 dB ✅, planche d'images vérifiée ✅
@@ -179,7 +185,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_eggs_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_eggs_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_eggs3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_eggs.jpg
-- **postId** : `a255ccff-7628-4c3f-8686-3045069d005c` · **revision** : `51834b81-71865683-e5b9a420`
+- **postId** : `a255ccff-7628-4c3f-8686-3045069d005c` · **revision** : `0166088a-0639cd09-0f07795d`
 - **uploadId vidéo** : `67a514df-ab46-455c-8ae7-2a825046c745` · **miniature YouTube (imageId)** : `811b6118-0f9f-48ec-a75c-09f3a8040b77`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 88.53 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.61) ✅, phrase sacrifiée absente (similarité 0.5) ✅, fin sur un silence (-63.2 dB) ✅, synchro 100.0 % ✅, volume -15.6 dB ✅, planche d'images vérifiée ✅
@@ -207,7 +213,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_grass_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_grass_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_grass3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_grass.jpg
-- **postId** : `f215190f-b1b1-47a9-8a6a-8bd6605ee551` · **revision** : `6b76118a-c7b83f41-eab15df8`
+- **postId** : `f215190f-b1b1-47a9-8a6a-8bd6605ee551` · **revision** : `0aab29ac-31e7c18b-32596783`
 - **uploadId vidéo** : `d69ee914-3805-45ee-a21b-e384af88228d` · **miniature YouTube (imageId)** : `18a07af6-27f8-4019-9bfc-0d95dce0c118`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 86.03 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.63) ✅, phrase sacrifiée absente (similarité 0.32) ✅, fin sur un silence (-55.2 dB) ✅, synchro 100.0 % ✅, volume -15.7 dB ✅, planche d'images vérifiée ✅
@@ -235,7 +241,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_nouveautes_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_nouveautes_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_nouveautes3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_nouveautes.jpg
-- **postId** : `c8f052db-c8d2-4aca-a6b4-b3bfbee0b94f` · **revision** : `6e99851e-75f078f6-d3cf3a5a`
+- **postId** : `c8f052db-c8d2-4aca-a6b4-b3bfbee0b94f` · **revision** : `36ae91a5-64be2ed0-72b29668`
 - **uploadId vidéo** : `5ed6b94a-dd31-47a0-b794-3c758a01b2fe` · **miniature YouTube (imageId)** : `d3b103cf-8d78-4c6c-b6a7-718c2e68866a`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 85.84 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.59) ✅, phrase sacrifiée absente (similarité 0.41) ✅, fin sur un silence (-57.5 dB) ✅, synchro 99.6 % ✅, volume -15.6 dB ✅, planche d'images vérifiée ✅
@@ -263,7 +269,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_gellhorn_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_gellhorn_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_gellhorn3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_gellhorn.jpg
-- **postId** : `c9b2bef9-d91a-473c-9d3c-b2cf193f433d` · **revision** : `3c668929-6de17377-8fe180cb`
+- **postId** : `c9b2bef9-d91a-473c-9d3c-b2cf193f433d` · **revision** : `59f481b8-7b78f1dc-f37453fb`
 - **uploadId vidéo** : `9b957462-90bd-46d9-800e-d76adc048e0a` · **miniature YouTube (imageId)** : `c59001f9-5994-4eac-9f1f-fe5f48ee7d92`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 100.92 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.68) ✅, phrase sacrifiée absente (similarité 0.45) ✅, fin sur un silence (-62.2 dB) ✅, synchro 100.0 % ✅, volume -15.5 dB ✅, planche d'images vérifiée ✅
@@ -291,7 +297,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_argent_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_argent_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_argent3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_argent.jpg
-- **postId** : `d837ae1c-6632-4835-a059-6e273775b139` · **revision** : `224815a6-3b83f441-d5d00b85`
+- **postId** : `d837ae1c-6632-4835-a059-6e273775b139` · **revision** : `3cc0ec78-42577c41-d27f994a`
 - **uploadId vidéo** : `b76bb9d1-708c-44ad-a0e4-13da2356f60c` · **miniature YouTube (imageId)** : `1b2375f1-05ec-4e83-b612-d6d987c99794`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 98.93 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.63) ✅, phrase sacrifiée absente (similarité 0.34) ✅, fin sur un silence (-62.2 dB) ✅, synchro 99.6 % ✅, volume -15.6 dB ✅, planche d'images vérifiée ✅
@@ -319,7 +325,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_drequan_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_drequan_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_drequan3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_drequan.jpg
-- **postId** : `d006e718-3ea8-4a30-bb4c-7b3ac072f380` · **revision** : `26c47b91-4c8d1a10-52088997`
+- **postId** : `d006e718-3ea8-4a30-bb4c-7b3ac072f380` · **revision** : `0e3ae1af-b84e145c-e7f9208b`
 - **uploadId vidéo** : `e0609285-6550-4949-a8b6-f6a5771f0ca5` · **miniature YouTube (imageId)** : `0f7ee6fe-5ff3-4ba7-84d3-ee47c0e2aab7`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 81.7 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.58) ✅, phrase sacrifiée absente (similarité 0.42) ✅, fin sur un silence (-62.5 dB) ✅, synchro 100.0 % ✅, volume -15.7 dB ✅, planche d'images vérifiée ✅
@@ -347,7 +353,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_fps_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_fps_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_fps3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_fps.jpg
-- **postId** : `ce80dca7-760d-44ac-9b71-a04efe8f7a47` · **revision** : `34f764dc-4d330eec-69b808b3`
+- **postId** : `ce80dca7-760d-44ac-9b71-a04efe8f7a47` · **revision** : `ad6473be-d96b5753-ee9b323d`
 - **uploadId vidéo** : `a086a2e2-3c9c-4979-8826-d3a8e8dbc71e` · **miniature YouTube (imageId)** : `e238a041-a50f-47e0-84ae-bb5210a36a8b`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 94.75 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.65) ✅, phrase sacrifiée absente (similarité 0.47) ✅, fin sur un silence (-64.2 dB) ✅, synchro 100.0 % ✅, volume -15.8 dB ✅, planche d'images vérifiée ✅
@@ -375,7 +381,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_kalaga_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_kalaga_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_kalaga3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_kalaga.jpg
-- **postId** : `9da1eb7c-0aaf-4b54-8a47-f8bb378b445c` · **revision** : `20d5e4b3-4194cc03-c3a9c0e6`
+- **postId** : `9da1eb7c-0aaf-4b54-8a47-f8bb378b445c` · **revision** : `1ed6edc6-78bb728e-c7606a8f`
 - **uploadId vidéo** : `559732df-8856-464a-9ced-6a1c2fbe06a9` · **miniature YouTube (imageId)** : `7e6388a6-7fec-4e4e-8239-d73204b88eba`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 95.43 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.63) ✅, phrase sacrifiée absente (similarité 0.35) ✅, fin sur un silence (-64.4 dB) ✅, synchro 99.2 % ✅, volume -15.6 dB ✅, planche d'images vérifiée ✅
@@ -403,7 +409,7 @@ Images : Rockstar Games.
 - **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_cal_v3.mp4
 - **Fin (10 dernières secondes, à écouter)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_cal_v3_fin.mp4
 - **Couverture** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/covers/cover_cal3.jpg · planche : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/controles/planche_cal.jpg
-- **postId** : `a7cb96cb-c616-437e-ad13-7857611322db` · **revision** : `01839adb-087de7c2-ea280ed9`
+- **postId** : `a7cb96cb-c616-437e-ad13-7857611322db` · **revision** : `959a4116-a9474d3c-b2e128b3`
 - **uploadId vidéo** : `cb6f32fc-7921-437a-a000-ca783bbc05af` · **miniature YouTube (imageId)** : `78cd0eb3-693d-42c5-a3c8-f2293b6a4d19`
 - **Statut du brouillon** : brouillon prêt (ready: true), 3 comptes, rien de programmé
 - **Contrôles bloquants** : durée 88.14 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (similarité max 0.67) ✅, phrase sacrifiée absente (similarité 0.43) ✅, fin sur un silence (-67.7 dB) ✅, synchro 100.0 % ✅, volume -15.5 dB ✅, planche d'images vérifiée ✅
