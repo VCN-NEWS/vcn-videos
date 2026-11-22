@@ -121,3 +121,10 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 - Priorité à ces clips pour la série « Secrets de GTA 6 » : détails cachés, easter eggs, astuces, réactions du monde, lieux, comparaisons GTA 5, moments drôles. Histoire : sans spoiler, ou « ⚠️ spoiler » dans le titre.
 - Vérifier l'info avant d'écrire le script ; couper la radio du jeu (risque de réclamation de droits) et mettre la musique du moteur ; pas de violence graphique dans les 7 premières secondes (règle YouTube).
 - Jamais de clips d'autres créateurs sans leur accord écrit et un crédit.
+
+## Série « mission par mission » (décision du créateur le 22/11/2026 : plus tard)
+
+- Le créateur termine d'abord le jeu, puis enregistrera lui-même le mode histoire mission par mission (nouvelle partie dans un autre emplacement de sauvegarde, 15 emplacements manuels ; GTA 6 n'a pas de « Rejouer la mission »).
+- Titre = « Mission N : <nom de la mission> », dans l'ordre de l'histoire, format v3 + voix VCN, radio du jeu coupée, sans spoiler (pas de fin, pas de montage de cinématiques : Rockstar les fait retirer).
+- Jamais d'extraits de gameplay d'autres youtubeurs, même connus ou crédités, sans leur accord écrit.
+- En attendant, on garde le mélange habituel (portraits, lieux, secrets & astuces, explications).
