@@ -1,0 +1,58 @@
+{
+ "duree_s": 88.14,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -67.7,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.67,
+  "a": 23.0,
+  "b": 5.8
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.43,
+  "absente": true
+ },
+ "synchro_pct": 100.0,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.5,
+ "volume_ok": true,
+ "debit_median_syll_s": 4.87,
+ "phrases_trop_rapides": [
+  [
+   2,
+   "Quatre choses à savoir sur lui.",
+   1.34
+  ],
+  [
+   4,
+   "Rockstar la résume en une question.",
+   1.35
+  ],
+  [
+   10,
+   "Il y a beaucoup trop d'oiseaux qui volen",
+   1.25
+  ],
+  [
+   11,
+   "C'est une de ses phrases officielles.",
+   1.5
+  ],
+  [
+   17,
+   "C'est aussi lui qui a installé une appli",
+   1.38
+  ],
+  [
+   18,
+   "Voilà pourquoi tu entends la radio des f",
+   1.25
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_cal_v3.mp4",
+ "fin": "videos/fins/VCN_cal_v3_fin.mp4",
+ "couverture": "covers/cover_cal3.jpg"
+}
