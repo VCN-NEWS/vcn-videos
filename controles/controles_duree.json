@@ -1,0 +1,48 @@
+{
+ "duree_s": 87.2,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -53.1,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.67,
+  "a": 62.0,
+  "b": 12.2
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.38,
+  "absente": true
+ },
+ "synchro_pct": 98.8,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.7,
+ "volume_ok": true,
+ "debit_median_syll_s": 4.26,
+ "phrases_trop_rapides": [
+  [
+   3,
+   "Alors voici ce qu'on sait, en cinq chiff",
+   1.28
+  ],
+  [
+   22,
+   "Toute la carte à révéler, toutes les act",
+   1.59
+  ],
+  [
+   24,
+   "Attention : ce sont des chronos de la pr",
+   1.26
+  ],
+  [
+   26,
+   "ou tu explores tout ?",
+   1.54
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_duree_v3.mp4",
+ "fin": "videos/fins/VCN_duree_v3_fin.mp4",
+ "couverture": "covers/cover_duree3.jpg"
+}
