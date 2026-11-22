@@ -156,6 +156,21 @@ COVERS = {
                   sticker="MENTOR OU TRAÎTRE ?", focus=(0.55, 0.3), zoom=1.12),
     "vicecity3": dict(photo="lieus/vice_city_15.jpg", lines=["VICE CITY", "EN 5 LIEUX"],
                       sticker="2X LOS SANTOS !", focus=(0.45, 0.4), zoom=1.0),
+    # ---- semaine du 23 au 29/11 ----
+    "boobie3": dict(photo="personnages/boobie_ike_03.jpg", lines=["QUI EST", "BOOBIE ?"], sticker="LE ROI DE VICE CITY", focus=(0.38, 0.3), zoom=1.05),
+    "astuces3": dict(photo="personnages/jason_and_lucia_11.jpg", lines=["5 ASTUCES", "CACHÉES"], sticker="LE JEU NE TE LE DIT PAS", focus=(0.6, 0.3), zoom=1.1),
+    "keys3": dict(photo="lieus/leonida_keys_01.jpg", lines=["LEONIDA", "KEYS"], sticker="UN CHIEN EN JET-SKI ?!", focus=(0.5, 0.5), zoom=1.0),
+    "duree3": dict(photo="personnages/jason_and_lucia_01.jpg", lines=["2X PLUS", "LONG ?!"], sticker="GTA 6 VS GTA 5", focus=(0.55, 0.35), zoom=1.1),
+    "dimez3": dict(photo="personnages/real_dimez_03.jpg", lines=["QUI SONT", "LES DIMEZ ?"], sticker="LE DUO RAP DE GTA 6", focus=(0.53, 0.2), zoom=1.15),
+    "eggs3": dict(photo="lieus/vice_city_24.jpg", lines=["5 EASTER", "EGGS"], sticker="RED DEAD DANS GTA 6 !", focus=(0.45, 0.5), zoom=1.0),
+    "grass3": dict(photo="lieus/grassrivers_01.jpg", lines=["BIGFOOT", "DANS GTA 6"], sticker="LE SECRET DES MARAIS", focus=(0.62, 0.35), zoom=1.0),
+    "nouveautes3": dict(photo="personnages/jason_and_lucia_09.jpg", lines=["5 NOUVEAUTÉS", "DE GTA 6"], sticker="GTA 5 N’AVAIT PAS ÇA", focus=(0.58, 0.33), zoom=1.15),
+    "gellhorn3": dict(photo="lieus/port_gellhorn_01.jpg", lines=["PORT", "GELLHORN"], sticker="LA VILLE LA PLUS LOUCHE", focus=(0.3, 0.4), zoom=1.0),
+    "argent3": dict(photo="personnages/jason_and_lucia_02.jpg", lines=["PLUS JAMAIS", "FAUCHÉ"], sticker="LE PERROQUET BALANCE", focus=(0.47, 0.33), zoom=1.1),
+    "drequan3": dict(photo="personnages/drequan_priest_03.jpg", lines=["QUI EST", "DRE’QUAN ?"], sticker="LE BOSS DU RAP ?", focus=(0.45, 0.2), zoom=1.2),
+    "fps3": dict(photo="lieus/vice_city_17.jpg", lines=["30 FPS", "POURQUOI ?"], sticker="MÊME SUR PS5 PRO", focus=(0.5, 0.5), zoom=1.0),
+    "kalaga3": dict(photo="lieus/mount_kalaga_national_park_04.jpg", lines=["MOUNT", "KALAGA"], sticker="LE SECRET DU SOMMET", focus=(0.6, 0.5), zoom=1.0),
+    "cal3": dict(photo="personnages/cal_hampton_01.jpg", lines=["QUI EST", "CAL ?"], sticker="LE PARANO DE GTA 6", focus=(0.71, 0.28), zoom=1.45),
 }
 
 if __name__ == "__main__":

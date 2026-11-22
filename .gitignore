@@ -7,3 +7,4 @@ engine/voix_*_fin.mp3
 engine/GTA6_*3.mp4
 engine/VCN_*3.mp4
 engine/__pycache__/
+engine/*.part.mp4

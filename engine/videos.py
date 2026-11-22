@@ -663,6 +663,640 @@ def video_vicecity3():
 VIDEOS["vicecity3"] = video_vicecity3
 
 
+# ======================= Semaine du 23 au 29/11 : 14 vidéos format v3 =======================
+# (bloc inséré dans videos.py avant le __main__ ; voir scripts.SEMAINE pour l'ordre)
+DUR.update({"boobie3": 85.107, "astuces3": 82.207, "keys3": 88.007, "duree3": 85.551, "dimez3": 88.059, "eggs3": 86.883,
+            "grass3": 84.376, "nouveautes3": 84.193, "gellhorn3": 99.265, "argent3": 97.280, "drequan3": 80.039,
+            "fps3": 93.100, "kalaga3": 93.780, "cal3": 86.491})
+# DUR = durée de voix_<clé>3.mp3 (voix Hedra coupée dans le blanc avant « Allez, ciao », sans les blancs, x1.1 : prep_voice.py)
+
+_L, _P = "lieus/", "personnages/"
+VC, JL = _L + "vice_city_", _P + "jason_and_lucia_"
+LK, GR, PG, MK = _L + "leonida_keys_", _L + "grassrivers_", _L + "port_gellhorn_", _L + "mount_kalaga_national_park_"
+SKY = dict(c1=(150, 240, 255), c2=(90, 160, 255))
+LIME = dict(c1=(190, 255, 150), c2=(60, 210, 120))
+FIRE = dict(c1=(255, 200, 110), c2=(255, 90, 60))
+
+
+def _ph(rel, fx=0.5, fy=0.5, z=1.0):
+    return ("photo", rel, fx, fy, z)
+
+
+def _cd(bg, builder, fx=0.5):
+    return ("card", bg, fx, builder)
+
+
+def _sp(r1, p1, r2, p2, n1, n2):
+    return ("split", r1, p1, r2, p2, n1, n2)
+
+
+def _auto_labels(shots, first):
+    """Barre de progression : sujet, puis « N°k », « LE MEILLEUR » à la relance, « TON AVIS » à la fin."""
+    labels, n = {0: first}, 0
+    for i, sh in enumerate(shots):
+        t = sh[3] or ""
+        if t.startswith("N°"):
+            labels[i] = t.split(":")[0].strip()
+        elif t.startswith("MAIS ATTENDS"):
+            labels[i] = "LE MEILLEUR"
+        elif (sh[2][0] == "split" and i >= len(shots) - 3) or t == "ABONNE-TOI !":
+            labels.setdefault(i, "TON AVIS")
+    return labels
+
+
+def _fv(key, text_key, shots, col, first, maxd=4.6):
+    """Plan > maxd s (hors écran partagé et carte finale) : on insère un 2e plan au milieu (recadrage plus serré
+    de la même photo, ou la photo de fond d'une carte) pour ne jamais rester > ~4,5 s sans changement visuel."""
+    from v3 import FullVideo
+    v = FullVideo(key, TEXTS[text_key], DUR[key], shots, col, labels=_auto_labels(shots, first))
+    extra = []
+    for i, ((a, b), sh) in enumerate(zip(v.seg_times, shots)):
+        if b - a <= maxd or i == len(shots) - 1 or sh[2][0] == "split":
+            continue
+        tm = (a + b) / 2
+        si = max(j for j, (sa, sb) in enumerate(v.st) if sa - 0.12 <= tm) if any(sa - 0.12 <= tm for sa, sb in v.st) else sh[0]
+        sa, sb = v.st[si]
+        fr = min(0.95, max(0.0, (tm + 0.12 - sa) / max(0.1, sb - sa)))
+        if (si, fr) <= (sh[0], sh[1]):
+            continue
+        m = sh[2]
+        if m[0] == "photo":
+            nm = ("photo", m[1], min(0.9, max(0.1, m[2] + 0.06)), m[3], m[4] * 1.3)
+        elif m[0] == "card":
+            nm = ("photo", m[1], 0.5, 0.5, 1.15)
+        else:
+            nm = m
+        extra.append((si, fr, nm, None, None))
+    if not extra:
+        return v
+    allshots = sorted(shots + extra, key=lambda s: (s[0], s[1]))
+    return FullVideo(key, TEXTS[text_key], DUR[key], allshots, col, labels=_auto_labels(allshots, first))
+
+
+# ---------- 23/11 12 h 30 · Qui est Boobie Ike ? ----------
+def video_boobie3():
+    B = _P + "boobie_ike_"
+    shots = [
+        (0, 0.0, _ph(B + "03.jpg", 0.38, 0.35, 1.3), "QUI EST BOOBIE ?", None),
+        (1, 0.0, _ph(B + "02.jpg", 0.32, 0.3, 1.1), None, "TOUT LE MONDE LE CONNAÎT"),
+        (2, 0.0, ("clip", "clips/boobie_ike.mp4", 0.5), "BOOBIE IKE", None),
+        (3, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("4", "choses à savoir sur lui", p)), "4 CHOSES À SAVOIR", None),
+        (4, 0.0, _ph(VC + "01.jpg", 0.45, 0.5, 1.0), "N°1 : UNE LÉGENDE", None),
+        (5, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rockstar Games", ["Sa description officielle…"], p, warn=None)), "SELON ROCKSTAR", None),
+        (6, 0.0, _ph(B + "01.jpg", 0.45, 0.3, 1.2), "LÉGENDE LOCALE", None),
+        (7, 0.0, _ph(B + "02.jpg", 0.32, 0.25, 1.4), None, "ET IL LE SAIT"),
+        (8, 0.0, _ph(B + "03.jpg", 0.38, 0.3, 1.5), "TOUT SOURIRE…", None),
+        (9, 0.0, _ph(B + "01.jpg", 0.42, 0.35, 1.0), None, "PUIS LES AFFAIRES"),
+        (10, 0.0, _ph(VC + "27.jpg", 0.5, 0.5, 1.0), "N°2 : SON EMPIRE", None),
+        (11, 0.0, _ph(VC + "10.jpg", 0.35, 0.5, 1.0), None, "SOI-DISANT LÉGITIME"),
+        (12, 0.0, _cd(VC + "03.jpg", lambda p: chips_card(["Immobilier", "Studio", "Club"], p, "L’empire de Boobie")), "SON EMPIRE", None),
+        (12, 0.6, _ph(B + "02.jpg", 0.58, 0.15, 1.4), "JACK OF HEARTS", "CROSSTOWN"),
+        (13, 0.0, _ph(B + "03.jpg", 0.38, 0.35, 1.0), "SA DEVISE ?", None),
+        (14, 0.0, _cd(VC + "13.jpg", lambda p: source_card("Boobie Ike", ["« Tout est une question", "de cœur. »"], p, warn=None)), "QUESTION DE CŒUR", None),
+        (15, 0.0, _ph(B + "01.jpg", 0.45, 0.3, 1.0), "MAIS ROCKSTAR…", None),
+        (16, 0.0, _cd(VC + "25.jpg", lambda p: source_card("Rockstar Games", ["« L’argent du club", "paie le studio… »"], p, warn=None)), "LE CLUB PAIE LE STUDIO", None),
+        (17, 0.0, _ph(B + "01.jpg", 0.42, 0.6, 1.4), "ET LE RESTE ?", "L’ARGENT SALE"),
+        (18, 0.0, _ph(_P + "drequan_priest_04.jpg", 0.45, 0.4, 1.0), "N°3 : SON PARI", None),
+        (19, 0.0, _cd(VC + "04.jpg", lambda p: stat_card("ONLY RAW", "son label de rap", p, sub2="Only Raw Records")), "UN LABEL DE RAP", None),
+        (20, 0.0, _ph(_P + "drequan_priest_03.jpg", 0.45, 0.25, 1.2), "AVEC DRE’QUAN", None),
+        (20, 0.5, ("clip", "clips/drequan_priest.mp4", 0.5), None, "LE JEUNE ASSOCIÉ"),
+        (21, 0.0, _ph(_P + "drequan_priest_04.jpg", 0.75, 0.5, 1.0), "IL MANQUE… UN TUBE", None),
+        (22, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("CHAP. 3", "ta rencontre avec Boobie", p)), "CHAPITRE 3", None),
+        (23, 0.0, _ph(JL + "06.jpg", 0.6, 0.4, 1.0), "MISSION BOOBIE TIME", None),
+        (23, 0.55, _ph(B + "02.jpg", 0.32, 0.3, 1.0), None, "TOI AU VOLANT"),
+        (24, 0.0, _cd(VC + "08.jpg", lambda p: chips_card(["Dealer’s Choice", "Bricked Up"], p, "Tu le recroises dans…")), "ET ENCORE…", None),
+        (25, 0.0, _ph(B + "03.jpg", 0.38, 0.3, 1.6), "MAIS ATTENDS…", None),
+        (26, 0.0, _ph(B + "01.jpg", 0.45, 0.25, 1.4), "N°4 : SA VOIX", None),
+        (27, 0.0, ("clip", "clips/boobie_ike.mp4", 0.5), "INTERNET ÉTAIT SÛR…", None),
+        (28, 0.0, _cd(VC + "11.jpg", lambda p: source_card("La rumeur des fans", ["Johnny Ray Gill,", "vu dans Red Dead Redemption 2"], p, warn=None)), "LA RUMEUR", None),
+        (29, 0.0, _cd(VC + "27.jpg", lambda p: crossed_stat("J. R. GILL", "la rumeur des fans", p)), "RATÉ !", None),
+        (30, 0.0, _cd(VC + "13.jpg", lambda p: stat_card("MIKE FORBS", "la voix de Boobie", p, sub2="Crédits du jeu")), "MIKE FORBS", None),
+        (31, 0.0, _ph(B + "02.jpg", 0.32, 0.3, 1.25), "INTERNET S’EST TROMPÉ", None),
+        (32, 0.0, _sp(B + "01.jpg", (0.45, 0.3), B + "03.jpg", (0.38, 0.35), "HOMME D’AFFAIRES", "GANGSTER"), None, None),
+        (34, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("Business ou gangster ?", p, typed="Gangster en costume !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("boobie3", "boobie", shots, PINK, "QUI EST-IL ?")
+
+
+# ---------- 23/11 18 h 30 · 5 astuces cachées ----------
+def video_astuces3():
+    shots = [
+        (0, 0.0, _ph(JL + "06.jpg", 0.62, 0.4, 1.1), "COMMANDES CACHÉES", None),
+        (1, 0.0, _cd(VC + "10.jpg", lambda p: stat_card("5", "astuces que le jeu ne t’explique pas", p, **SKY)), "5 ASTUCES", None),
+        (1, 0.6, _ph(JL + "11.jpg", 0.6, 0.4, 1.0), None, "LA 3E VA TE PLAIRE"),
+        (2, 0.0, _ph(VC + "24.jpg", 0.5, 0.5, 1.0), "N°1 : MOTEUR ALLUMÉ", None),
+        (3, 0.0, _cd(VC + "22.jpg", lambda p: chips_card(["2× Triangle", "2× Y (Xbox)"], p, "En voiture, appuie vite")), "DOUBLE APPUI", None),
+        (4, 0.0, _ph(JL + "03.jpg", 0.35, 0.4, 1.0), "MOTEUR + RADIO ON", None),
+        (5, 0.0, _ph(JL + "20.jpg", 0.55, 0.45, 1.0), "ELLE CONTINUE SEULE !", None),
+        (6, 0.0, _ph(LK + "05.jpg", 0.35, 0.5, 1.0), "ET EN BATEAU…", None),
+        (7, 0.0, _ph(VC + "15.jpg", 0.45, 0.6, 1.0), None, "IL GARDE SON CAP"),
+        (8, 0.0, _ph(JL + "11.jpg", 0.75, 0.4, 1.0), "N°2 : LA PORTIÈRE", None),
+        (9, 0.0, _cd(VC + "24.jpg", lambda p: chips_card(["Carré", "X (Xbox)"], p, "En conduisant")), "UNE ARME", None),
+        (10, 0.0, _ph(JL + "06.jpg", 0.4, 0.4, 1.0), "COUP DE PORTIÈRE", None),
+        (10, 0.5, _ph(VC + "06.jpg", 0.2, 0.5, 1.0), None, "PIÉTON, FLIC…"),
+        (11, 0.0, _ph(JL + "09.jpg", 0.6, 0.5, 1.0), "À MOTO : COUP DE PIED", None),
+        (12, 0.0, _ph(VC + "17.jpg", 0.5, 0.5, 1.0), "N°3 : AUTO DRIVE", None),
+        (13, 0.0, _cd(VC + "03.jpg", lambda p: list_card([("Pose un point", "sur la carte", BLUE), ("Bas (croix) + Options", "= la vue cinéma", PINK),
+                                                          ("Maintiens Rond / B", "quand « Auto Drive » apparaît", GOLD)], p, title="Le pilote automatique", icon="123")), "LA MANIP", None),
+        (14, 0.0, _ph(JL + "20.jpg", 0.4, 0.4, 1.0), "VUE CINÉMA", None),
+        (15, 0.0, _ph(JL + "03.jpg", 0.5, 0.4, 1.0), "MAINTIENS ROND", None),
+        (16, 0.0, _ph(VC + "10.jpg", 0.5, 0.5, 1.0), "ELLE ROULE SEULE", "CODE DE LA ROUTE"),
+        (17, 0.0, _ph(JL + "17.jpg", 0.5, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (18, 0.0, _ph(VC + "06.jpg", 0.15, 0.45, 1.2), "N°4 : LA POLICE", None),
+        (19, 0.0, _cd(VC + "17.jpg", lambda p: chips_card(["Visage", "Tenue", "Voiture"], p, "Ce que la police sait de toi")), "ELLE SE SOUVIENT", None),
+        (20, 0.0, _ph(VC + "16.jpg", 0.6, 0.45, 1.0), "TON VISAGE, TA TENUE…", None),
+        (21, 0.0, _ph(JL + "15.jpg", 0.35, 0.4, 1.0), "UN MASQUE", None),
+        (21, 0.4, _ph(JL + "08.jpg", 0.65, 0.5, 1.0), None, "TENUE DANS LE COFFRE"),
+        (21, 0.75, _ph(VC + "24.jpg", 0.4, 0.5, 1.0), None, "CHANGE DE VOITURE"),
+        (22, 0.0, _ph(JL + "02.jpg", 0.5, 0.4, 1.0), "N°5 : LE COFFRE-FORT", None),
+        (23, 0.0, _ph(JL + "02.jpg", 0.45, 0.4, 1.4), "FAIS-LE SAUTER", None),
+        (24, 0.0, _ph(JL + "08.jpg", 0.55, 0.6, 1.2), "GRENADE, GAZ…", None),
+        (25, 0.0, _cd(VC + "22.jpg", lambda p: stat_card("BOUM", "n’importe quelle explosion l’ouvre", p, **FIRE)), "ÇA S’OUVRE", None),
+        (26, 0.0, _ph(JL + "02.jpg", 0.5, 0.5, 1.0), "SAUF LES BANQUES", None),
+        (27, 0.0, _ph(JL + "04.jpg", 0.5, 0.4, 1.0), "ATTENTION AU BRUIT !", None),
+        (28, 0.0, _sp(JL + "11.jpg", (0.75, 0.4), JL + "20.jpg", (0.4, 0.4), "LA PORTIÈRE", "AUTO DRIVE"), None, None),
+        (29, 0.0, _cd(VC + "10.jpg", lambda p: comment_card("Laquelle tu savais pas ?", p, typed="L’auto drive !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("astuces3", "astuces", shots, BLUE, "5 ASTUCES")
+
+
+# ---------- 24/11 12 h 30 · Leonida Keys ----------
+def video_keys3():
+    shots = [
+        (0, 0.0, _ph(LK + "05.jpg", 0.75, 0.5, 1.0), "UN CHIEN EN JET-SKI ?!", None),
+        (1, 0.0, _ph(LK + "06.jpg", 0.5, 0.4, 1.0), None, "OUI, DANS GTA 6"),
+        (2, 0.0, _ph(LK + "01.jpg", 0.45, 0.5, 1.0), "LEONIDA KEYS", None),
+        (3, 0.0, _cd(LK + "01.jpg", lambda p: source_card("Rockstar Games", ["« La porte", "du paradis »"], p, warn=None)), "LA PORTE DU PARADIS", None),
+        (4, 0.0, _ph(LK + "03.jpg", 0.35, 0.5, 1.0), "TENUE DÉCONTRACTÉE", None),
+        (5, 0.0, _ph(LK + "07.jpg", 0.5, 0.5, 1.0), "EAUX DANGEREUSES", None),
+        (5, 0.5, _ph(LK + "04.jpg", 0.6, 0.5, 1.0), None, "ET MAGNIFIQUES"),
+        (6, 0.0, _cd(LK + "01.jpg", lambda p: source_card("Selon la presse", ["Le portrait des Florida Keys"], p)), "FLORIDA KEYS", None),
+        (7, 0.0, _cd(LK + "06.jpg", lambda p: stat_card("5", "choses à faire dans les Keys", p, **SKY)), "5 CHOSES À FAIRE", None),
+        (8, 0.0, _ph(LK + "02.jpg", 0.5, 0.5, 1.0), "N°1 : KEY LENTO", None),
+        (9, 0.0, _ph(_P + "brian_heder_02.jpg", 0.55, 0.35, 1.0), "MAISON SUR PILOTIS", "PRÊTÉE PAR BRIAN"),
+        (10, 0.0, _ph(GR + "07.jpg", 0.3, 0.45, 1.0), "DOLORES, SON SERPENT", None),
+        (11, 0.0, _ph(GR + "07.jpg", 0.25, 0.5, 1.4), None, "TU PEUX LA NOURRIR"),
+        (12, 0.0, _ph(LK + "03.jpg", 0.55, 0.25, 1.2), "N°2 : RUSTY ANCHOR", None),
+        (13, 0.0, _ph(LK + "03.jpg", 0.4, 0.55, 1.0), "LES PIEDS DANS L’EAU", None),
+        (14, 0.0, _ph(LK + "05.jpg", 0.3, 0.5, 1.0), "N°3 : LA PÊCHE", None),
+        (15, 0.0, _cd(LK + "01.jpg", lambda p: chips_card(["Gone Fishing"], p, "Ta 1re mission avec Cal")), "GONE FISHING", None),
+        (15, 0.55, _ph(_P + "cal_hampton_02.jpg", 0.55, 0.25, 1.2), None, "AVEC CAL"),
+        (16, 0.0, _cd(LK + "05.jpg", lambda p: stat_card("TROPHÉE", "bats Cal à un défi de pêche", p, sub2="« Baited My Tackle »", **SKY)), "BATS CAL", None),
+        (17, 0.0, _ph(LK + "01.jpg", 0.25, 0.5, 1.0), "N°4 : BASE MILITAIRE", None),
+        (18, 0.0, _cd(LK + "01.jpg", lambda p: source_card("Mile Zero Air Station", ["Goose Key", "Leonida Keys"], p, warn=None)), "MILE ZERO", None),
+        (19, 0.0, _cd(LK + "06.jpg", lambda p: stat_card("RHINO", "le tank de la base", p)), "UN TANK", None),
+        (20, 0.0, _cd(LK + "01.jpg", lambda p: stat_card("LAZER", "le jet de chasse", p, **SKY)), "ET UN JET !", None),
+        (21, 0.0, _ph(LK + "06.jpg", 0.6, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (22, 0.0, _ph(LK + "05.jpg", 0.55, 0.4, 1.1), "N°5 : LE CHIEN !", None),
+        (23, 0.0, _ph(LK + "01.jpg", 0.6, 0.6, 1.0), "EN PLEINE MER", None),
+        (23, 0.5, _ph(LK + "04.jpg", 0.4, 0.4, 1.0), None, "COUPE LE MOTEUR, NAGE"),
+        (24, 0.0, _ph(LK + "06.jpg", 0.3, 0.5, 1.0), "DES ABOIEMENTS ?!", None),
+        (25, 0.0, _cd(LK + "05.jpg", lambda p: chips_card(["Gilet", "Lunettes", "Jet-ski"], p, "Le chien de GTA 6")), "LE CHIEN EN JET-SKI !", None),
+        (26, 0.0, _ph(LK + "06.jpg", 0.15, 0.5, 1.0), "SON ÎLE", None),
+        (26, 0.5, _cd(LK + "05.jpg", lambda p: stat_card("1 200 $", "déterrés par le chien", p, **LIME)), "1 200 $ !", None),
+        (27, 0.0, _ph(LK + "05.jpg", 0.55, 0.5, 1.0), "IL EXISTE VRAIMENT", None),
+        (28, 0.0, _cd(LK + "01.jpg", lambda p: source_card("Loosy", ["Une chienne de Fort Lauderdale", "qui fait du jet-ski"], p, warn=None)), "LOOSY", None),
+        (29, 0.0, _cd(LK + "02.jpg", lambda p: source_card("Petit rappel", ["Florida Keys :", "comparaison de la presse"], p)), "PETIT RAPPEL", None),
+        (30, 0.0, _sp(LK + "03.jpg", (0.4, 0.5), LK + "05.jpg", (0.5, 0.5), "LE BAR", "LA MER"), None, None),
+        (31, 0.0, _cd(LK + "01.jpg", lambda p: comment_card("Tu fais quoi en 1er ?", p, typed="Le chien en jet-ski !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("keys3", "keys", shots, BLUE, "LEONIDA KEYS")
+
+
+# ---------- 24/11 18 h 30 · Durée de vie ----------
+def video_duree3():
+    shots = [
+        (0, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("≈ x 2", "la durée de GTA 5", p, sub2="Selon les chronos des testeurs")), "2X GTA 5 ?!", None),
+        (1, 0.0, _ph(JL + "01.jpg", 0.5, 0.35, 1.0), None, "CHRONOMÉTRÉ"),
+        (2, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rockstar Games", ["Aucune durée officielle"], p, warn=None)), "RIEN D’OFFICIEL", None),
+        (3, 0.0, _ph(VC + "03.jpg", 0.5, 0.5, 1.0), "5 CHIFFRES", None),
+        (4, 0.0, _cd(JL + "16.jpg", lambda p: stat_card("5", "chapitres", p, **FIRE)), "N°1 : 5 CHAPITRES", None),
+        (5, 0.0, _ph(JL + "16.jpg", 0.55, 0.5, 1.0), None, "SELON TESTS ET GUIDES"),
+        (6, 0.0, _cd(VC + "17.jpg", lambda p: stat_card("~ 90", "missions principales", p)), "N°2 : ~90 MISSIONS", None),
+        (7, 0.0, _ph(JL + "04.jpg", 0.4, 0.4, 1.0), "MISSIONS PRINCIPALES", None),
+        (8, 0.0, _cd(VC + "08.jpg", lambda p: bars_card([("PC Gamer", 91, BLUE, "91"), ("Autres sites", 93, PINK, "93")], p, title="Missions principales", maxv=100)), "91… OU 93", None),
+        (9, 0.0, _cd(VC + "10.jpg", lambda p: stat_card("50-60 H", "pour finir l’histoire", p)), "N°3 : 50 À 60 H", None),
+        (10, 0.0, _ph(JL + "09.jpg", 0.6, 0.45, 1.0), "EN LIGNE DROITE", None),
+        (11, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("50 H 42", "le chrono de ScreenRant", p, **FIRE)), "50 H 42", None),
+        (12, 0.0, _cd(VC + "15.jpg", lambda p: bars_card([("GTA 5", 32, (170, 160, 190), "32 h"), ("Red Dead 2", 50, GOLD, "50 h"), ("GTA 6", 55, PINK, "50-60 h")],
+                                                          p, title="L’histoire, de bout en bout", maxv=60)), "COMPARAISON", None),
+        (13, 0.0, _ph(_P + "jason_and_lucia_17.jpg", 0.5, 0.4, 1.0), "RED DEAD 2 : 50 H", None),
+        (14, 0.0, _ph(JL + "01.jpg", 0.45, 0.4, 1.2), "PRESQUE LE DOUBLE !", None),
+        (15, 0.0, _ph(JL + "13.jpg", 0.4, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (16, 0.0, _cd(VC + "11.jpg", lambda p: stat_card("80 H", "pour un dev de Rockstar", p)), "N°4 : 80 HEURES", None),
+        (17, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rob Nelson", ["Co-directeur, Rockstar North", "~80 h, avec de l’optionnel"], p, warn=None)), "CO-DIRECTEUR", None),
+        (18, 0.0, _cd(VC + "27.jpg", lambda p: source_card("New York Times", ["Article de l’été 2026"], p, warn=None)), "NEW YORK TIMES", None),
+        (19, 0.0, _cd(VC + "08.jpg", lambda p: stat_card("120 H +", "de jeu pour le testeur d’IGN", p, **SKY)), "IGN : 120 H+", None),
+        (20, 0.0, _cd(VC + "01.jpg", lambda p: stat_card("55", "trophées", p, **FIRE)), "N°5 : 55 TROPHÉES", None),
+        (21, 0.0, _ph(VC + "01.jpg", 0.5, 0.5, 1.0), "PLATINE = 100 %", None),
+        (22, 0.0, _ph(VC + "03.jpg", 0.5, 0.5, 1.0), "TOUTE LA CARTE…", None),
+        (22, 0.5, _ph(LK + "01.jpg", 0.5, 0.5, 1.0), None, "TOUTES LES ACTIVITÉS"),
+        (23, 0.0, _ph(JL + "03.jpg", 0.35, 0.4, 1.0), "3 JOURS ? PAS ASSEZ", None),
+        (24, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Attention", ["Chronos de la presse :", "ton temps dépendra de toi"], p, warn=None)), "ATTENTION", None),
+        (25, 0.0, _sp(JL + "09.jpg", (0.6, 0.4), LK + "01.jpg", (0.5, 0.5), "L’HISTOIRE", "TOUT EXPLORER"), None, None),
+        (27, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("Histoire ou 100 % ?", p, typed="Je fais le 100 % !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("duree3", "duree", shots, GOLD, "LA DURÉE")
+
+
+# ---------- 25/11 12 h 30 · Qui sont les Real Dimez ? ----------
+def video_dimez3():
+    D_ = _P + "real_dimez_"
+    shots = [
+        (0, 0.0, _ph(D_ + "03.jpg", 0.53, 0.3, 1.3), "LES REAL DIMEZ", None),
+        (1, 0.0, _ph(D_ + "04.jpg", 0.25, 0.4, 1.2), None, "DEALERS → TUBES"),
+        (2, 0.0, ("clip", "clips/real_dimez.mp4", 0.5), "LE DUO RAP DE GTA 6", None),
+        (3, 0.0, _cd(VC + "13.jpg", lambda p: stat_card("4", "choses à savoir sur elles", p)), "4 CHOSES À SAVOIR", None),
+        (4, 0.0, _ph(D_ + "02.jpg", 0.45, 0.4, 1.0), "N°1 : LEUR DEVISE", None),
+        (5, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rockstar Games", ["Leur devise officielle…"], p, warn=None)), "SELON ROCKSTAR", None),
+        (6, 0.0, _cd(VC + "13.jpg", lambda p: chips_card(["Viral videos.", "Viral hooks."], p, "Leur devise")), "VIDÉOS VIRALES", None),
+        (7, 0.0, _ph(D_ + "04.jpg", 0.75, 0.3, 1.2), "REFRAINS VIRAUX", None),
+        (8, 0.0, _ph(D_ + "04.jpg", 0.5, 0.4, 1.0), "AMIES DEPUIS LE LYCÉE", "BAE-LUXE ET ROXY"),
+        (9, 0.0, _ph(D_ + "01.jpg", 0.5, 0.35, 1.0), "N°2 : LEUR BUSINESS", None),
+        (10, 0.0, _cd(VC + "27.jpg", lambda p: source_card("Rockstar Games", ["Noir sur blanc…"], p, warn=None)), "NOIR SUR BLANC", None),
+        (11, 0.0, _ph(VC + "21.jpg", 0.5, 0.4, 1.0), "LE RACKET DES DEALERS", None),
+        (11, 0.55, _ph(D_ + "01.jpg", 0.45, 0.5, 1.0), None, "→ ARGENT LIQUIDE"),
+        (12, 0.0, _ph(D_ + "04.jpg", 0.25, 0.4, 1.3), "DU RAP ÉPICÉ", None),
+        (13, 0.0, _ph(D_ + "02.jpg", 0.5, 0.5, 1.0), "RÉSEAUX SOCIAUX", None),
+        (14, 0.0, _ph(D_ + "04.jpg", 0.75, 0.35, 1.0), "N°3 : LE 1ER TUBE", None),
+        (15, 0.0, _cd(VC + "04.jpg", lambda p: stat_card("DWNPLY", "le rappeur local du 1er tube", p)), "AVEC DWNPLY", None),
+        (16, 0.0, _ph(VC + "04.jpg", 0.35, 0.4, 1.0), "SA VOIX ?", None),
+        (16, 0.5, _cd(VC + "13.jpg", lambda p: stat_card("DENZEL CURRY", "la voix de DWNPLY", p, sub2="3 de ses morceaux dans le jeu")), "DENZEL CURRY", None),
+        (17, 0.0, _ph(_P + "drequan_priest_03.jpg", 0.45, 0.25, 1.0), "5 ANS PLUS TARD", "ONLY RAW RECORDS"),
+        (18, 0.0, _ph(D_ + "03.jpg", 0.53, 0.35, 1.0), "LA FOUDRE 2 FOIS ?", None),
+        (19, 0.0, _ph(D_ + "02.jpg", 0.45, 0.5, 1.0), "CHAPITRE 3 : LE CLIP", "MISSION COOTIES"),
+        (20, 0.0, _cd(VC + "13.jpg", lambda p: stat_card("LA BATTE", "de Bae-Luxe, à récupérer", p, **FIRE)), "LA BATTE DE BAE-LUXE", None),
+        (21, 0.0, _ph(D_ + "04.jpg", 0.5, 0.35, 1.0), "MAIS ATTENDS…", None),
+        (22, 0.0, ("clip", "clips/real_dimez.mp4", 0.5), "N°4 : LE CASTING", None),
+        (23, 0.0, _cd(VC + "13.jpg", lambda p: stat_card("HOOD BRAT", "joue Bae-Luxe", p, sub2="Crédits du jeu")), "BAE-LUXE", None),
+        (24, 0.0, _cd(VC + "25.jpg", lambda p: stat_card("KRISSY CELESS", "joue Roxy", p, sub2="Crédits du jeu", c1=(190, 160, 255), c2=(255, 92, 170))), "ROXY", None),
+        (25, 0.0, _ph(D_ + "04.jpg", 0.25, 0.35, 1.3), "DE VRAIES RAPPEUSES", None),
+        (26, 0.0, _ph(D_ + "04.jpg", 0.75, 0.3, 1.3), None, "QUI JOUENT DES RAPPEUSES"),
+        (27, 0.0, _cd(VC + "27.jpg", lambda p: source_card("Théorie des fans", ["Une parodie des City Girls ?", "Le duo rap de Miami"], p)), "THÉORIE DE FANS", None),
+        (28, 0.0, _ph(D_ + "01.jpg", 0.5, 0.35, 1.2), "PAS CONFIRMÉ", None),
+        (29, 0.0, _sp(D_ + "03.jpg", (0.53, 0.3), D_ + "01.jpg", (0.5, 0.3), "FUTURES STARS", "FEU DE PAILLE"), None, None),
+        (31, 0.0, _cd(VC + "13.jpg", lambda p: comment_card("Stars ou feu de paille ?", p, typed="Futures stars !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("dimez3", "dimez", shots, PINK, "QUI SONT-ELLES ?")
+
+
+# ---------- 25/11 18 h 30 · 5 easter eggs ----------
+def video_eggs3():
+    shots = [
+        (0, 0.0, _ph(PG + "06.jpg", 0.5, 0.5, 1.0), "RED DEAD CACHÉ ?!", None),
+        (1, 0.0, _ph(VC + "24.jpg", 0.5, 0.5, 1.0), None, "ET PAS QUE…"),
+        (2, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("5", "easter eggs à trouver", p)), "5 EASTER EGGS", None),
+        (3, 0.0, _cd(PG + "06.jpg", lambda p: source_card("Red Dead Redemption 2", ["Le chapeau d’Arthur Morgan"], p, warn=None)), "N°1 : ARTHUR MORGAN", None),
+        (4, 0.0, _ph(PG + "06.jpg", 0.3, 0.55, 1.0), "SUD DE PORT GELLHORN", None),
+        (4, 0.55, _ph(PG + "05.jpg", 0.6, 0.5, 1.0), None, "PANNEAUX YARD SALE"),
+        (5, 0.0, _ph(PG + "06.jpg", 0.7, 0.6, 1.3), "UN VIDE-GRENIER", None),
+        (6, 0.0, _cd(PG + "06.jpg", lambda p: list_card([("Le canapé", "au fond du jardin", GOLD), ("L’étui de guitare", "le chapeau est posé dessus", PINK)],
+                                                         p, title="Où chercher", icon="12")), "LE CANAPÉ", None),
+        (7, 0.0, _cd(PG + "06.jpg", lambda p: stat_card("COWBOY HAT", "« Genuine Cowboy Hat »", p, sub2="Le chapeau d’Arthur Morgan", **FIRE)), "LE CHAPEAU D’ARTHUR", None),
+        (8, 0.0, _ph(VC + "24.jpg", 0.4, 0.6, 1.0), "N°2 : BRIAN O’CONNER", None),
+        (9, 0.0, _cd(VC + "10.jpg", lambda p: stat_card("ECLIPSE 95", "Mitsubishi vert fluo, néons", p, sub2="Garage de Vespucci Island", **LIME)), "VESPUCCI ISLAND", None),
+        (10, 0.0, _ph(VC + "24.jpg", 0.35, 0.55, 1.3), "FAST & FURIOUS !", None),
+        (11, 0.0, _cd(VC + "22.jpg", lambda p: list_card([("Coupe l’alarme", "panneau à gauche en entrant", GOLD), ("Ouvre le garage", "et démarre", GREEN)],
+                                                          p, title="La manip", icon="12")), "COUPE L’ALARME", None),
+        (11, 0.6, _ph(JL + "20.jpg", 0.5, 0.5, 1.0), None, "ELLE EST À TOI"),
+        (12, 0.0, _ph(VC + "13.jpg", 0.5, 0.5, 1.0), "N°3 : RADIO SECRÈTE", None),
+        (13, 0.0, _cd(VC + "13.jpg", lambda p: source_card("The Vault", ["Boîte de nuit · Downtown"], p, warn=None)), "THE VAULT", None),
+        (14, 0.0, _ph(VC + "13.jpg", 0.3, 0.5, 1.3), "L’AFFICHE AU MASQUE", "PRÈS DE L’EXTINCTEUR"),
+        (15, 0.0, _cd(VC + "13.jpg", lambda p: chips_card(["Appli WAiNK", "Scanne l’affiche"], p, "Sur ton téléphone")), "SCANNE-LA", None),
+        (16, 0.0, _cd(VC + "13.jpg", lambda p: stat_card("VAULT RADIO", "la station cachée", p, **LIME)), "STATION CACHÉE", None),
+        (17, 0.0, _ph(VC + "11.jpg", 0.3, 0.5, 1.0), "MAIS ATTENDS…", None),
+        (18, 0.0, _ph(JL + "16.jpg", 0.4, 0.5, 1.0), "N°4 : MONT CHILIAD", None),
+        (19, 0.0, _ph(JL + "18.jpg", 0.5, 0.5, 1.0), "2 CLIENTS D’UN BAR", None),
+        (19, 0.55, _cd(JL + "18.jpg", lambda p: source_card("Au bar…", ["« Un bunker sous le Chiliad »"], p, warn=None)), "UN BUNKER ?!", None),
+        (20, 0.0, _cd(JL + "18.jpg", lambda p: chips_card(["Jetpacks", "Œufs"], p, "Ce qu’ils racontent")), "JETPACKS ET ŒUFS", None),
+        (21, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("GTA 5", "son plus grand mystère, cité", p)), "LE MYSTÈRE DE GTA 5", None),
+        (22, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Découverte", ["Un joueur sur Reddit"], p, warn=None)), "TROUVÉ SUR REDDIT", None),
+        (23, 0.0, _ph(JL + "03.jpg", 0.6, 0.4, 1.0), "N°5 : LA SONNERIE", None),
+        (24, 0.0, _cd(VC + "10.jpg", lambda p: chips_card(["Réglages", "Téléphone", "Wind Chimes"], p, "Le chemin")), "WIND CHIMES", None),
+        (25, 0.0, _cd(VC + "11.jpg", lambda p: stat_card("MICHAEL", "sa sonnerie dans GTA 5", p, **SKY)), "LA SONNERIE DE MICHAEL", None),
+        (26, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("13 ANS", "et elle est toujours là", p)), "13 ANS PLUS TARD", None),
+        (27, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Attention", ["Découvertes de joueurs", "et de la presse"], p, warn="Rockstar n’a rien commenté")), "ATTENTION", None),
+        (28, 0.0, _sp(VC + "24.jpg", (0.4, 0.5), VC + "13.jpg", (0.5, 0.5), "L’ECLIPSE", "LA RADIO"), None, None),
+        (29, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("Lequel en premier ?", p, typed="Le chapeau d’Arthur !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("eggs3", "eggs", shots, VIOLET, "5 EASTER EGGS")
+
+
+# ---------- 26/11 12 h 30 · Grassrivers ----------
+def video_grass3():
+    shots = [
+        (0, 0.0, _ph(GR + "08.jpg", 0.55, 0.5, 1.0), "UN BIGFOOT ?!", None),
+        (1, 0.0, _ph(GR + "05.jpg", 0.5, 0.6, 1.0), "GRASSRIVERS", None),
+        (2, 0.0, _cd(GR + "04.jpg", lambda p: source_card("Rockstar Games", ["« Le joyau indomptable", "de Leonida »"], p, warn=None)), "LE JOYAU INDOMPTABLE", None),
+        (3, 0.0, _ph(GR + "08.jpg", 0.5, 0.65, 1.0), "SOUS LA SURFACE…", None),
+        (4, 0.0, _cd(GR + "05.jpg", lambda p: source_card("Selon la presse", ["Le portrait des Everglades", "« la rivière d’herbe »"], p)), "LES EVERGLADES", None),
+        (5, 0.0, _ph(GR + "04.jpg", 0.5, 0.5, 1.0), "GRASS + RIVERS", None),
+        (6, 0.0, _cd(GR + "02.jpg", lambda p: stat_card("4", "choses à faire dans les marais", p, **LIME)), "4 CHOSES À FAIRE", None),
+        (7, 0.0, _ph(GR + "01.jpg", 0.2, 0.75, 1.3), "N°1 : LES ALLIGATORS", None),
+        (8, 0.0, _ph(GR + "06.jpg", 0.25, 0.35, 1.0), "L’ATTRACTION N°1", None),
+        (9, 0.0, _ph(GR + "08.jpg", 0.6, 0.7, 1.2), "PLUS MORTELS…", None),
+        (10, 0.0, _ph(GR + "04.jpg", 0.75, 0.5, 1.0), "PLUS ÉTRANGES…", None),
+        (11, 0.0, _ph(GR + "03.jpg", 0.5, 0.5, 1.0), "N°2 : L’AIRBOAT", None),
+        (12, 0.0, _ph(GR + "03.jpg", 0.45, 0.4, 1.4), "LOISIR OFFICIEL", None),
+        (13, 0.0, _ph(GR + "04.jpg", 0.3, 0.5, 1.0), "À TOUTE VITESSE", None),
+        (14, 0.0, _ph(GR + "02.jpg", 0.5, 0.5, 1.0), "N°3 : HAMLET", "LE BAR SKEETER’S"),
+        (15, 0.0, _ph(GR + "01.jpg", 0.6, 0.35, 1.0), "LES KINGFISHERS", "ILS TIENNENT LES MARAIS"),
+        (16, 0.0, _ph(GR + "08.jpg", 0.3, 0.5, 1.0), "MAIS ATTENDS…", None),
+        (17, 0.0, _ph(GR + "05.jpg", 0.3, 0.6, 1.3), "N°4 : LE SKUNK APE", None),
+        (18, 0.0, _cd(GR + "05.jpg", lambda p: source_card("Skunk Ape", ["Le « Bigfoot » de Floride", "Une vraie légende locale"], p, warn=None)), "LE BIGFOOT DE FLORIDE", None),
+        (19, 0.0, _ph(GR + "04.jpg", 0.15, 0.5, 1.0), "COTTONMOUTH LAKE", "TENDS L’OREILLE"),
+        (20, 0.0, _cd(GR + "08.jpg", lambda p: chips_card(["L3 + R3", "Mode Focus"], p, "Suis les grognements")), "ACTIVE LE FOCUS", None),
+        (21, 0.0, _ph(MK + "05.jpg", 0.6, 0.5, 1.0), "IL DÉVORE UN CERF !", None),
+        (22, 0.0, _ph(GR + "07.jpg", 0.85, 0.4, 1.0), "L’EFFIGIE EN BOIS", None),
+        (23, 0.0, _ph(GR + "08.jpg", 0.5, 0.5, 1.5), "ET LÀ…", None),
+        (24, 0.0, _ph(GR + "05.jpg", 0.5, 0.3, 1.0), "TU T’ÉVANOUIS", None),
+        (25, 0.0, _cd(GR + "02.jpg", lambda p: source_card("Have You Seen Skunk Ape ?", ["Le tract qui lance la quête", "de Kirk, chasseur de créatures"], p, warn=None)), "LE TRACT", None),
+        (25, 0.55, _ph(GR + "08.jpg", 0.4, 0.6, 1.3), None, "UN CHASSEUR DE CRÉATURES"),
+        (26, 0.0, _cd(GR + "03.jpg", lambda p: stat_card("10 000 $", "jusqu’à, pour la quête de Kirk", p, **LIME)), "JUSQU’À 10 000 $", None),
+        (27, 0.0, _ph(GR + "08.jpg", 0.6, 0.5, 1.0), "LA FIN…", None),
+        (28, 0.0, _ph(GR + "05.jpg", 0.5, 0.5, 1.0), "DÉPEND DE TOI", None),
+        (29, 0.0, _cd(GR + "05.jpg", lambda p: source_card("Petit rappel", ["Everglades :", "comparaison de la presse"], p)), "PETIT RAPPEL", None),
+        (30, 0.0, _sp(GR + "08.jpg", (0.6, 0.5), GR + "03.jpg", (0.5, 0.5), "LE CHASSER", "FUIR"), None, None),
+        (32, 0.0, _cd(GR + "05.jpg", lambda p: comment_card("Chasser ou fuir ?", p, typed="Je le chasse !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("grass3", "grass", shots, GREEN, "GRASSRIVERS")
+
+
+# ---------- 26/11 18 h 30 · 5 nouveautés ----------
+def video_nouveautes3():
+    shots = [
+        (0, 0.0, _ph(JL + "09.jpg", 0.55, 0.45, 1.0), "TES CRIMES TE SUIVENT", None),
+        (1, 0.0, _ph(JL + "17.jpg", 0.5, 0.4, 1.0), None, "ET CE N’EST PAS TOUT"),
+        (2, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("5", "nouveautés que GTA 5 n’avait pas", p)), "5 NOUVEAUTÉS", None),
+        (3, 0.0, _ph(JL + "15.jpg", 0.35, 0.4, 1.0), "N°1 : PROFIL CRIMINEL", None),
+        (4, 0.0, _ph(JL + "04.jpg", 0.4, 0.4, 1.0), "SELON TON COMPORTEMENT", None),
+        (4, 0.55, _ph(JL + "12.jpg", 0.6, 0.4, 1.0), None, "ET TES VICTIMES"),
+        (5, 0.0, _cd(VC + "17.jpg", lambda p: list_card([("Professional", "professionnel", GREEN), ("Hardened", "endurci", BLUE), ("Violent", "violent", GOLD),
+                                                          ("Psycho", "psychopathe", (255, 140, 60))], p, title="Les niveaux", icon="1234")), "5 NIVEAUX", None),
+        (6, 0.0, _cd(VC + "17.jpg", lambda p: stat_card("IRREDEEMABLE", "irrécupérable", p, c1=(255, 130, 130), c2=(210, 30, 60))), "IRRÉCUPÉRABLE", None),
+        (7, 0.0, _ph(JL + "08.jpg", 0.55, 0.5, 1.0), "PERMANENT", None),
+        (8, 0.0, _ph(JL + "12.jpg", 0.55, 0.4, 1.1), "IL CHANGE TON HISTOIRE", None),
+        (9, 0.0, _ph(VC + "06.jpg", 0.15, 0.45, 1.0), "PLUS DE REDDITION", "DÈS « PSYCHO »"),
+        (10, 0.0, _ph(JL + "07.jpg", 0.5, 0.4, 1.0), "N°2 : CHANGE DE HÉROS", None),
+        (11, 0.0, _sp(JL + "01.jpg", (0.6, 0.3), _P + "lucia_caminos_14.jpg", (0.22, 0.38), "JASON", "LUCIA"), None, None),
+        (11, 0.55, _ph(JL + "19.jpg", 0.45, 0.4, 1.0), None, "MÊME EN PLEINE MISSION"),
+        (12, 0.0, _ph(JL + "06.jpg", 0.5, 0.4, 1.0), "PARFOIS EN SOLO", None),
+        (13, 0.0, _ph(VC + "06.jpg", 0.5, 0.45, 1.0), "N°3 : LES TÉMOINS", None),
+        (14, 0.0, _cd(VC + "17.jpg", lambda p: chips_card(["Tenue", "Voiture", "Armes visibles"], p, "La police te reconnaît à…")), "ELLE TE RECONNAÎT", None),
+        (15, 0.0, _ph(VC + "17.jpg", 0.5, 0.4, 1.3), "LES CAMÉRAS AUSSI", None),
+        (16, 0.0, _cd(VC + "22.jpg", lambda p: list_card([("Efface les vidéos", "de surveillance", BLUE), ("Change de tenue", "ou de voiture", PINK),
+                                                          ("Sépare-toi", "de ton partenaire", GOLD)], p, title="Pour t’en sortir", icon="check")), "LA PARADE", None),
+        (17, 0.0, _ph(MK + "03.jpg", 0.2, 0.5, 1.0), "MAIS ATTENDS…", None),
+        (18, 0.0, _ph(VC + "05.jpg", 0.6, 0.5, 1.0), "N°4 : PARLE À TOUS", None),
+        (19, 0.0, _cd(VC + "05.jpg", lambda p: source_card("Comme dans…", ["Red Dead Redemption 2"], p, warn=None)), "COMME DANS RDR2", None),
+        (20, 0.0, _ph(LK + "02.jpg", 0.5, 0.5, 1.0), "UNE ÉQUIPE DÉDIÉE", "DIALOGUES DES PASSANTS"),
+        (21, 0.0, _ph(JL + "13.jpg", 0.4, 0.4, 1.0), "N°5 : TON COUPLE", None),
+        (22, 0.0, _cd(JL + "16.jpg", lambda p: stat_card("RELATION", "Jason & Lucia : elle influence le récit", p)), "JAUGE DE RELATION", None),
+        (23, 0.0, _ph(JL + "02.jpg", 0.5, 0.4, 1.0), "BRAQUAGE DISCRET", "= LIEN PLUS FORT"),
+        (24, 0.0, _cd(VC + "27.jpg", lambda p: chips_card(["Focus (ralenti)", "Tir au genou", "Tir au coude"], p, "Pour viser")), "BONUS : NON MORTEL", None),
+        (25, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Sources", ["Tests de la presse", "et Game Informer"], p, warn=None)), "SOURCES", None),
+        (26, 0.0, _sp(JL + "03.jpg", (0.35, 0.4), JL + "08.jpg", (0.55, 0.5), "PROPRE", "IRRÉCUPÉRABLE"), None, None),
+        (28, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("Propre ou pas ?", p, typed="Irrécupérable, direct")), "ABONNE-TOI !", None),
+    ]
+    return _fv("nouveautes3", "nouveautes", shots, RED, "LES NOUVEAUTÉS")
+
+
+# ---------- 27/11 12 h 30 · Port Gellhorn ----------
+def video_gellhorn3():
+    shots = [
+        (0, 0.0, _ph(PG + "01.jpg", 0.25, 0.4, 1.0), "LA VILLE LA PLUS LOUCHE", None),
+        (1, 0.0, _ph(PG + "06.jpg", 0.5, 0.5, 1.0), "PORT GELLHORN", None),
+        (2, 0.0, _cd(PG + "06.jpg", lambda p: source_card("Rockstar Games", ["« La côte oubliée", "de Leonida »"], p, warn=None)), "LA CÔTE OUBLIÉE", None),
+        (3, 0.0, _ph(PG + "01.jpg", 0.65, 0.6, 1.0), "MOTELS PAS CHERS", None),
+        (3, 0.5, _ph(PG + "06.jpg", 0.3, 0.6, 1.3), None, "CENTRES COMMERCIAUX VIDES"),
+        (4, 0.0, _cd(PG + "05.jpg", lambda p: chips_card(["Bière forte", "Antidouleurs", "Energy drinks"], p, "Ici, ça tourne à…")), "L’AMBIANCE", None),
+        (4, 0.6, _ph(PG + "05.jpg", 0.3, 0.4, 1.0), None, "RELAIS ROUTIER"),
+        (5, 0.0, _ph(PG + "05.jpg", 0.6, 0.4, 1.0), "LE CONSEIL OFFICIEL", None),
+        (6, 0.0, _ph(MK + "01.jpg", 0.45, 0.5, 1.0), "MOTO TOUT-TERRAIN", None),
+        (7, 0.0, _ph(PG + "03.jpg", 0.75, 0.5, 1.0), "TIENS TON PORTEFEUILLE", None),
+        (8, 0.0, _cd(PG + "06.jpg", lambda p: source_card("Selon la presse", ["Le portrait de Panama City", "nord-ouest de la Floride"], p)), "PANAMA CITY ?", None),
+        (9, 0.0, _cd(PG + "06.jpg", lambda p: chips_card(["Panama City", "Jacksonville", "Ocala"], p, "Étudiées par l’équipe de Rockstar")), "ÉTUDIÉES PAR ROCKSTAR", None),
+        (10, 0.0, _cd(PG + "01.jpg", lambda p: stat_card("4", "choses à faire", p, **FIRE)), "4 CHOSES À FAIRE", None),
+        (11, 0.0, _ph(PG + "01.jpg", 0.22, 0.35, 1.2), "N°1 : STARLET MOTEL", None),
+        (12, 0.0, _ph(JL + "08.jpg", 0.5, 0.5, 1.0), "CHAPITRE 2", "LA PLANQUE"),
+        (13, 0.0, _ph(PG + "01.jpg", 0.75, 0.6, 1.3), "AVIS DE DISPARITION", None),
+        (14, 0.0, _ph(PG + "01.jpg", 0.5, 0.5, 1.0), "UNE ENQUÊTE…", None),
+        (15, 0.0, _ph(PG + "06.jpg", 0.6, 0.5, 1.5), "TRÈS SOMBRE", None),
+        (16, 0.0, _ph(VC + "22.jpg", 0.4, 0.5, 1.0), "N°2 : LE BOWLING", None),
+        (17, 0.0, _cd(VC + "22.jpg", lambda p: source_card("Kingpin Bowling", ["Une opération illégale", "d’un gang"], p, warn=None)), "KINGPIN BOWLING", None),
+        (18, 0.0, _cd(VC + "22.jpg", lambda p: stat_card("TROPHÉE", "« Let’s Go Bowling »", p, sub2="Vole les 3 objets de valeur", **FIRE)), "3 OBJETS À VOLER", None),
+        (19, 0.0, _ph(VC + "24.jpg", 0.5, 0.5, 1.0), "N°3 : CHEZ MOSES", None),
+        (20, 0.0, _ph(JL + "03.jpg", 0.3, 0.4, 1.0), "LUCIA SCANNE", "AVEC SON TÉLÉPHONE"),
+        (21, 0.0, _cd(VC + "24.jpg", lambda p: stat_card("10", "véhicules à enregistrer", p, sub2="Trophée « On the Spot »")), "UN AUTRE TROPHÉE", None),
+        (22, 0.0, _ph(PG + "06.jpg", 0.8, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (23, 0.0, _ph(PG + "06.jpg", 0.5, 0.2, 1.3), "N°4 : UN OVNI", None),
+        (24, 0.0, _cd(PG + "01.jpg", lambda p: stat_card("2 H", "du matin, en pleine campagne", p, sub2="Près du Starlet Motel", **SKY)), "APRÈS 2 H DU MATIN", None),
+        (25, 0.0, _cd(PG + "01.jpg", lambda p: list_card([("Une voiture abandonnée", "phares allumés", GOLD), ("Portières ouvertes", "personne autour", PINK),
+                                                          ("Des vêtements", "éparpillés partout", VIOLET)], p, title="La scène", icon="123")), "LA SCÈNE", None),
+        (26, 0.0, _ph(PG + "01.jpg", 0.5, 0.7, 1.5), "DES VÊTEMENTS PARTOUT", None),
+        (27, 0.0, _ph(PG + "06.jpg", 0.5, 0.15, 1.6), "UN GRÉSILLEMENT…", None),
+        (28, 0.0, _ph(PG + "01.jpg", 0.5, 0.15, 1.4), "UN FAISCEAU !", None),
+        (29, 0.0, _cd(PG + "06.jpg", lambda p: stat_card("TROPHÉE", "« The Truth Is Out There »", p, sub2="La vérité est ailleurs", **SKY)), "THE TRUTH IS OUT THERE", None),
+        (30, 0.0, _ph(PG + "06.jpg", 0.5, 0.4, 1.0), "LA VÉRITÉ EST AILLEURS", None),
+        (31, 0.0, _ph(PG + "01.jpg", 0.3, 0.4, 1.0), "REVIENS UNE AUTRE NUIT", None),
+        (32, 0.0, _cd(PG + "06.jpg", lambda p: source_card("Petit rappel", ["Panama City :", "comparaison de la presse"], p)), "PETIT RAPPEL", None),
+        (33, 0.0, _sp(PG + "01.jpg", (0.25, 0.4), PG + "06.jpg", (0.5, 0.5), "J’OSE", "JAMAIS"), None, None),
+        (34, 0.0, _cd(PG + "06.jpg", lambda p: comment_card("Tu y passes la nuit ?", p, typed="Je cherche l’OVNI !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("gellhorn3", "gellhorn", shots, GOLD, "PORT GELLHORN")
+
+
+# ---------- 27/11 18 h 30 · L'argent au début ----------
+def video_argent3():
+    codes = lambda p: notes_card(p, [("Ordinateur : CLEAVES", (30, 30, 60)), ("Coffre : 0072", (200, 40, 60)), ("Hangar : 0212", (40, 90, 200))], title="LES CODES")
+    shots = [
+        (0, 0.0, _ph(LK + "02.jpg", 0.5, 0.5, 1.0), "UN PERROQUET ?!", None),
+        (1, 0.0, _cd(VC + "10.jpg", lambda p: stat_card("5", "façons de ne plus être fauché", p, **LIME)), "PLUS JAMAIS FAUCHÉ", None),
+        (2, 0.0, _ph(LK + "02.jpg", 0.3, 0.5, 1.2), "N°1 : LE PERROQUET", None),
+        (3, 0.0, _cd(LK + "02.jpg", lambda p: source_card("Three Sheets Liquor", ["Key Lento · chapitre 1", "après la quête de Shirley"], p, warn=None)), "KEY LENTO", None),
+        (4, 0.0, _ph(JL + "12.jpg", 0.6, 0.4, 1.0), "NEUTRALISE LES GARDES", None),
+        (4, 0.55, _ph(LK + "02.jpg", 0.75, 0.5, 1.0), None, "PARLE AU PERROQUET"),
+        (5, 0.0, _cd(LK + "02.jpg", lambda p: comment_card("Où est le cash ?", p, typed="Where’s the cash?")), "DEMANDE-LUI", None),
+        (6, 0.0, _cd(LK + "02.jpg", lambda p: stat_card("GENERATOR", "la réponse du perroquet", p, **FIRE)), "« GENERATOR »", None),
+        (7, 0.0, _ph(VC + "22.jpg", 0.5, 0.6, 1.2), "LA GRILLE D’AÉRATION", "PRÈS DU GÉNÉRATEUR JAUNE"),
+        (8, 0.0, _cd(VC + "22.jpg", lambda p: stat_card("1 000 $ +", "dans la grille", p, **LIME)), "PLUS DE 1 000 $", None),
+        (9, 0.0, _cd(LK + "02.jpg", lambda p: stat_card("~ 2 500 $", "avec le coffre de l’arrière-boutique", p, **LIME)), "~2 500 $", None),
+        (10, 0.0, _ph(GR + "01.jpg", 0.5, 0.5, 1.0), "N°2 : LE CRABE GÉANT", None),
+        (11, 0.0, _ph(GR + "04.jpg", 0.5, 0.5, 1.0), "PELICAN VALLEY", "UN AVANT-POSTE"),
+        (12, 0.0, _cd(GR + "02.jpg", codes), "LES CODES", None),
+        (13, 0.0, _cd(GR + "02.jpg", codes), "COFFRE : 0072", None),
+        (14, 0.0, _cd(GR + "02.jpg", codes), "HANGAR : 0212", None),
+        (15, 0.0, _cd(GR + "03.jpg", lambda p: stat_card("10 000 $", "en billets marqués", p, sub2="+ un jet-ski", **LIME)), "10 000 $", None),
+        (16, 0.0, _ph(GR + "08.jpg", 0.5, 0.7, 1.3), "UN CRABE GÉANT !", None),
+        (17, 0.0, _ph(LK + "04.jpg", 0.5, 0.5, 1.0), "N°3 : LE TRÉSOR", None),
+        (18, 0.0, _ph(LK + "07.jpg", 0.4, 0.5, 1.0), "ISLAND DREAMS", "KENTON TE DONNE UN SCANNER"),
+        (19, 0.0, _ph(LK + "04.jpg", 0.75, 0.6, 1.2), "LES ÉPAVES", "IL RACHÈTE TOUT"),
+        (20, 0.0, _ph(VC + "24.jpg", 0.5, 0.5, 1.0), "N°4 : LES VOITURES", None),
+        (21, 0.0, _cd(VC + "24.jpg", lambda p: stat_card("3 / JOUR", "au Pay ’n’ Spray", p, sub2="Au début du jeu")), "PAY ’N’ SPRAY", None),
+        (22, 0.0, _cd(PG + "06.jpg", lambda p: stat_card("1-2 000 $", "par vieille voiture, chez Moses", p, sub2="Port Gellhorn · sans traceur", **LIME)), "MOSES", None),
+        (23, 0.0, _ph(JL + "17.jpg", 0.5, 0.4, 1.0), "MAIS ATTENDS…", None),
+        (24, 0.0, _ph(JL + "02.jpg", 0.5, 0.4, 1.0), "N°5 : LA RÈGLE D’OR", None),
+        (25, 0.0, _ph(JL + "09.jpg", 0.55, 0.5, 1.0), "MORT OU ARRÊTÉ ?", "TU PERDS TON CASH"),
+        (26, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("20 000 $", "maximum dans ton portefeuille", p)), "20 000 $ MAX", None),
+        (27, 0.0, _cd(VC + "10.jpg", lambda p: chips_card(["Distributeur", "Avant chaque coup"], p, "Dépose ton argent")), "DÉPOSE TON ARGENT", None),
+        (28, 0.0, _sp(LK + "02.jpg", (0.4, 0.5), GR + "01.jpg", (0.2, 0.75), "LE PERROQUET", "LE CRABE"), None, None),
+        (29, 0.0, _cd(VC + "10.jpg", lambda p: comment_card("Ton meilleur plan ?", p, typed="Le crabe géant !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("argent3", "argent", shots, GREEN, "PLUS JAMAIS FAUCHÉ")
+
+
+# ---------- 28/11 12 h 30 · Qui est Dre'Quan Priest ? ----------
+def video_drequan3():
+    Q = _P + "drequan_priest_"
+    shots = [
+        (0, 0.0, _ph(Q + "03.jpg", 0.45, 0.22, 1.3), "QUI EST DRE’QUAN ?", None),
+        (1, 0.0, _ph(Q + "02.jpg", 0.7, 0.3, 1.2), None, "C’EST LUI QUI LE DIT"),
+        (2, 0.0, ("clip", "clips/drequan_priest.mp4", 0.5), "DRE’QUAN PRIEST", None),
+        (3, 0.0, _cd(VC + "13.jpg", lambda p: stat_card("4", "choses à savoir sur lui", p)), "4 CHOSES À SAVOIR", None),
+        (4, 0.0, _ph(Q + "04.jpg", 0.4, 0.3, 1.2), "N°1 : UN DÉBROUILLARD", None),
+        (5, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rockstar Games", ["« Plus débrouillard", "que gangster »"], p, warn=None)), "SELON ROCKSTAR", None),
+        (6, 0.0, _ph(Q + "04.jpg", 0.75, 0.5, 1.0), "LA MUSIQUE AVANT TOUT", None),
+        (7, 0.0, _ph(_P + "boobie_ike_02.jpg", 0.32, 0.3, 1.0), "N°2 : SON LABEL", None),
+        (8, 0.0, _cd(VC + "04.jpg", lambda p: stat_card("ONLY RAW", "Records, avec Boobie Ike", p)), "ONLY RAW RECORDS", None),
+        (9, 0.0, _sp(_P + "boobie_ike_03.jpg", (0.38, 0.35), Q + "03.jpg", (0.45, 0.25), "L’ARGENT", "LES TALENTS"), None, None),
+        (10, 0.0, _ph(_P + "real_dimez_04.jpg", 0.5, 0.35, 1.0), "LES REAL DIMEZ", None),
+        (11, 0.0, _ph(Q + "02.jpg", 0.7, 0.3, 1.0), "SES JOURS AU CLUB…", None),
+        (12, 0.0, _ph(Q + "03.jpg", 0.45, 0.25, 1.5), "SONT COMPTÉS", None),
+        (13, 0.0, _ph(VC + "27.jpg", 0.5, 0.5, 1.0), "TOUT VICE CITY", None),
+        (14, 0.0, _ph(Q + "03.jpg", 0.45, 0.3, 1.0), "N°3 : SA PHRASE CULTE", None),
+        (15, 0.0, _cd(VC + "13.jpg", lambda p: source_card("Dre’Quan Priest", ["« Les danseuses, c’est mes", "directeurs artistiques »"], p, warn=None)), "SES « A&R »", None),
+        (16, 0.0, _cd(VC + "13.jpg", lambda p: source_card("Dre’Quan Priest", ["« Si le son marche,", "les DJ vont le passer »"], p, warn=None)), "LES DJ VONT LE PASSER", None),
+        (17, 0.0, ("clip", "clips/drequan_priest.mp4", 0.5), "BANDE-ANNONCE 2", None),
+        (18, 0.0, _ph(VC + "01.jpg", 0.5, 0.5, 1.0), "MAIS ATTENDS…", None),
+        (19, 0.0, _ph(VC + "27.jpg", 0.3, 0.5, 1.0), "N°4 : TON GUIDE", None),
+        (20, 0.0, _cd(VC + "01.jpg", lambda p: chips_card(["Welcome to Vice City"], p, "La mission · chapitre 3")), "WELCOME TO VICE CITY", None),
+        (21, 0.0, _ph(_P + "boobie_ike_02.jpg", 0.58, 0.15, 1.3), "JACK OF HEARTS", "CROSSTOWN"),
+        (22, 0.0, _ph(JL + "01.jpg", 0.62, 0.3, 1.1), "UN VIEIL AMI DE JASON", None),
+        (23, 0.0, _cd(VC + "08.jpg", lambda p: stat_card("~ 7", "missions avec lui", p, sub2="Chapitres 3 et 4")), "~7 MISSIONS", None),
+        (24, 0.0, _ph(_P + "real_dimez_02.jpg", 0.45, 0.4, 1.0), "TOP BILLING", "LE CONCERT DES DIMEZ"),
+        (25, 0.0, _cd(VC + "13.jpg", lambda p: stat_card("N. MACABROAD", "Naiqui Macabroad, la voix de Dre’Quan", p, sub2="Crédits du jeu")), "SA VOIX", None),
+        (26, 0.0, _sp(Q + "04.jpg", (0.4, 0.3), Q + "02.jpg", (0.7, 0.3), "MAGNAT", "TROP LOIN"), None, None),
+        (28, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("Magnat ou trop loin ?", p, typed="Futur magnat !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("drequan3", "drequan", shots, VIOLET, "QUI EST-IL ?")
+
+
+# ---------- 28/11 18 h 30 · 30 fps ----------
+def video_fps3():
+    shots = [
+        (0, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("30 FPS", "même sur PS5 Pro", p, c1=(255, 130, 130), c2=(220, 40, 80))), "30 FPS ?!", None),
+        (1, 0.0, _ph(JL + "09.jpg", 0.55, 0.45, 1.0), None, "PAS UN BUG"),
+        (2, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rockstar Games", ["Confirmé le 10 novembre"], p, warn=None)), "CONFIRMÉ", None),
+        (3, 0.0, _cd(VC + "10.jpg", lambda p: chips_card(["PS5", "PS5 Pro", "Xbox Series X|S"], p, "30 images/s sur…")), "TOUTES LES CONSOLES", None),
+        (4, 0.0, _cd(VC + "17.jpg", lambda p: crossed_stat("MODE PERF.", "pas de mode performance", p)), "PAS DE MODE PERF", None),
+        (5, 0.0, _cd(VC + "17.jpg", lambda p: crossed_stat("60 FPS", "ni 40, ni 60", p)), "NI 40, NI 60", None),
+        (6, 0.0, _ph(JL + "19.jpg", 0.5, 0.4, 1.0), "POURQUOI ?", None),
+        (7, 0.0, _ph(VC + "03.jpg", 0.5, 0.5, 1.0), "CE QU’IL FAUT SAVOIR", None),
+        (8, 0.0, _ph(VC + "17.jpg", 0.5, 0.5, 1.0), "N°1 : LE PROCESSEUR", None),
+        (9, 0.0, _cd(VC + "08.jpg", lambda p: list_card([("Processeur (CPU)", "le vrai blocage", RED), ("Carte graphique", "pas le problème", GREEN)],
+                                                         p, title="Selon Digital Foundry", icon="12")), "LE CPU, PAS LE GPU", None),
+        (10, 0.0, _cd(VC + "08.jpg", lambda p: crossed_stat("60 FPS", "« pas viable » selon DF", p)), "60 FPS : PAS VIABLE", None),
+        (11, 0.0, _ph(VC + "06.jpg", 0.5, 0.45, 1.0), "40 FPS ? TRÈS DUR", None),
+        (12, 0.0, _ph(JL + "20.jpg", 0.5, 0.4, 1.0), "N°2 : LA PS5 PRO", None),
+        (13, 0.0, _ph(VC + "10.jpg", 0.5, 0.5, 1.0), "L’IMAGE, PAS LA FLUIDITÉ", None),
+        (14, 0.0, _cd(VC + "10.jpg", lambda p: chips_card(["PSSR", "Ray tracing"], p, "Les bonus de la PS5 Pro")), "PSSR + RAY TRACING", None),
+        (15, 0.0, _cd(VC + "11.jpg", lambda p: stat_card("« 4K »", "convaincante, selon Digital Foundry", p, **SKY)), "PRESQUE DE LA 4K", None),
+        (16, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("1440P", "PS5 et Series X, en interne", p)), "N°3 : 1440P", None),
+        (17, 0.0, _ph(JL + "19.jpg", 0.45, 0.45, 1.2), "~20 FPS EN FUSILLADE", "SERIES X"),
+        (18, 0.0, _ph(VC + "08.jpg", 0.5, 0.5, 1.0), "MAIS ATTENDS…", None),
+        (19, 0.0, _ph(VC + "17.jpg", 0.4, 0.5, 1.3), "N°4 : LA SERIES S", None),
+        (20, 0.0, _cd(VC + "22.jpg", lambda p: stat_card("720P", "souvent autour de 25 fps", p, c1=(255, 130, 130), c2=(220, 40, 80))), "720P, ~25 FPS", None),
+        (21, 0.0, _cd(VC + "22.jpg", lambda p: source_card("Digital Foundry", ["« Joue sur une autre console,", "pour l’instant »"], p, warn=None)), "AUTRE CONSOLE ?", None),
+        (22, 0.0, _ph(VC + "01.jpg", 0.5, 0.5, 1.0), "N°5 : ROCKSTAR ASSUME", None),
+        (23, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rockstar Games", ["« Plays best on PS5 »", "Pensé pour les consoles actuelles"], p, warn=None)), "MEILLEUR SUR PS5", None),
+        (24, 0.0, _cd(VC + "27.jpg", lambda p: crossed_stat("PS4 / ONE", "pas d’ancienne génération", p)), "PAS DE PS4", None),
+        (25, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Attention", ["Chiffres au lancement"], p, warn="Aucun patch annoncé")), "AU LANCEMENT", None),
+        (26, 0.0, _ph(JL + "03.jpg", 0.35, 0.4, 1.0), "AUCUN PATCH…", None),
+        (27, 0.0, _ph(JL + "03.jpg", 0.6, 0.4, 1.0), "POUR L’INSTANT", None),
+        (28, 0.0, _sp(JL + "06.jpg", (0.6, 0.4), JL + "17.jpg", (0.5, 0.4), "ÇA ME GÊNE", "AUCUN SOUCI"), None, None),
+        (29, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("30 fps, ça te gêne ?", p, typed="Pas du tout !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("fps3", "fps", shots, BLUE, "30 FPS")
+
+
+# ---------- 29/11 12 h 30 · Mount Kalaga ----------
+def video_kalaga3():
+    shots = [
+        (0, 0.0, _ph(MK + "04.jpg", 0.6, 0.5, 1.0), "LE SECRET DE KALAGA", None),
+        (1, 0.0, _ph(MK + "02.jpg", 0.55, 0.5, 1.0), "MOUNT KALAGA", "LE GRAND NORD"),
+        (2, 0.0, _cd(MK + "04.jpg", lambda p: source_card("Rockstar Games", ["« De l’espace pour respirer »"], p, warn=None)), "DE L’ESPACE", None),
+        (3, 0.0, _cd(MK + "05.jpg", lambda p: chips_card(["Chasse", "Pêche", "Tout-terrain"], p, "Au programme")), "CHASSE, PÊCHE…", None),
+        (4, 0.0, _ph(MK + "03.jpg", 0.25, 0.5, 1.0), "MYSTIQUES ET PARANOS", None),
+        (4, 0.55, _ph(MK + "03.jpg", 0.7, 0.5, 1.0), None, "LOIN DU GOUVERNEMENT"),
+        (5, 0.0, _cd(MK + "06.jpg", lambda p: stat_card("4", "choses à faire là-haut", p, **LIME)), "4 CHOSES À FAIRE", None),
+        (6, 0.0, _ph(MK + "05.jpg", 0.6, 0.5, 1.0), "N°1 : LA CHASSE", None),
+        (7, 0.0, _ph(MK + "03.jpg", 0.2, 0.5, 1.2), "AVEC BRET VOGEL", "JUMELLES + FOCUS"),
+        (8, 0.0, _cd(MK + "05.jpg", lambda p: chips_card(["Veteran Hunted"], p, "La mission · chapitre 2")), "VETERAN HUNTED", None),
+        (9, 0.0, _cd(MK + "05.jpg", lambda p: stat_card("500 $", "+ un fusil unique", p, **LIME)), "500 $ + UN FUSIL", None),
+        (10, 0.0, _cd(MK + "05.jpg", lambda p: stat_card("TROPHÉE", "« Fair Game »", p, sub2="Un animal unique pour Bret")), "FAIR GAME", None),
+        (11, 0.0, _ph(MK + "04.jpg", 0.7, 0.5, 1.0), "N°2 : LE CANYON ROUGE", None),
+        (12, 0.0, _cd(MK + "04.jpg", lambda p: source_card("Selon les fans", ["Le portrait de Providence Canyon"], p)), "PROVIDENCE CANYON", None),
+        (13, 0.0, _cd(MK + "04.jpg", lambda p: stat_card("GÉORGIE", "pas en Floride !", p, **FIRE)), "EN GÉORGIE !", None),
+        (14, 0.0, _ph(MK + "01.jpg", 0.45, 0.5, 1.0), "N°3 : LES CASSE-COU", None),
+        (15, 0.0, _ph(MK + "01.jpg", 0.3, 0.5, 1.0), "MOTO DANS LES CARRIÈRES", None),
+        (15, 0.35, _ph(MK + "06.jpg", 0.65, 0.5, 1.0), None, "KAYAK SOUS LE PONT"),
+        (15, 0.7, _ph(MK + "02.jpg", 0.6, 0.45, 1.0), None, "HÉLICO"),
+        (16, 0.0, _ph(MK + "04.jpg", 0.4, 0.5, 1.0), "TERRAIN DE JEU", None),
+        (17, 0.0, _ph(MK + "02.jpg", 0.3, 0.3, 1.0), "MAIS ATTENDS…", None),
+        (18, 0.0, _ph(MK + "04.jpg", 0.85, 0.3, 1.0), "N°4 : LA MÉDITATION", None),
+        (19, 0.0, _cd(MK + "06.jpg", lambda p: chips_card(["Spots cachés", "Partout dans Leonida"], p, "La méditation")), "DES SPOTS CACHÉS", None),
+        (20, 0.0, _cd(MK + "04.jpg", lambda p: stat_card("ASCENT", "cercle de pierres au sommet", p, **SKY)), "ASCENT", None),
+        (21, 0.0, _ph(MK + "02.jpg", 0.75, 0.6, 1.2), "IL APPARAÎT EN DERNIER", None),
+        (22, 0.0, _cd(MK + "06.jpg", lambda p: stat_card("TROPHÉE", "« Positive Mental Attitude »", p, **LIME)), "LE TROPHÉE ZEN", None),
+        (23, 0.0, _cd(MK + "04.jpg", lambda p: source_card("Petit rappel", ["Lieux réels :", "comparaisons des fans"], p)), "PETIT RAPPEL", None),
+        (24, 0.0, _sp(MK + "05.jpg", (0.6, 0.5), MK + "01.jpg", (0.45, 0.5), "CHASSE", "MOTO"), None, None),
+        (25, 0.0, _ph(MK + "04.jpg", 0.5, 0.3, 1.0), "OU MÉDITATION ?", None),
+        (26, 0.0, _cd(MK + "04.jpg", lambda p: comment_card("Chasse, moto ou zen ?", p, typed="Méditation au sommet")), "ABONNE-TOI !", None),
+    ]
+    return _fv("kalaga3", "kalaga", shots, GREEN, "MOUNT KALAGA")
+
+
+# ---------- 29/11 18 h 30 · Qui est Cal Hampton ? ----------
+def video_cal3():
+    C = _P + "cal_hampton_"
+    shots = [
+        (0, 0.0, _ph(C + "01.jpg", 0.71, 0.25, 1.4), "LES OISEAUX ESPIONS ?!", None),
+        (1, 0.0, ("clip", "clips/cal_hampton.mp4", 0.5), "CAL HAMPTON", None),
+        (2, 0.0, _cd(VC + "11.jpg", lambda p: stat_card("4", "choses à savoir sur lui", p, **SKY)), "4 CHOSES À SAVOIR", None),
+        (3, 0.0, _ph(C + "02.jpg", 0.55, 0.25, 1.2), "N°1 : SA DEVISE", None),
+        (4, 0.0, _cd(LK + "01.jpg", lambda p: source_card("Rockstar Games", ["Sa devise, en une question…"], p, warn=None)), "SELON ROCKSTAR", None),
+        (5, 0.0, _cd(VC + "27.jpg", lambda p: source_card("Cal Hampton", ["« Et si tout ce qu’on lit", "sur Internet était vrai ? »"], p, warn=None)), "ET SI C’ÉTAIT VRAI ?", None),
+        (6, 0.0, _ph(C + "04.jpg", 0.5, 0.25, 1.0), "AMI DE JASON", "ASSOCIÉ DE BRIAN"),
+        (7, 0.0, _ph(C + "03.jpg", 0.4, 0.3, 1.0), "CHEZ LUI, EN SÉCURITÉ", None),
+        (8, 0.0, _cd(LK + "05.jpg", lambda p: chips_card(["Radio garde-côtes", "Bières", "Navigation privée"], p, "Le passe-temps de Cal")), "IL ESPIONNE", None),
+        (9, 0.0, _ph(C + "01.jpg", 0.71, 0.3, 1.0), "N°2 : SES THÉORIES", None),
+        (10, 0.0, _cd(GR + "05.jpg", lambda p: source_card("Cal Hampton", ["« Beaucoup trop d’oiseaux", "en formation parfaite »"], p, warn=None)), "LES OISEAUX…", None),
+        (11, 0.0, _ph(GR + "05.jpg", 0.5, 0.2, 1.3), "PHRASE OFFICIELLE", None),
+        (12, 0.0, _cd(GR + "05.jpg", lambda p: stat_card("62", "espèces d’oiseaux dans le jeu", p, **SKY)), "62 ESPÈCES !", None),
+        (13, 0.0, _ph(C + "03.jpg", 0.4, 0.2, 1.5), "OUVRE L’ŒIL", None),
+        (14, 0.0, _ph(C + "02.jpg", 0.45, 0.3, 1.0), "N°3 : PARTOUT", None),
+        (15, 0.0, _cd(LK + "05.jpg", lambda p: chips_card(["Gone Fishing"], p, "La 1re mission de Jason")), "SA 1RE MISSION", None),
+        (16, 0.0, _ph(LK + "05.jpg", 0.3, 0.5, 1.0), "PÊCHE SPÉCIALE", None),
+        (17, 0.0, _cd(VC + "17.jpg", lambda p: source_card("Le téléphone de Jason", ["Appli de scanner de police", "installée par Cal"], p, warn=None)), "SCANNER DE POLICE", None),
+        (18, 0.0, _ph(VC + "17.jpg", 0.5, 0.4, 1.0), "LA RADIO DES FLICS !", None),
+        (19, 0.0, _ph(C + "04.jpg", 0.45, 0.4, 1.0), "MISSION FENG SHUI", "CONSOLE ENTRE POTES"),
+        (20, 0.0, _ph(C + "01.jpg", 0.71, 0.25, 1.6), "MAIS ATTENDS…", None),
+        (21, 0.0, ("clip", "clips/cal_hampton.mp4", 0.5), "N°4 : SA VOIX", None),
+        (22, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("B. MOYNIHAN", "Bobby Moynihan, la voix de Cal", p, sub2="~10 ans au Saturday Night Live")), "BOBBY MOYNIHAN", None),
+        (23, 0.0, _cd(VC + "11.jpg", lambda p: source_card("GameRoll", ["Insider · mars 2026", "« Moynihan, à 95 % »"], p, warn=None)), "DEVINÉ EN MARS", None),
+        (24, 0.0, _cd(VC + "11.jpg", lambda p: stat_card("95 %", "sûr de lui", p, **SKY)), "SÛR À 95 %", None),
+        (25, 0.0, _cd(VC + "10.jpg", lambda p: crossed_stat("JAY KLAITZ", "la voix de Lester (GTA 5)", p)), "PAS LUI", None),
+        (26, 0.0, _cd(VC + "10.jpg", lambda p: source_card("Jay Klaitz", ["« Non, ce n’est pas moi »"], p, warn=None)), "« PAS MOI »", None),
+        (27, 0.0, _sp(C + "02.jpg", (0.55, 0.25), C + "03.jpg", (0.4, 0.25), "GÉNIE", "PARANO"), None, None),
+        (29, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("Génie ou parano ?", p, typed="Parano, à 100 % !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("cal3", "cal", shots, BLUE, "QUI EST-IL ?")
+
+
+for _k in ["boobie", "astuces", "keys", "duree", "dimez", "eggs", "grass", "nouveautes", "gellhorn", "argent", "drequan", "fps", "kalaga", "cal"]:
+    VIDEOS[_k + "3"] = globals()["video_" + _k + "3"]
+
+
 if __name__ == "__main__":
     mode = sys.argv[1]
     keys = sys.argv[2].split(",")

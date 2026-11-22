@@ -1,0 +1,48 @@
+{
+ "duree_s": 100.92,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -62.2,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.68,
+  "a": 52.0,
+  "b": 79.7
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.45,
+  "absente": true
+ },
+ "synchro_pct": 100.0,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.5,
+ "volume_ok": true,
+ "debit_median_syll_s": 5.15,
+ "phrases_trop_rapides": [
+  [
+   6,
+   "Saute sur une moto tout-terrain…",
+   1.5
+  ],
+  [
+   7,
+   "et accroche-toi à ton portefeuille.",
+   1.43
+  ],
+  [
+   14,
+   "Ils lancent une enquête…",
+   1.31
+  ],
+  [
+   20,
+   "Il apprend à Lucia à scanner les voiture",
+   1.32
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_gellhorn_v3.mp4",
+ "fin": "videos/fins/VCN_gellhorn_v3_fin.mp4",
+ "couverture": "covers/cover_gellhorn3.jpg"
+}
