@@ -33,6 +33,7 @@
    à 18 h 30 (Europe/Paris). Réglages choisis par le créateur : YouTube public, catégorie 20 ;
    TikTok PUBLIC_TO_EVERYONE, commentaires ouverts, confirmation musique acceptée, isAiGenerated true.
 8. **Validation** : montrer le brouillon et attendre le « ok » du créateur avant `vidiq_social_post_publish`.
+   **Limite vidIQ (plan gratuit) : 3 envois YouTube par jour** (remise à zéro à minuit heure du Pacifique = 9 h Paris). Au-delà, publier TikTok + Instagram (publicationIds) et envoyer le YouTube par lots de 3 les jours suivants, avant leur créneau. vidIQ affiche l'heure YouTube à null dans draft_get/list, mais YouTube la respecte (vérifier avec vidiq_user_videos : private + scheduledPublishAt).
 9. Ajouter le sujet publié à `sujets.md`.
 
 ## Format standard : v3 « plein écran » (validé par le créateur le 18/11/2026)
