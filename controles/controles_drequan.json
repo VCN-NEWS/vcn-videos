@@ -1,0 +1,43 @@
+{
+ "duree_s": 81.7,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -62.5,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.58,
+  "a": 49.0,
+  "b": 23.8
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.42,
+  "absente": true
+ },
+ "synchro_pct": 100.0,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.7,
+ "volume_ok": true,
+ "debit_median_syll_s": 5.13,
+ "phrases_trop_rapides": [
+  [
+   3,
+   "Quatre choses à savoir sur lui.",
+   1.29
+  ],
+  [
+   17,
+   "Tu l'avais entendue dans la deuxième ban",
+   1.51
+  ],
+  [
+   22,
+   "Les guides le présentent comme un vieil ",
+   1.31
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_drequan_v3.mp4",
+ "fin": "videos/fins/VCN_drequan_v3_fin.mp4",
+ "couverture": "covers/cover_drequan3.jpg"
+}
