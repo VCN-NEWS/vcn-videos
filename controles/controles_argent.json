@@ -1,0 +1,53 @@
+{
+ "duree_s": 98.93,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -62.2,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.63,
+  "a": 42.0,
+  "b": 31.2
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.34,
+  "absente": true
+ },
+ "synchro_pct": 99.6,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.6,
+ "volume_ok": true,
+ "debit_median_syll_s": 4.54,
+ "phrases_trop_rapides": [
+  [
+   4,
+   "Neutralise les gardes, puis parle au per",
+   1.33
+  ],
+  [
+   6,
+   "Il répond : generator.",
+   1.32
+  ],
+  [
+   16,
+   "et un crabe géant qui t'attaque !",
+   1.27
+  ],
+  [
+   19,
+   "Les épaves apparaissent sur ta carte, et",
+   1.41
+  ],
+  [
+   27,
+   "Alors dépose ton argent au distributeur ",
+   1.3
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_argent_v3.mp4",
+ "fin": "videos/fins/VCN_argent_v3_fin.mp4",
+ "couverture": "covers/cover_argent3.jpg"
+}

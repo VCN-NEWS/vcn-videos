@@ -1,0 +1,53 @@
+{
+ "duree_s": 89.67,
+ "duree_ok": true,
+ "voice_cut_in_video": null,
+ "fin_voix_tail_db": -60.9,
+ "fin_silence_ok": true,
+ "phrase_repetee": {
+  "ok": true,
+  "similarite_max": 0.6,
+  "a": 15.0,
+  "b": 4.3
+ },
+ "phrase_sacrifiee": {
+  "similarite": 0.39,
+  "absente": true
+ },
+ "synchro_pct": 99.6,
+ "synchro_ok": true,
+ "volume_moyen_db": -15.7,
+ "volume_ok": true,
+ "debit_median_syll_s": 4.74,
+ "phrases_trop_rapides": [
+  [
+   3,
+   "Rockstar les appelle la porte du paradis",
+   1.34
+  ],
+  [
+   15,
+   "Ta toute première mission avec Cal s'app",
+   1.34
+  ],
+  [
+   16,
+   "Et si tu bats Cal à un défi de pêche, tu",
+   1.29
+  ],
+  [
+   19,
+   "Il y a un tank Rhino…",
+   1.33
+  ],
+  [
+   28,
+   "Il est inspiré de Loosy, une chienne de ",
+   1.26
+  ]
+ ],
+ "TOUT_OK": true,
+ "fichier": "videos/VCN_keys_v3.mp4",
+ "fin": "videos/fins/VCN_keys_v3_fin.mp4",
+ "couverture": "covers/cover_keys3.jpg"
+}
