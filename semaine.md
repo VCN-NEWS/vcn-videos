@@ -27,6 +27,7 @@ chaque vidéo est un brouillon vidIQ (YouTube + TikTok + Instagram, publishAt = 
 - Programme, légendes, vidéos et fins envoyés au créateur. **« ok » du créateur le 22/11 au soir pour les 14 vidéos.**
 - **Programmé** : TikTok + Instagram des 14 vidéos (28 publications « scheduled » à leur créneau). YouTube : Boobie Ike, 5 commandes, Leonida Keys envoyés (privé, scheduledPublishAt = créneau, vérifié : ORVHS5gyxQM, Tw1P45I9Puk, hnObfckaVt8).
 - **Limite vidIQ (plan gratuit) : 3 envois YouTube par jour**, remise à zéro à minuit heure du Pacifique (9 h Paris). Les 11 YouTube restants partent par lots de 3, via des tâches programmées à 9 h 07 : lun 23 (durée, Real Dimez, easter eggs), mar 24 (Grassrivers, nouveautés, Gellhorn), mer 25 (argent, Dre'Quan, 30 fps), jeu 26 (Kalaga, Cal), chacune vérifiée (privé + heure).
+- Lot YouTube 1 envoyé le 23/11 à 9 h 09 : Durée de vie (DTgkWb-ifIo, 24/11 18 h 30), Real Dimez (GbfGK1ui-6E, 25/11 12 h 30), 5 easter eggs (HGVqfqXYXO0, 25/11 18 h 30) : privé, heure YouTube correcte ✅.
 
 ## À savoir avant de valider
 
