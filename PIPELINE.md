@@ -104,9 +104,36 @@ Toutes les vidéos se montent avec `engine/v3.py` (classe `FullVideo`). Exemples
 ## Mélange de contenus (validé par le créateur le 18/11/2026)
 
 - 4 types en alternance : **actus**, **secrets & astuces**, **portraits « Qui est… ? »**, **lieux** (dossier `bibliotheque/lieus/` : Vice City jour/nuit, Leonida Keys, Grassrivers, Port Gellhorn, Mount Kalaga, Ambrosia).
-- Semaine type de 14 : ~4 portraits, ~4 lieux, ~3 actus, ~3 secrets ; jamais deux du même type à la suite ; les plus fortes à 18 h 30 ; une grosse actu passe devant tout.
+- Semaine type de 14 (révisée le 24/11, voir « TikTok : visibilité ») : **~7 secrets & astuces / guides pratiques** (un par jour), ~3 actus/explications, ~2 portraits (persos principaux ou très recherchés), ~2 lieux (angle « où trouver / le secret de… ») ; jamais deux du même type à la suite ; les plus fortes à 18 h 30 ; une grosse actu passe devant tout.
 - Même direction artistique pour tout (format v3, couvertures : visage pour un perso, carte postale pour un lieu/une actu). Toujours viral, attrayant, une image qui donne envie de cliquer.
 - Vidéo de lieu : angle « X choses à faire / à voir » ou « le secret de… », un plan par photo de la zone, pastilles d'info, question finale (« tu iras où en premier ? »).
+
+## TikTok : visibilité (décision du créateur le 24/11/2026, à appliquer dès la production du 29/11)
+
+Constat (statistiques TikTok via Windsor, 10 vidéos du 18 au 23/11) : 220-340 vues en moyenne, 1 à 3 % des vues vont jusqu'au bout.
+Sur « 5 commandes cachées », 86 % des gens regardent encore à 1 s, 54 % à 3 s, 34 % à 10 s ; ceux qui passent 10 s restent (12 % encore là à 77 s).
+TikTok teste chaque vidéo sur 200-300 personnes et ne la pousse pas plus loin. **Le problème est le début, pas le fond.**
+Les vidéos GTA 6 en français qui ont percé cette semaine (80 k à 800 k vues) sont des guides pratiques (« où trouver », « ne rate pas », voitures, argent), en images de jeu, avec la promesse à l'écran et dans la voix dès la 1re image.
+
+1. **Les 3 premières secondes (contrôle à faire sur la planche)** :
+   - la 1re phrase dite = la promesse la plus forte et concrète (« Une Bugatti gratuite est cachée ici. », « Ne finis pas le chapitre 1 avant ça. ») ; jamais « Qui est X ? » ni une phrase d'intro comme 1re phrase ;
+   - le titre à l'écran dit la même chose que la voix ; une 1re révélation ou image choc avant 3 s ;
+   - l'image bouge dès la 1re seconde (zoom, coupe punch) ; la photo la plus spectaculaire de la vidéo juste après la couverture ;
+   - la couverture de 0,35 s reste (vidIQ ne permet pas de choisir la miniature TikTok : sans elle, la grille du profil montrerait une image quelconque ; la chute se fait entre 1 et 3 s, pas avant).
+   - Clips de gameplay du créateur : dès qu'il y en a, en mettre 3 à 5 s dans les 3 premières secondes (images de jeu = ce qui marche le mieux).
+2. **Sujets pratiques en priorité** : voitures et objets secrets, argent, choses à ne pas rater, lieux cachés, astuces de jeu — toujours avec le « où » et le « comment ».
+   Portraits seulement pour les personnages principaux ou très recherchés (Lucia, Jason, et ceux qui sortent dans la recherche TikTok / vidiq_keyword_research). Vérification sur 2 sources inchangée.
+3. **Légende pensée pour la recherche TikTok** (destination TikTok et Instagram, texte propre à la destination) :
+   - 1re ligne = les mots que les gens tapent, en commençant par « GTA 6 » (« GTA 6 : où trouver la Bugatti gratuite 🚗 ») ;
+   - légende courte : 1-2 lignes + question + « Découverte : @… » si besoin + « Images : Rockstar Games » + 5-8 hashtags (#GTA6 #GTAVI #VCN + mots-clés du sujet) ;
+   - la liste complète des sources va dans la description YouTube seulement (le créateur peut l'épingler en commentaire TikTok s'il le souhaite).
+4. **Test de versions TikTok courtes (2 par semaine, semaine du 30/11)** : pour 2 vidéos « secrets & astuces », la destination TikTok reçoit sa propre vidéo de 35 à 50 s
+   (`media` propre à la destination TikTok ; YouTube et Instagram gardent la version ≥ 70 s). La version courte se monte à partir de la même voix, coupée uniquement
+   dans les blancs entre phrases (les révélations les plus fortes + question finale), sans nouveau crédit Hedra, et passe TOUS les contrôles bloquants sauf la durée
+   (35-50 s au lieu de ≥ 70 s) : voice_cut_in_video = None, aucune phrase répétée, phrase sacrifiée absente, fin sur un silence, synchro, volume, et chaque raccord vérifié (best_match).
+   Fichier : `videos/VCN_<clé>_tt.mp4` (+ sa fin dans `videos/fins/`). Dans semaine.md, marquer ces 2 créneaux « TEST TikTok court ».
+   Bilan 48 h après (Windsor tiktok_organic : vues, temps moyen regardé, taux de vidéos vues en entier, abonnés gagnés) comparé aux autres TikToks, présenté au créateur à la validation du dimanche suivant ; il décide de la suite.
+   Seul le créateur peut changer la règle des 70 s : les autres vidéos et les autres comptes restent à ≥ 70 s.
 
 ## Secrets & astuces : sources
 
