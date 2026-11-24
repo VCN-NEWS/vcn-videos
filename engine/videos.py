@@ -1298,6 +1298,55 @@ for _k in ["boobie", "astuces", "keys", "duree", "dimez", "eggs", "grass", "nouv
     VIDEOS[_k + "3"] = globals()["video_" + _k + "3"]
 
 
+
+# ---------- 25/11 15 h 30 · bonus « alerte actu » : la fuite de GTA 6 sur PC ----------
+DUR["fuite3"] = 96.705  # voix_fuite3.mp3 (prep_voice.py : coupe à 109,907 s avant « Allez, ciao », sans les blancs, x1.1)
+REDC = dict(c1=(255, 130, 130), c2=(220, 40, 80))
+
+
+def video_fuite3():
+    shots = [
+        (0, 0.0, _cd(VC + "27.jpg", lambda p: crossed_stat("GTA 6 PC", "ne le télécharge pas", p)), "NE TÉLÉCHARGE PAS !", None),
+        (1, 0.0, _ph(VC + "08.jpg", 0.5, 0.5, 1.0), "PARTOUT DEPUIS LUNDI", None),
+        (2, 0.0, _ph(VC + "16.jpg", 0.5, 0.4, 1.0), "ÇA PEUT COÛTER CHER", None),
+        (3, 0.0, _ph(VC + "03.jpg", 0.5, 0.5, 1.0), "5 POINTS", None),
+        (4, 0.0, _ph(VC + "11.jpg", 0.5, 0.5, 1.0), "N°1 : LA FUITE", None),
+        (5, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("209 GO", "mis en ligne le 19 novembre", p, **FIRE)), "209 GIGAS", None),
+        (6, 0.0, _cd(VC + "10.jpg", lambda p: source_card("Le hacker Cyberleek", ["« La version Xbox complète »"], p, warn="Selon lui")), "VERSION XBOX ?", None),
+        (7, 0.0, _ph(JL + "07.jpg", 0.5, 0.45, 1.0), "SAUF LE FICHIER CLÉ", None),
+        (8, 0.0, _ph(VC + "22.jpg", 0.5, 0.5, 1.0), "N°2 : LE DÉCOMPTE", None),
+        (9, 0.0, _cd(VC + "22.jpg", lambda p: stat_card("23/11", "le fichier est lâché", p, **REDC)), "LUNDI 23 NOVEMBRE", None),
+        (10, 0.0, _cd(VC + "08.jpg", lambda p: stat_card("3 H", "pour le faire démarrer sur PC", p, **SKY)), "3 H PLUS TARD", None),
+        (11, 0.0, _ph(VC + "09.jpg", 0.5, 0.5, 1.0), "QUE DES MENUS", None),
+        (12, 0.0, _cd(VC + "27.jpg", lambda p: crossed_stat("JOUABLE", "pas un vrai jeu", p)), "PAS UN VRAI JEU", None),
+        (13, 0.0, _ph(JL + "20.jpg", 0.5, 0.45, 1.0), "N°3 : JOUABLE ?", None),
+        (14, 0.0, _ph(JL + "07.jpg", 0.55, 0.4, 1.35), "NON.", None),
+        (15, 0.0, _cd(VC + "10.jpg", lambda p: crossed_stat("ÉMULATEUR", "aucun pour la Xbox Series", p)), "AUCUN ÉMULATEUR", None),
+        (16, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Cyberleek promet", ["« Jouable dans une semaine »"], p, warn="Rien de prouvé")), "« DANS UNE SEMAINE »", None),
+        (17, 0.0, _ph(JL + "16.jpg", 0.5, 0.5, 1.0), "AUCUNE PREUVE", None),
+        (18, 0.0, _ph(VC + "17.jpg", 0.5, 0.5, 1.0), "MAIS ATTENDS…", None),
+        (19, 0.0, _ph(VC + "19.jpg", 0.5, 0.45, 1.0), "N°4 : LES ARNAQUES", None),
+        (20, 0.0, _cd(VC + "27.jpg", lambda p: stat_card("100+", "sites au nom de Cyberleek", p, sub2="repérés par Netcraft", **REDC)), "+100 SITES", None),
+        (21, 0.0, _cd(VC + "22.jpg", lambda p: list_card([("Fichiers", "signalés comme virus", RED), ("Paiement", "réclamé en crypto", RED)],
+                                                          p, title="Les pièges", icon="lock")), "SIGNALÉS COMME VIRUS", None),
+        (22, 0.0, _ph(VC + "25.jpg", 0.5, 0.5, 1.0), "PAYER EN CRYPTO ?", None),
+        (23, 0.0, _cd(VC + "10.jpg", lambda p: source_card("Steam", ["Page « GTA 6 » gratuite,", "sans images ni éditeur"], p, warn="Fausse page")), "FAUX GTA 6 SUR STEAM", None),
+        (24, 0.0, _cd(VC + "10.jpg", lambda p: stat_card("SUSPECT", "selon SteamDB", p, **REDC)), "SIGNALÉE PAR STEAMDB", None),
+        (25, 0.0, _ph(VC + "17.jpg", 0.4, 0.5, 1.3), "N°5 : LA RIPOSTE", None),
+        (26, 0.0, _cd(VC + "08.jpg", lambda p: list_card([("GitHub", "fermé", RED), ("Discord", "fermé", RED)], p, title="Projet de portage PC", icon="lock")),
+         "PROJET FERMÉ", None),
+        (27, 0.0, _cd(VC + "11.jpg", lambda p: source_card("Rockstar Games", ["Serait derrière les fermetures"], p)), "ROCKSTAR ?", None),
+        (28, 0.0, _cd(VC + "03.jpg", lambda p: source_card("Take-Two", ["Assignations contre", "Discord et Microsoft"], p, warn=None)), "DÉMASQUER LE HACKER", "DÈS L’ÉTÉ"),
+        (29, 0.0, _cd(VC + "27.jpg", lambda p: crossed_stat("VERSION PC", "aucune annoncée par Rockstar", p)), "AUCUNE VERSION PC", None),
+        (30, 0.0, _cd(VC + "22.jpg", lambda p: chips_card(["Illégal", "Risqué"], p, "GTA 6 sur PC aujourd’hui")), "ILLÉGAL ET RISQUÉ", None),
+        (31, 0.0, _sp(JL + "03.jpg", (0.5, 0.4), JL + "20.jpg", (0.5, 0.4), "J’ATTENDS LE PC", "JE RESTE CONSOLE"), None, None),
+        (32, 0.0, _cd(VC + "27.jpg", lambda p: comment_card("Tu attends la version PC ?", p, typed="Je reste sur console !")), "ABONNE-TOI !", None),
+    ]
+    return _fv("fuite3", "fuite", shots, RED, "ALERTE PC")
+
+
+VIDEOS["fuite3"] = video_fuite3
+
 if __name__ == "__main__":
     mode = sys.argv[1]
     keys = sys.argv[2].split(",")

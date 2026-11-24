@@ -170,6 +170,7 @@ COVERS = {
     "drequan3": dict(photo="personnages/drequan_priest_03.jpg", lines=["QUI EST", "DRE’QUAN ?"], sticker="LE BOSS DU RAP ?", focus=(0.45, 0.2), zoom=1.2),
     "fps3": dict(photo="lieus/vice_city_17.jpg", lines=["30 FPS", "POURQUOI ?"], sticker="MÊME SUR PS5 PRO", focus=(0.5, 0.5), zoom=1.0),
     "kalaga3": dict(photo="lieus/mount_kalaga_national_park_04.jpg", lines=["MOUNT", "KALAGA"], sticker="LE SECRET DU SOMMET", focus=(0.6, 0.5), zoom=1.0),
+    "fuite3": dict(photo="lieus/vice_city_27.jpg", lines=["GTA 6 PC", "PIÈGE !"], sticker="NE TÉLÉCHARGE PAS", focus=(0.5, 0.5), zoom=1.0),
     "cal3": dict(photo="personnages/cal_hampton_01.jpg", lines=["QUI EST", "CAL ?"], sticker="LE PARANO DE GTA 6", focus=(0.71, 0.28), zoom=1.45),
 }
 
