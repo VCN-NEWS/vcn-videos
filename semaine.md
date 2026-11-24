@@ -432,3 +432,15 @@ Images : Rockstar Games.
 
 - **Tags YouTube** : GTA 6, GTA VI, Cal Hampton, Qui est Cal Hampton, Bobby Moynihan, complotiste GTA 6, Gone Fishing, Jason Duval, personnages GTA 6, Rockstar Games
 
+
+## Alerte actu (tâche quotidienne du 24/11) · BONUS mercredi 25/11 · 15 h 30 — GTA 6 sur PC : la fuite et les pièges
+
+- **Statut** : brouillon vidIQ, **en attente du « ok » du créateur** (rien de programmé).
+- **Titre YouTube** : GTA 6 sur PC : ne télécharge SURTOUT pas ça ⚠️ #shorts
+- **Durée** : 98,37 s
+- **Vidéo** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/VCN_fuite_v3.mp4
+- **Fin (10 dernières secondes)** : https://raw.githubusercontent.com/VCN-NEWS/vcn-videos/main/videos/fins/VCN_fuite_v3_fin.mp4
+- **postId** : `cc51b422-135f-4ecd-b593-6d6b7222db9f` · **revision** : `4237b5d7-b7bf5a72-e8e4cad0`
+- **uploadId vidéo** : `b72767d5-7407-4127-9cff-99ce43b382ed` · **miniature YouTube (imageId)** : `bcfabc47-86a3-4b98-86b6-795452e6fa1c`
+- **Contrôles bloquants** : durée 98,37 s ≥ 70 ✅, voice_cut_in_video = None ✅, phrase répétée : non (0,69) ✅, phrase sacrifiée absente (0,43) ✅, fin sur un silence (-63,2 dB) ✅, synchro 100 % ✅, volume -15,7 dB ✅, syllabes : aucune phrase suspecte ✅, planche vérifiée ✅
+- **Quota YouTube** : le 25/11, les 3 envois YouTube du jour sont prévus pour le lot 3 (argent, Dre'Quan, 30 fps). Si le bonus part aussi sur YouTube, décaler un envoi du lot 3 (30 fps, 28/11) au lot 4 du 26/11.
