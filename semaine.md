@@ -29,6 +29,7 @@ chaque vidéo est un brouillon vidIQ (YouTube + TikTok + Instagram, publishAt = 
 - **Limite vidIQ (plan gratuit) : 3 envois YouTube par jour**, remise à zéro à minuit heure du Pacifique (9 h Paris). Les 11 YouTube restants partent par lots de 3, via des tâches programmées à 9 h 07 : lun 23 (durée, Real Dimez, easter eggs), mar 24 (Grassrivers, nouveautés, Gellhorn), mer 25 (argent, Dre'Quan, 30 fps), jeu 26 (Kalaga, Cal), chacune vérifiée (privé + heure).
 - Lot YouTube 1 envoyé le 23/11 à 9 h 09 : Durée de vie (DTgkWb-ifIo, 24/11 18 h 30), Real Dimez (GbfGK1ui-6E, 25/11 12 h 30), 5 easter eggs (HGVqfqXYXO0, 25/11 18 h 30) : privé, heure YouTube correcte ✅.
 - Lot YouTube 2 envoyé le 24/11 à 9 h 08 : Grassrivers (toUrxOqsa10, 26/11 12 h 30), 5 nouveautés (C2udgundp6o, 26/11 18 h 30), Port Gellhorn (O1OWC4mSER4, 27/11 12 h 30) : privé, heure correcte ✅. Grassrivers était arrivée sans tags : les 10 tags approuvés ont été remis (vidiq_update_video).
+- Lot YouTube 3 envoyé le 25/11 à 9 h 08 : Argent au début (UbH-0vY0d3Q, 27/11 18 h 30), Dre'Quan Priest (tXrYZ6KYSRo, 28/11 12 h 30), 30 fps (-OZ0OYsLX2E, 28/11 18 h 30) : privé, heure et tags corrects ✅.
 
 ## À savoir avant de valider
 
