@@ -30,6 +30,7 @@ chaque vidéo est un brouillon vidIQ (YouTube + TikTok + Instagram, publishAt = 
 - Lot YouTube 1 envoyé le 23/11 à 9 h 09 : Durée de vie (DTgkWb-ifIo, 24/11 18 h 30), Real Dimez (GbfGK1ui-6E, 25/11 12 h 30), 5 easter eggs (HGVqfqXYXO0, 25/11 18 h 30) : privé, heure YouTube correcte ✅.
 - Lot YouTube 2 envoyé le 24/11 à 9 h 08 : Grassrivers (toUrxOqsa10, 26/11 12 h 30), 5 nouveautés (C2udgundp6o, 26/11 18 h 30), Port Gellhorn (O1OWC4mSER4, 27/11 12 h 30) : privé, heure correcte ✅. Grassrivers était arrivée sans tags : les 10 tags approuvés ont été remis (vidiq_update_video).
 - Lot YouTube 3 envoyé le 25/11 à 9 h 08 : Argent au début (UbH-0vY0d3Q, 27/11 18 h 30), Dre'Quan Priest (tXrYZ6KYSRo, 28/11 12 h 30), 30 fps (-OZ0OYsLX2E, 28/11 18 h 30) : privé, heure et tags corrects ✅.
+- Lot YouTube 4 envoyé le 26/11 à 9 h 08 : Mount Kalaga (9pfCDyDnSJA, 29/11 12 h 30), Cal Hampton (RniVkKwvpvs, 29/11 18 h 30) : privé, heure et tags corrects ✅. **Les 14 vidéos sont programmées sur les 3 comptes.**
 
 ## À savoir avant de valider
 
